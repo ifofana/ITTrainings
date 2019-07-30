@@ -1,0 +1,33 @@
+<h1>Student</h1>
+
+<div class="container">
+        <div class="alert alert-warning" *ngIf="studentForm.dirty && studentForm.invalid">Enter valid values</div>
+        <div class="alert alert-warning" *ngIf="firstName.dirty && firstName.invalid">Enter at least 5 characters in First Name</div>
+        <div class="alert alert-warning" *ngIf="lastName.dirty && lastName.invalid">Enter at least 5 characters in Last Name</div>
+        <div class="alert alert-warning" *ngIf="email.dirty && email.invalid">Enter valid Email</div>
+
+    <form (ngSubmit)="!studentForm.invalid && saveStudent()" #studentForm="ngForm">
+        <fieldset class="form-group">
+            <label>First Name</label>
+            <input type="text" #firstName="ngModel"
+                [(ngModel)]="student.firstName" class="form-control"
+                name="firstName" required="required" minlength="3">
+        </fieldset>
+
+        <fieldset class="form-group">
+            <label>Last Name</label>
+            <input type="text" #lastName="ngModel"
+                [(ngModel)]="student.lastName" class="form-control"
+                name="lastName" required="required" minlength="3">
+        </fieldset>
+
+        <fieldset class="form-group">
+            <label>Email</label>
+            <input type="text" #email="ngModel"
+                [(ngModel)]="student.email" class="form-control"
+                name="email" required="required" minlength="3">
+        </fieldset>
+
+        <button type="submit" class="btn btn-success">Save</button>
+    </form>
+</div>

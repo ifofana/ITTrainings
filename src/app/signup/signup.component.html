@@ -1,0 +1,30 @@
+<h2>Register</h2>
+
+<!--ibrahima.fofana.ia@gmail.com
+signup.component.ts:29 kuvFTdmiS6ZC5ic
+user.service.ts:23 undefined, ibrahima.fofana.ia@gmail.com,kuvFTdmiS6ZC5ic-->
+
+<div class="container">
+	<div class="alert alert-warning" *ngIf="registerForm.dirty && registerForm.invalid">Enter valid values</div>
+	<div class="alert alert-warning" *ngIf="username.dirty && username.invalid">Enter at least 5 characters in username</div>
+	<div class="alert alert-warning" *ngIf="password.dirty && password.invalid">Enter valid in Password</div>
+
+	<form (ngSubmit)="!registerForm.invalid && signUpUser()" #registerForm="ngForm">
+		<fieldset class="form-group">
+                <label>Email</label>
+                <input type="text" #username="ngModel" 
+                    [(ngModel)]="user.username" class="form-control" 
+                    name="email" required="required" minlength="5">
+        </fieldset>
+
+        <fieldset class="form-group">
+                <label>Password</label>
+                <input type="password" #password="ngModel" 
+                    [(ngModel)]="user.password" class="form-control" 
+                    name="password" required="required" minlength="5">
+        </fieldset>
+
+		<button type="submit" class="btn btn-primary">Register</button>
+		<a routerLink="/login" class="btn btn-link">Cancel</a>
+	</form>
+</div>

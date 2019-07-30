@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "IsgTrainingCourse": {
+    "ITTrainings": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/IsgTrainingCourse",
+            "outputPath": "dist/ITTrainings",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -60,18 +60,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "IsgTrainingCourse:build"
+            "browserTarget": "ITTrainings:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "IsgTrainingCourse:build:production"
+              "browserTarget": "ITTrainings:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "IsgTrainingCourse:build"
+            "browserTarget": "ITTrainings:build"
           }
         },
         "test": {
@@ -108,15 +108,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "IsgTrainingCourse:serve"
+            "devServerTarget": "ITTrainings:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "IsgTrainingCourse:serve:production"
+              "devServerTarget": "ITTrainings:serve:production"
             }
           }
         }
       }
     }},
-  "defaultProject": "IsgTrainingCourse"
+  "defaultProject": "ITTrainings"
 }

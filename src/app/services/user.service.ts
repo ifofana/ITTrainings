@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { API_URL } from '../app.constants';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import {map} from 'rxjs/operators';
 
 import { User } from '../models/user';
+import { API_URL } from '../app.constants';
 
 @Injectable({
   providedIn: 'root'
@@ -28,7 +28,7 @@ export class UserService {
       authorization:'Basic ' + btoa(user.username + ':' + user.password)
     }:{});
 
-    return this.http.get<any> (API_URL + "login", {headers:headers}).pipe(
+    return this.http.get<any> (API_URL + "/api/user/login", {headers:headers}).pipe(
       map(response => {
         if(response) {
           localStorage.setItem('currentUser', JSON.stringify(response));
@@ -40,7 +40,7 @@ export class UserService {
   }
 
   logOut(): Observable<any> {
-    return this.http.post(API_URL + "logout", {}).pipe(
+    return this.http.post(API_URL + "/api/user/logout", {}).pipe(
       map(response => {
         localStorage.removeItem('currentUser');
         this.currentUserSubject.next(null);
@@ -49,7 +49,7 @@ export class UserService {
   }
 
   register(user: User): Observable<any> {
-    return this.http.post(API_URL + "registration", JSON.stringify(user),
+    return this.http.post(API_URL + "/api/user/registration", JSON.stringify(user),
   {headers: {"Content-Type":"application/json; charset=UTF-8"}});
   }
 }

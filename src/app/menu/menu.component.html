@@ -5,6 +5,9 @@
 		</div>
 
 		<ul class="navbar-nav">
+			<li class="nav-item">
+				<a href="/admin" class="nav-link" *ngIf="isAdmin">Admin Panel</a>
+			</li>
 			<li>
 				<a *ngIf="authenticationService.isUserLoggedIn()" routerLink="/welcome" class="nav-link">Home</a>
 			</li>

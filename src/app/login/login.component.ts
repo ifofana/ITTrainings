@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { UserService } from '../services/user.service';
+import { User } from '../models/user';
+import { Router } from '@angular/router';
 
 import { AuthenticationService } from '../service/authentication.service';
 
@@ -10,34 +12,33 @@ import { AuthenticationService } from '../service/authentication.service';
 })
 export class LoginComponent implements OnInit {
 
-	username = ''
-	password = ''
-	errorMessage = 'Invalid Credentials'
-	invalidLogin = false
+	user: User = new User();
+	errorMessage: string;
 
 	constructor(
-		private route: ActivatedRoute,
-		private router: Router,
-		private authenticationService : AuthenticationService
+		private userService: UserService,
+		private router: Router
 	) {
 				
 	}
 
 	ngOnInit() {
-		
+		if(this.userService.currentUserValue) {
+			this.router.navigate(['/profile']);
+			return;
+		}
 	}
 
-	handleLogin() {	
-		this.authenticationService.authenticate(this.username, this.password)
+	login() {	
+		this.userService.login(this.user)
 			.subscribe(
 				data => {
 					console.log(data)
-					this.router.navigate(['welcome'])
-					this.invalidLogin = false
+					this.router.navigate(['/profile'])
 				},
 				error => {
 					console.log(error)
-					this.invalidLogin = true
+					this.errorMessage = "Username or password is incorrect"
 				}
 			)
 	}

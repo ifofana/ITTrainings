@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,6 +17,12 @@ import { HttpIntercepterBasicAuthService } from './service/http/http-intercepter
 import { ListStudentsComponent } from './list-students/list-students.component';
 import { StudentComponent } from './student/student.component';
 import { SignupComponent } from './signup/signup.component';
+import { RegisterComponent } from './components/register/register.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { DetailComponent } from './components/detail/detail.component';
+import { AdminComponent } from './components/admin/admin.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { UnauthorizedComponent } from './components/unauthorized/unauthorized.component';
 
 @NgModule({
   declarations: [
@@ -31,13 +37,20 @@ import { SignupComponent } from './signup/signup.component';
     CourseComponent,
     ListStudentsComponent,
     StudentComponent,
-    SignupComponent
+    SignupComponent,
+    RegisterComponent,
+    ProfileComponent,
+    DetailComponent,
+    AdminComponent,
+    NotFoundComponent,
+    UnauthorizedComponent
   ],
   imports: [
     BrowserModule,
-	AppRoutingModule,
-	FormsModule,
-	HttpClientModule
+	  AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+	  HttpClientModule
   ],
   providers: [
      {provide: HTTP_INTERCEPTORS, useClass: HttpIntercepterBasicAuthService, multi: true}

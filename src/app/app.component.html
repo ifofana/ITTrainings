@@ -2,19 +2,24 @@
 
 <div class="container">
 	<router-outlet></router-outlet>
-</div>
+</div> -->
 
-<app-footer></app-footer> -->
+<app-footer></app-footer>
 <nav class="navbar navbar-expand navbar-dark bg-dark">
-	<a href="https://angular/io" class="navbar-brand">
-		<img src="assets/imgs/angular.png" width="30" height="30" class="d-inline-block align-top" />
-		Angular
-	</a>
+	<a href="https://www.isgtown.org/" class="navbar-brand">ISG external link</a>
 	<div class="navbar-nav mr-auto">
 		<li class="nav-item">
-			<a href="/admin" class="nav-link" *ngIf="isAdmin">Admin Panel</a>
+			<a routerLink="/admin" class="nav-link" *ngIf="isAdmin">Admin Panel</a>
+		</li>
+
+		<li>
+			<a  routerLink="/courses" class="nav-link" *ngIf="isAdmin">Courses</a>
+		</li>
+		<li>
+			<a routerLink="/students" class="nav-link" *ngIf="isStudent || isAdmin">Students</a>
 		</li>
 	</div>
+	
 	<div class="navbar-nav ml-auto" *ngIf="!currentUser">
 		<li class="nav-item">
 			<a href="/register" class="nav-link">
@@ -29,13 +34,13 @@
 	</div>
 	<div class="navbar-nav ml-auto" *ngIf="currentUser">
 		<li class="nav-item">
-			<a href="/profile" class="nav-link">
+			<a routerLink="/profile" class="nav-link">
 				<span class="glyphicon glyphicon-user"></span> {{currentUser.name}}
 			</a>
 		</li>
 		<li class="nav-item">
 			<a (click)="logOut()" class="nav-link">
-				<span class="glyphicon glyphicon-log-in"></span> LogOut
+				<span class="glyphicon glyphicon-log-in"></span> Logout
 			</a>
 		</li>
 	</div>

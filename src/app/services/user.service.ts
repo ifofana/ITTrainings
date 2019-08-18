@@ -40,6 +40,7 @@ export class UserService {
   }
 
   logOut(): Observable<any> {
+    console.log('WHAT???');
     return this.http.post(API_URL + "/api/user/logout", {}).pipe(
       map(response => {
         localStorage.removeItem('currentUser');
@@ -52,4 +53,10 @@ export class UserService {
     return this.http.post(API_URL + "/api/user/registration", JSON.stringify(user),
   {headers: {"Content-Type":"application/json; charset=UTF-8"}});
   }
+
+  public get isUserLoggedIn() {
+	  let user = sessionStorage.getItem('currentUser');
+	  return !(user === null)
+  }
+  
 }

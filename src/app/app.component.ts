@@ -21,11 +21,17 @@ export class AppComponent {
 
   logOut() {
     this.userService.logOut().subscribe(data => {
+      sessionStorage.removeItem('currentUser');
       this.router.navigate(['/login']);
     })
   }
 
   get isAdmin() {
-    return  this.currentUser && this.currentUser.role === Role.ADMIN;
+    return this.currentUser && this.currentUser.role === Role.ADMIN;
   }
+
+  get isStudent() {
+    return this.currentUser && this.currentUser.role === Role.STUDENT;
+  }
+  
 }

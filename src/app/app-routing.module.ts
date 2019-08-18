@@ -37,19 +37,23 @@ const routes: Routes = [
 	{ path: 'admin', component: AdminComponent,
 			canActivate: [AuthGuard], 
 			data: {roles: [Role.ADMIN]}},
+	// { path: 'signup', component: SignupComponent},
+	{ path: 'welcome', component: WelcomeComponent, 
+			canActivate: [AuthGuard], 
+			data: {roles: [Role.ADMIN, Role.STUDENT]}},
+	{ path: 'welcome/:name', component: WelcomeComponent, 
+			canActivate: [AuthGuard],
+			data: {roles: [Role.STUDENT, Role.STUDENT]}},
+	{ path: 'courses', component: ListCoursesComponent, 
+			canActivate: [AuthGuard],
+			data: {roles: [Role.ADMIN]}},
+	{ path: 'students', component: ListStudentsComponent, canActivate: [AuthGuard]},
+	{ path: 'logout', component: LogoutComponent, canActivate: [AuthGuard]},
+	{ path: 'courses/:id', component: CourseComponent, canActivate: [AuthGuard]},
+	{ path: 'students/:id/:courseId', component: StudentComponent, canActivate: [AuthGuard]},
 	//public pages
 	{ path: '404', component: NotFoundComponent},
-	{ path: '401', component: UnauthorizedComponent},
-
-	{ path: 'signup', component: SignupComponent},
-	{ path: 'welcome', component: WelcomeComponent, canActivate: [RouteGuardService]},
-	{ path: 'welcome/:name', component: WelcomeComponent, canActivate: [RouteGuardService]},
-	{ path: 'courses', component: ListCoursesComponent, canActivate: [RouteGuardService]},
-	{ path: 'students', component: ListStudentsComponent, canActivate: [RouteGuardService]},
-	{ path: 'logout', component: LogoutComponent, canActivate: [RouteGuardService]},
-	{ path: 'courses/:id', component: CourseComponent, canActivate: [RouteGuardService]},
-	{ path: 'students/:id/:courseId', component: StudentComponent, canActivate: [RouteGuardService]},
-	
+	{ path: '401', component: UnauthorizedComponent},	
 	{ path: '**', component: ErrorComponent}
 ];
 

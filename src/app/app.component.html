@@ -6,12 +6,14 @@
 
 <app-footer></app-footer>
 <nav class="navbar navbar-expand navbar-dark bg-dark">
-	<a href="https://www.isgtown.org/" class="navbar-brand">ISG external link</a>
+	<a href="https://www.isgtown.org/" class="navbar-brand">ISG</a>
 	<div class="navbar-nav mr-auto">
 		<li class="nav-item">
 			<a routerLink="/admin" class="nav-link" *ngIf="isAdmin">Admin Panel</a>
 		</li>
-
+		<li>
+			<a  routerLink="/welcome" class="nav-link" *ngIf="isStudent || isAdmin">Home</a>
+		</li>
 		<li>
 			<a  routerLink="/courses" class="nav-link" *ngIf="isStudent || isAdmin">Courses</a>
 		</li>
@@ -22,12 +24,12 @@
 	
 	<div class="navbar-nav ml-auto" *ngIf="!currentUser">
 		<li class="nav-item">
-			<a href="/register" class="nav-link">
+			<a routerLink="/register" class="nav-link">
 				<span class="glyphicon glyphicon-user"></span> Sign Up
 			</a>
 		</li>
 		<li class="nav-item">
-			<a href="/login" class="nav-link">
+			<a routerLink="/login" class="nav-link">
 				<span class="glyphicon glyphicon-log-in"></span> Login
 			</a>
 		</li>
@@ -35,7 +37,7 @@
 	<div class="navbar-nav ml-auto" *ngIf="currentUser">
 		<li class="nav-item">
 			<a routerLink="/profile" class="nav-link">
-				<span class="glyphicon glyphicon-user"></span> {{currentUser.name}}
+				<span class="glyphicon glyphicon-user"></span> {{currentUser.username}}
 			</a>
 		</li>
 		<li class="nav-item">

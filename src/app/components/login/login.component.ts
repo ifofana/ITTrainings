@@ -24,7 +24,8 @@ export class LoginComponent implements OnInit {
 
 	ngOnInit() {
 		if(this.userService.currentUserValue) {
-			this.router.navigate(['/profile']);
+			//this.router.navigate(['/profile']);
+			this.router.navigate(['/welcome'])
 			return;
 		}
 	}
@@ -35,7 +36,8 @@ export class LoginComponent implements OnInit {
 				data => {
 					console.log(data)
 					console.log('Token=' + this.user.token);
-					this.router.navigate(['/profile'])
+					//this.router.navigate(['/profile'])
+					this.router.navigate(['/welcome'])
 				},
 				error => {
 					console.log(error)

@@ -13,10 +13,10 @@
 		</li>
 
 		<li>
-			<a  routerLink="/courses" class="nav-link" *ngIf="isAdmin">Courses</a>
+			<a  routerLink="/courses" class="nav-link" *ngIf="isStudent || isAdmin">Courses</a>
 		</li>
 		<li>
-			<a routerLink="/students" class="nav-link" *ngIf="isStudent || isAdmin">Students</a>
+			<a routerLink="/students" class="nav-link" *ngIf="isAdmin">Students</a>
 		</li>
 	</div>
 	

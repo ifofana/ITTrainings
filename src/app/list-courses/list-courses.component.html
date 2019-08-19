@@ -11,8 +11,8 @@
 				<th>start date</th>
 				<th>end date</th>	
 				<th></th>		
-				<th>Update</th>
-				<th>Delete</th>
+				<th *ngIf="currentUser.role === 'ADMIN'">Update</th>
+				<th *ngIf="currentUser.role === 'ADMIN'">Delete</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -26,13 +26,13 @@
 					Enroll         
 					</button>        
 				</td>
-				<td><button (click)="updateCourse(course.id)" class="btn btn-success">Update</button></td>
-				<td><button (click)="deleteCourse(course.id)" class="btn btn-warning">Delete</button></td>
+				<td *ngIf="currentUser.role === 'ADMIN'"><button (click)="updateCourse(course.id)" class="btn btn-success">Update</button></td>
+				<td *ngIf="currentUser.role === 'ADMIN'"><button (click)="deleteCourse(course.id)" class="btn btn-warning">Delete</button></td>
 			</tr>
 		</tbody>
 	</table> 
 
-	<div class="row">
+	<div *ngIf="currentUser.role === 'ADMIN'" class="row">
 		<button (click)="addCourse()" class="btn btn-success">Add</button>
 	</div>
 

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { CourseDataService } from '../services/course-data.service';
+import { CourseDataService } from '../../services/course-data.service';
 import { Router } from '@angular/router';
-import { StudentDataService } from '../services/student-data.service';
-import { User } from '../models/user';
-import { Course } from '../models/course';
+import { StudentDataService } from '../../services/student-data.service';
+import { User } from '../../models/user';
+import { Course } from '../../models/course';
 
 @Component({
 	selector: 'app-list-courses',

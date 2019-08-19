@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { StudentDataService } from '../services/student-data.service';
+import { StudentDataService } from '../../services/student-data.service';
 import { Router } from '@angular/router';
-import { Student } from '../models/student';
+import { Student } from '../../models/student';
 
 @Component({
   selector: 'app-list-students',

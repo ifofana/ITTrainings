@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Router, Routes, RouterModule } from '@angular/router';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { DetailComponent } from './components/detail/detail.component';
@@ -12,15 +12,15 @@ import { AuthGuard } from './guards/auth.guard';
 
 import { Role } from './models/role';
 
-import { WelcomeComponent } from './welcome/welcome.component';
-import { ErrorComponent } from './error/error.component';
-import { ListCoursesComponent } from './list-courses/list-courses.component';
-import { LogoutComponent } from './logout/logout.component';
+import { WelcomeComponent } from './components/welcome/welcome.component';
+import { ErrorComponent } from './components/error/error.component';
+import { ListCoursesComponent } from './components/list-courses/list-courses.component';
+import { LogoutComponent } from './components/logout/logout.component';
 import { RouteGuardService } from './service/route-guard.service';
-import { CourseComponent } from './course/course.component';
-import { ListStudentsComponent } from './list-students/list-students.component';
-import { StudentComponent } from './student/student.component';
-import { SignupComponent } from './signup/signup.component';
+import { CourseComponent } from './components/course/course.component';
+import { ListStudentsComponent } from './components/list-students/list-students.component';
+import { StudentComponent } from './components/student/student.component';
+import { SignupComponent } from './components/signup/signup.component';
 
 const routes: Routes = [
 	//public pages

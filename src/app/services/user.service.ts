@@ -40,7 +40,6 @@ export class UserService {
   }
 
   logOut(): Observable<any> {
-    console.log('WHAT???');
     return this.http.post(API_URL + "/api/user/logout", {}).pipe(
       map(response => {
         localStorage.removeItem('currentUser');

@@ -1,19 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { CourseDataService } from '../service/data/course-data.service';
+import { CourseDataService } from '../services/course-data.service';
 import { Router } from '@angular/router';
-import { StudentDataService } from '../service/data/student-data.service';
-
-export class Course {
-	constructor(
-		public id: number,
-		public name : string,
-		public description : string,
-		public startDate : Date,
-		public endDate : Date
-	) {
-
-	}
-}
+import { StudentDataService } from '../services/student-data.service';
+import { User } from '../models/user';
+import { Course } from '../models/course';
 
 @Component({
 	selector: 'app-list-courses',
@@ -22,14 +12,16 @@ export class Course {
 })
 export class ListCoursesComponent implements OnInit {
 
-	courses: Course[] 
-
-	message: string
+	courses: Course[];
+	message: string;
+	currentUser: User;
 
 	constructor(
 		private courseService: CourseDataService,
 		private studentService: StudentDataService, 
-		private router: Router) { }
+		private router: Router) { 
+			this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+		}
 
 	ngOnInit() {
 		this.refreshCourses();

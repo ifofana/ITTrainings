@@ -1,17 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { StudentDataService } from '../service/data/student-data.service';
+import { StudentDataService } from '../services/student-data.service';
 import { Router } from '@angular/router';
-
-export class Student {
-  constructor(
-    public id: number,
-    public firstName: string,
-    public lastName: string,
-    public email: string
-  ) {
-
-  }
-}
+import { Student } from '../models/student';
 
 @Component({
   selector: 'app-list-students',

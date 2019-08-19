@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Course } from 'src/app/list-courses/list-courses.component';
+import { Course } from '../models/course';
 import { API_URL } from 'src/app/app.constants';
 
 @Injectable({

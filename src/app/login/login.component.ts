@@ -34,6 +34,7 @@ export class LoginComponent implements OnInit {
 			.subscribe(
 				data => {
 					console.log(data)
+					console.log('Token=' + this.user.token);
 					this.router.navigate(['/profile'])
 				},
 				error => {

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { StudentDataService } from '../service/data/student-data.service';
-import { Student } from '../list-students/list-students.component';
+import { StudentDataService } from '../services/student-data.service';
+import { Student } from '../models/student';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -21,7 +21,7 @@ export class StudentComponent implements OnInit {
     this.id = this.route.snapshot.params['id'];
     this.courseId = this.route.snapshot.params['courseId'];
 
-    this.student = new Student(this.id, '', '', '');
+    this.student = new Student();
 
     if(this.id != -1) {
       this.studentService.retrieveStudent(this.id)

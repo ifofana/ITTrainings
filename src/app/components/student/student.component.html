@@ -1,10 +1,9 @@
-<h1>Student</h1>
-
 <div class="container">
-        <div class="alert alert-warning" *ngIf="studentForm.dirty && studentForm.invalid">Enter valid values</div>
-        <div class="alert alert-warning" *ngIf="firstName.dirty && firstName.invalid">Enter at least 5 characters in First Name</div>
-        <div class="alert alert-warning" *ngIf="lastName.dirty && lastName.invalid">Enter at least 5 characters in Last Name</div>
-        <div class="alert alert-warning" *ngIf="email.dirty && email.invalid">Enter valid Email</div>
+    <h1>Student</h1>
+    <div class="alert alert-warning" *ngIf="studentForm.dirty && studentForm.invalid">Enter valid values</div>
+    <div class="alert alert-warning" *ngIf="firstName.dirty && firstName.invalid">Enter at least 5 characters in First Name</div>
+    <div class="alert alert-warning" *ngIf="lastName.dirty && lastName.invalid">Enter at least 5 characters in Last Name</div>
+    <div class="alert alert-warning" *ngIf="email.dirty && email.invalid">Enter valid Email</div>
 
     <form (ngSubmit)="!studentForm.invalid && saveStudent()" #studentForm="ngForm">
         <fieldset class="form-group">

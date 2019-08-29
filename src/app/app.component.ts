@@ -31,7 +31,7 @@ export class AppComponent {
   }
 
   get isStudent() {
-    return this.currentUser && this.currentUser.role === Role.STUDENT;
+    return this.currentUser && this.currentUser.role === Role.USER;
   }
   
 }

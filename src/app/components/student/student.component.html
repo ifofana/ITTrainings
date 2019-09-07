@@ -1,32 +1,89 @@
-<div class="container">
-    <h1>Student</h1>
-    <div class="alert alert-warning" *ngIf="studentForm.dirty && studentForm.invalid">Enter valid values</div>
-    <div class="alert alert-warning" *ngIf="firstName.dirty && firstName.invalid">Enter at least 5 characters in First Name</div>
-    <div class="alert alert-warning" *ngIf="lastName.dirty && lastName.invalid">Enter at least 5 characters in Last Name</div>
-    <div class="alert alert-warning" *ngIf="email.dirty && email.invalid">Enter valid Email</div>
+<!--
+# Date: 16 Aug 2019
+# Author: ISG IT Department
+#
+# Copyright 2019-$Date: 16 Aug 2019 by Islamic Society of Germantown
+# All Rights Reserved.  Printed in the United States of America.
+# No part of this document may be reproduced, decompiled, reverse
+# engineered, disassembled, analyzed or otherwise manipulated to
+# discover the source code of the software and/or its underlying
+# methods/modes of operation, stored in a retrieval system or
+# transmitted in any form or by any means, electronic, mechanical,
+# photocopying, recording, or otherwise without the prior written
+# permission of Islamic Society of Germantown.
+#
+# Purpose: Provide User Interface.
+-->
 
-    <form (ngSubmit)="!studentForm.invalid && saveStudent()" #studentForm="ngForm">
-        <fieldset class="form-group">
-            <label>First Name</label>
-            <input type="text" #firstName="ngModel"
-                [(ngModel)]="student.firstName" class="form-control"
-                name="firstName" required="required" minlength="3">
-        </fieldset>
-
-        <fieldset class="form-group">
-            <label>Last Name</label>
-            <input type="text" #lastName="ngModel"
-                [(ngModel)]="student.lastName" class="form-control"
-                name="lastName" required="required" minlength="3">
-        </fieldset>
-
-        <fieldset class="form-group">
-            <label>Email</label>
-            <input type="text" #email="ngModel"
-                [(ngModel)]="student.email" class="form-control"
-                name="email" required="required" minlength="3">
-        </fieldset>
-
-        <button type="submit" class="btn btn-success">Save</button>
-    </form>
-</div>
+<div class="card m-3">
+    <h4 class="card-header">Student Information Form</h4>
+  
+    <div class="card-body">
+  
+      <form [formGroup]="registerStudentForm" (ngSubmit)="saveStudentInformation(saveStudentInformation)" >
+  
+        <div class="form-row">
+  
+          <!--Input for Student First Name-->
+          <div class="form-group col-md-4">
+            <label>First Name:</label>
+            <input  type="text" class="form-control" formControlName="firstName" />
+          </div>
+  
+          <!--Input for Student Middle Name-->
+          <div class="form-group col-md-4">
+            <label>Middle Name:</label>
+            <input type="text" class="form-control" formControlName="middleName" />
+          </div>
+  
+          <!--Input for Student Last Name-->
+          <div class="form-group col-md-4">
+            <label>Last Name:</label>
+            <input type="text" class="form-control" formControlName="lastName"  />
+          </div>
+  
+        </div><!--End of form row for Student's name-->
+  
+        <div class="form-row">
+  
+          <div class="form-group col">
+            <label>Gender:</label>
+            <select formControlName="gender" class="form-control">
+              <option value="UnKnown"></option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+            </select>
+          </div>
+  
+          <div class="form-group col">
+            <label>Date of Birth:</label>
+            <input type="date" class="form-control" formControlName="DOB"  />
+          </div>
+  
+          <div class="form-group col">
+            <label>Age:</label>
+            <input type="number" class="form-control" formControlName="age" />
+          </div>
+        </div><!--End of form row--><!--End of form row for Student gender, age-->
+  
+        <div class="form-group form-check-inline">
+          <input type="checkbox"  class="form-check-input" formControlName="allergiesMedicalCondition" />
+          <label class="form-check-label">Allergies/Medical Conditions</label>
+        </div>
+  
+        <div class="form-group" >
+          <textarea  rows="2" class="form-control" formControlName="textArea" ></textarea>
+        </div>
+        <!--add classSelection classDay and to gender other as default-->
+      </form>
+  
+    </div><!--End of the Card Body-->
+  
+    <div class="card-footer text-center">
+      <button type="submit" class="btn btn-primary mr-2">Save Form</button>
+  
+      <button type="reset"  class="btn btn-secondary">Clear Form</button>
+    </div><!--End of card footer-->
+  
+  </div><!--End of card-->
+  

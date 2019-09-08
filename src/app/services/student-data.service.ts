@@ -13,15 +13,15 @@ export class StudentDataService {
   currentUser: User;
   headers: HttpHeaders;
 
-  constructor(private http: HttpClient) { 
+    constructor(private http: HttpClient) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     this.headers = new HttpHeaders({
-      authorization:'Bearer ' + this.currentUser.token,
-      "Content-Type":"application/json; charset=UTF-8"
+      authorization: 'Bearer ' + this.currentUser.token,
+      'Content-Type': 'application/json; charset=UTF-8'
     });
   }
 
-  retrieveAllStudents() : Observable<any> {
+  retrieveAllStudents( ): Observable<any> {
     return this.http.get<Student[]>(`${API_URL}/api/students`, {headers: this.headers});
   }
 
@@ -33,13 +33,13 @@ export class StudentDataService {
     return this.http.get<Student>(`${API_URL}/api/students/${id}`, {headers: this.headers});
   }
 
-  updateStudent(id, courseId, student) {//http://localhost:8080/api/students/1/courses/1
-    console.log('=====================> updateStudent')
+  updateStudent(id, courseId, student) {// http://localhost:8080/api/students/1/courses/1
+    console.log('=====================> updateStudent');
     console.log('=====================> ' + id);
     return this.http.put(`${API_URL}/api/students/${id}/courses/${courseId}`, student, {headers: this.headers});
   }
 
-  createStudent(student, courseId) {//http://localhost:8080/api/students/2
+  createStudent(student, courseId) {// http://localhost:8080/api/students/2
 
     return this.http.post(`${API_URL}/api/students/${courseId}`, student, {headers: this.headers});
   }

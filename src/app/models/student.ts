@@ -4,7 +4,7 @@ export class Student {
   firstName: string;
   middleName: string;
   lastName: string;
-  DOB: Date;
+  dob: Date;
   age: number;
   gender: string;
   textArea: string;

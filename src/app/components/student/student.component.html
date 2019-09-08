@@ -49,7 +49,7 @@
           <div class="form-group col">
             <label>Gender:</label>
             <select formControlName="gender" class="form-control">
-              <option value="UnKnown"></option>
+              <option value="UnKnown">UnKnown</option>
               <option value="Male">Male</option>
               <option value="Female">Female</option>
             </select>
@@ -74,7 +74,29 @@
         <div class="form-group" >
           <textarea  rows="2" class="form-control" formControlName="textArea" ></textarea>
         </div>
-        <!--add classSelection classDay and to gender other as default-->
+
+        <div class="form-row">
+          <div class="form-group col">
+            <label>Select of Day</label>
+            <select formControlName="classDay" class="form-control">
+              <option value="Saturday">Saturday</option>
+              <option value="Sunday">Sunday</option>
+            </select>
+          </div>
+          
+          <div class="form-group col">
+            <label>Select the class according to age group</label>
+            <select formControlName="classSelection" class="form-control">
+              <option value="foundtion">Foundition - 5 & 6 years old</option>
+              <option value="beginner">Beginner - 7 & 8 years old</option>
+              <option value="intermediate">Intermediate - 9 & 10 years old</option>
+              <option value="proficient">Proficient - 11 & 12 years old</option>
+              <option value="advanced">Advanced - 13 & 14 years old</option>
+              <option value="youth">Youth - 15 & 16 years old</option>
+              <option value="adult">Adult - 17 & 18 years old</option>
+            </select>
+          </div>
+        </div><!--End of form row--><!--End of form row for Student class and class selection-->
       </form>
   
     </div><!--End of the Card Body-->

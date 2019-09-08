@@ -39,8 +39,8 @@ export class StudentDataService {
     return this.http.put(`${API_URL}/api/students/${id}/courses/${courseId}`, student, {headers: this.headers});
   }
 
-  createStudent(student, courseId) {// http://localhost:8080/api/students/2
+  createStudent(student) {// http://localhost:8080/api/students/2
 
-    return this.http.post(`${API_URL}/api/students/${courseId}`, student, {headers: this.headers});
+    return this.http.post(`${API_URL}/api/students/`, student, {headers: this.headers});
   }
 }

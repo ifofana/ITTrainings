@@ -8,12 +8,12 @@ import { AuthenticationService } from '../../service/authentication.service';
 })
 export class MenuComponent implements OnInit {
 
-	isUserLoggedIn : boolean = false;
+  isUserLoggedIn = false;
 
   constructor(private authenticationService: AuthenticationService) { }
 
   ngOnInit() {
-	  this.isUserLoggedIn = this.authenticationService.isUserLoggedIn();
+  this.isUserLoggedIn = this.authenticationService.isUserLoggedIn();
   }
 
 }

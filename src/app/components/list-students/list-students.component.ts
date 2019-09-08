@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { StudentDataService } from '../../services/student-data.service';
 import { Router } from '@angular/router';
+
 import { Student } from '../../models/student';
+import { StudentDataService } from '../../services/student-data.service';
 
 @Component({
   selector: 'app-list-students',
@@ -10,11 +11,11 @@ import { Student } from '../../models/student';
 })
 export class ListStudentsComponent implements OnInit {
 
-  students: Student[]
+  students: Student[ ];
 
-  message: string
+  message: string;
 
-  courseId = 3
+  courseId = 3;
 
   constructor(private studentService: StudentDataService, private router: Router) { }
 
@@ -42,13 +43,13 @@ export class ListStudentsComponent implements OnInit {
     );
   }
 
-  updateStudent(id) {//path: 'students/:id/:courseId'
-		console.log(`update ${id}`);
-		this.router.navigate(['students',id,3]);//course id is 3
-	}
+  updateStudent(id) {// path: 'students/:id/:courseId'
+    console.log(`update ${id}`);
+    this.router.navigate(['students', id, 3]); // course id is 3
+  }
 
-	addStudent(courseId) {//path: 'students/:id/:courseId'
-		this.router.navigate(['students',-1,courseId]);
+  addStudent(courseId) {// path: 'students/:id/:courseId'
+    this.router.navigate(['students', -1, courseId]);
   }
 
 }

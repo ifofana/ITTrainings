@@ -8,17 +8,30 @@
         <thead>
             <tr>
                 <th>First Name</th>
+                <th>Middle Name</th>
                 <th>Last Name</th>
-                <th>Email</th>
+                <th>Gender</th>
+                <th>Date of Birth</th>
+                <th>Age</th>
+                <th>Allergies/Medical Conditions</th>
+                <th>Day of Class</th>
+                <th>Class Selection</th>
                 <td>Update</td>
                 <td>Delete</td>
             </tr>
         </thead>
+
         <tbody>
             <tr *ngFor="let s of students">
                 <td>{{s.firstName}}</td>
+                <td>{{s.middleName}}</td>
                 <td>{{s.lastName}}</td>
-                <td>{{s.email}}</td>
+                <td>{{s.dob}}</td>
+                <td>{{s.age}}</td>
+                <td>{{s.gender}}</td>
+                <td>{{s.textArea}}</td>
+                <td>{{s.classSelection}}</td>
+                <td>{{s.classDay}}</td>
                 <td><button (click)="updateStudent(s.id)" class="btn btn-success">Update</button></td>
                 <td><button (click)="deleteStudent(s.id)" class="btn btn-warning">Delete</button></td>
                 

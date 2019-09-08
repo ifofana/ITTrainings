@@ -107,7 +107,7 @@ export class StudentComponent implements OnInit {
       );
     }
   }
-  courseId(id: number, courseId: any, student: Student) {
+  courseId(id: number, student: Student) {
     throw new Error('Method not implemented.');
   }
 

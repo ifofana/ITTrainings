@@ -14,7 +14,6 @@ import { Student } from '../../models/student';
 export class StudentComponent implements OnInit {
 
   id: number;
-
   student: Student;
 
   registerStudentForm: FormGroup;
@@ -33,12 +32,13 @@ export class StudentComponent implements OnInit {
               private route: ActivatedRoute,
               private formBuilder: FormBuilder,
               private router: Router) {
-                this.createStudentForm( );
+                //this.createStudentForm( );
+               
               }
 
   ngOnInit() {
 
-    this.id = this.route.snapshot.params.id;
+    this.id = this.route.snapshot.params['id'];
 
     this.student = new Student();
 
@@ -87,8 +87,9 @@ export class StudentComponent implements OnInit {
   }// end of onReset method
 
   saveStudent() {
-    console.log('WHAT US ');
+    console.log('Saving student ');
     console.log('this.id = ' + this.id);
+    //this.saveStudentInformation();
     if (this.id === -1) {
       console.log(' ************* create Student! ');
       this.studentService.createStudent(this.student)
@@ -98,7 +99,7 @@ export class StudentComponent implements OnInit {
           this.router.navigate(['students']);
         });
     } else {
-      this.studentService.updateStudent(this.id, this.courseId, this.student)
+      this.studentService.updateStudent(this.id, this.student)
       .subscribe(
         data => {
           console.log(data);

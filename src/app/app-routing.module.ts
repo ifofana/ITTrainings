@@ -52,7 +52,7 @@ const routes: Routes = [
 	{ path: 'students', component: ListStudentsComponent, 
 			canActivate: [AuthGuard],
 			data: {roles: [Role.ADMIN, Role.USER]}},
-	{ path: 'students/:id/:courseId', component: StudentComponent, 
+	{ path: 'students/:id', component: StudentComponent, 
 			canActivate: [AuthGuard],
 			data: {roles: [Role.ADMIN, Role.USER]}},
 	{ path: 'logout', component: LogoutComponent, 

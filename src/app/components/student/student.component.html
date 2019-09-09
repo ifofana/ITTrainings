@@ -20,26 +20,32 @@
   
     <div class="card-body">
   
-      <form [formGroup]="registerStudentForm" (ngSubmit)="saveStudentInformation(saveStudentInformation)" >
+      <form #studentForm="ngForm" (ngSubmit)="saveStudent()" >
   
         <div class="form-row">
   
           <!--Input for Student First Name-->
           <div class="form-group col-md-4">
             <label>First Name:</label>
-            <input  type="text" class="form-control" formControlName="firstName" />
+            <input type="text" #firstName="ngModel"
+                [(ngModel)]="student.firstName" class="form-control"
+                name="firstName" required="required" minlength="3">
           </div>
   
           <!--Input for Student Middle Name-->
           <div class="form-group col-md-4">
             <label>Middle Name:</label>
-            <input type="text" class="form-control" formControlName="middleName" />
+            <input type="text" #middleName="ngModel"
+                [(ngModel)]="student.middleName" class="form-control"
+                name="middleName" required="required" minlength="3">
           </div>
   
           <!--Input for Student Last Name-->
           <div class="form-group col-md-4">
             <label>Last Name:</label>
-            <input type="text" class="form-control" formControlName="lastName"  />
+            <input type="text" #lastName="ngModel"
+                [(ngModel)]="student.lastName" class="form-control"
+                name="lastName" required="required" minlength="3">
           </div>
   
         </div><!--End of form row for Student's name-->
@@ -48,7 +54,7 @@
   
           <div class="form-group col">
             <label>Gender:</label>
-            <select formControlName="gender" class="form-control">
+            <select class="form-control">
               <option value="unknown">UnKnown</option>
               <option value="male">Male</option>
               <option value="female">Female</option>
@@ -57,28 +63,28 @@
   
           <div class="form-group col">
             <label>Date of Birth:</label>
-            <input type="date" class="form-control" formControlName="DOB"  />
+            <input type="date" class="form-control" />
           </div>
   
           <div class="form-group col">
             <label>Age:</label>
-            <input type="number" class="form-control" formControlName="age" />
+            <input type="number" class="form-control" />
           </div>
         </div><!--End of form row--><!--End of form row for Student gender, age-->
   
         <div class="form-group form-check-inline">
-          <input type="checkbox"  class="form-check-input" formControlName="allergiesMedicalCondition" />
+          <input type="checkbox"  class="form-check-input" />
           <label class="form-check-label">Allergies/Medical Conditions</label>
         </div>
   
         <div class="form-group" >
-          <textarea  rows="2" class="form-control" formControlName="textArea" ></textarea>
+          <textarea  rows="2" class="form-control"></textarea>
         </div>
 
         <div class="form-row">
           <div class="form-group col">
             <label>Select of Day</label>
-            <select formControlName="classDay" class="form-control">
+            <select class="form-control">
               <option value="Saturday">Saturday</option>
               <option value="Sunday">Sunday</option>
             </select>
@@ -86,7 +92,7 @@
           
           <div class="form-group col">
             <label>Select the class according to age group</label>
-            <select formControlName="classSelection" class="form-control">
+            <select  class="form-control">
               <option value="foundtion">Foundition - 5 & 6 years old</option>
               <option value="beginner">Beginner - 7 & 8 years old</option>
               <option value="intermediate">Intermediate - 9 & 10 years old</option>
@@ -97,15 +103,17 @@
             </select>
           </div>
         </div><!--End of form row--><!--End of form row for Student class and class selection-->
+
+        <div class="card-footer text-center">
+          <button type="submit" class="btn btn-primary mr-2">Save Form</button>
+      
+          <button type="reset"  class="btn btn-secondary">Clear Form</button>
+        </div><!--End of card footer-->
       </form>
   
     </div><!--End of the Card Body-->
   
-    <div class="card-footer text-center">
-      <button type="submit" class="btn btn-primary mr-2">Save Form</button>
-  
-      <button type="reset"  class="btn btn-secondary">Clear Form</button>
-    </div><!--End of card footer-->
+    
   
   </div><!--End of card-->
   

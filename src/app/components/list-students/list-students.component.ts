@@ -43,13 +43,14 @@ export class ListStudentsComponent implements OnInit {
     );
   }
 
-  updateStudent(id) {// path: 'students/:id/:courseId'
+  updateStudent(id) {
     console.log(`update ${id}`);
-    this.router.navigate(['students', id, 3]); // course id is 3
+    this.router.navigate(['students', id]);
   }
 
-  addStudent(courseId) {// path: 'students/:id/:courseId'
-    this.router.navigate(['students', -1, courseId]);
+  addStudent() {
+    console.log('Go to Student Form');
+    this.router.navigate(['students', -1]);
   }
 
 }

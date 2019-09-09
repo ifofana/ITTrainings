@@ -33,13 +33,13 @@ export class StudentDataService {
     return this.http.get<Student>(`${API_URL}/api/students/${id}`, {headers: this.headers});
   }
 
-  updateStudent(id, courseId, student) {// http://localhost:8080/api/students/1/courses/1
+  updateStudent(id, student) {// http://localhost:8080/api/students/1
     console.log('=====================> updateStudent');
     console.log('=====================> ' + id);
-    return this.http.put(`${API_URL}/api/students/${id}/courses/${courseId}`, student, {headers: this.headers});
+    return this.http.put(`${API_URL}/api/students/${id}`, student, {headers: this.headers});
   }
 
-  createStudent(student) {// http://localhost:8080/api/students/2
+  createStudent(student) {// http://localhost:8080/api/students
 
     return this.http.post(`${API_URL}/api/students/`, student, {headers: this.headers});
   }

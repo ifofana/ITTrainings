@@ -29,9 +29,5 @@ export class AppComponent {
   get isAdmin() {
     return this.currentUser && this.currentUser.role === Role.ADMIN;
   }
-
-  get isStudent() {
-    return this.currentUser && this.currentUser.role === Role.USER;
-  }
   
 }

@@ -7,13 +7,15 @@
 <app-footer></app-footer>
 <nav class="navbar navbar-expand navbar-dark bg-dark">
 	<a href="https://www.isgtown.org/" class="navbar-brand">ISG</a>
+
 	<div class="navbar-nav mr-auto">
+			<li class="nav-item">
+				<a  routerLink="/welcome" class="nav-link">Home</a>
+			</li>
 		<li class="nav-item">
 			<a routerLink="/admin" class="nav-link" *ngIf="isAdmin">Admin Panel</a>
 		</li>
-		<li>
-			<a  routerLink="/welcome" class="nav-link">Home</a>
-		</li>
+
 		<li>
 			<a routerLink="/students" class="nav-link">Students</a>
 		</li>
@@ -25,23 +27,27 @@
 				<span class="glyphicon glyphicon-user"></span> Sign Up
 			</a>
 		</li>
+
 		<li class="nav-item">
 			<a routerLink="/login" class="nav-link">
 				<span class="glyphicon glyphicon-log-in"></span> Login
 			</a>
 		</li>
 	</div>
+
 	<div class="navbar-nav ml-auto" *ngIf="currentUser">
 		<li class="nav-item">
 			<a routerLink="/profile" class="nav-link">
 				<span class="glyphicon glyphicon-user"></span> {{currentUser.username}}
 			</a>
 		</li>
+
 		<li class="nav-item">
 			<a (click)="logOut()" class="nav-link">
 				<span class="glyphicon glyphicon-log-in"></span> Logout
 			</a>
 		</li>
 	</div>
+	
 </nav>
 <router-outlet></router-outlet>

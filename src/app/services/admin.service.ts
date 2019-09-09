@@ -15,13 +15,13 @@ export class AdminService {
   constructor(private http: HttpClient) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     this.headers = new HttpHeaders({
-      authorization:'Bearer ' + this.currentUser.token,
-      "Content-Type":"application/json; charset=UTF-8"
+      authorization: 'Bearer ' + this.currentUser.token,
+      'Content-Type': 'application/json; charset=UTF-8'
     });
    }
 
    findAllUsers(): Observable<any> {
-    return this.http.get(API_URL + "/api/admin/all", {headers: this.headers});
+    return this.http.get(API_URL + '/api/admin/all', {headers: this.headers});
   }
 
 }

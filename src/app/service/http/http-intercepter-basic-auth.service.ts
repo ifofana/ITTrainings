@@ -5,27 +5,25 @@ import { AuthenticationService } from '../authentication.service';
 @Injectable({
   providedIn: 'root'
 })
-export class HttpIntercepterBasicAuthService implements HttpInterceptor{
 
-  constructor(
-    private authService : AuthenticationService
-  ) { }
+export class HttpIntercepterBasicAuthService implements HttpInterceptor {
+
+  constructor(private authService: AuthenticationService) { }
 
   intercept(request: HttpRequest<any>, next: HttpHandler) {
- 
-    let basicAuthHeaderString = this.authService.getAuthenticatedToken();
 
-    let username = this.authService.getAuthenticatedUser();
+    const basicAuthHeaderString = this.authService.getAuthenticatedToken();
 
-    if(basicAuthHeaderString && username) {
+    const username = this.authService.getAuthenticatedUser();
+
+    if (basicAuthHeaderString && username) {
       request = request.clone({
         setHeaders: {
-          Authorization : basicAuthHeaderString
+          Authorization: basicAuthHeaderString
         }
-      })
+      });
     }
-    
-
     return next.handle(request);
-  }
-}
+  } // end of intercept method
+
+}// end of HttpIntercepterBasicAuthService class

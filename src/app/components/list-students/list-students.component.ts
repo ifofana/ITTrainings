@@ -29,7 +29,7 @@ export class ListStudentsComponent implements OnInit {
         console.log(response);
         this.students = response;
       }
-    )
+    );
   }
 
   deleteStudent(id) {

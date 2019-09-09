@@ -1,8 +1,14 @@
+/* Import classes from angular packages */
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+
+/* Import UserService class from services/user.service package */
 import { UserService } from './services/user.service';
+
+/* Import classes from models directory */
 import { User } from './models/user';
 import { Role } from './models/role';
-import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-root',
@@ -23,7 +29,7 @@ export class AppComponent {
     this.userService.logOut().subscribe(data => {
       sessionStorage.removeItem('currentUser');
       this.router.navigate(['/login']);
-    })
+    });
   }
 
   get isAdmin() {

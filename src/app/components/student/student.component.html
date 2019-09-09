@@ -20,7 +20,7 @@
   
     <div class="card-body">
   
-      <form #studentForm="ngForm" (ngSubmit)="saveStudent()" >
+      <form #studentForm="ngForm" (ngSubmit)="saveStudent( )" >
   
         <div class="form-row">
   
@@ -76,7 +76,7 @@
           <input type="checkbox"  class="form-check-input" />
           <label class="form-check-label">Allergies/Medical Conditions</label>
         </div>
-  
+        <!-- need figure out how to hid and unhide textarea when the user checks the Allergies/Medical Conditions box-->
         <div class="form-group" >
           <textarea  rows="2" class="form-control"></textarea>
         </div>

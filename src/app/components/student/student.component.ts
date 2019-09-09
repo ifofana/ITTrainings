@@ -5,7 +5,6 @@ import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
 import { StudentDataService } from '../../services/student-data.service';
 import { Student } from '../../models/student';
 
-
 @Component({
   selector: 'app-student',
   templateUrl: './student.component.html',
@@ -32,13 +31,12 @@ export class StudentComponent implements OnInit {
               private route: ActivatedRoute,
               private formBuilder: FormBuilder,
               private router: Router) {
-                //this.createStudentForm( );
-               
+                // this.createStudentForm( );
               }
 
-  ngOnInit() {
+  ngOnInit( ) {
 
-    this.id = this.route.snapshot.params['id'];
+    this.id = this.route.snapshot.params.id;
 
     this.student = new Student();
 
@@ -86,10 +84,10 @@ export class StudentComponent implements OnInit {
     this.registerStudentForm.reset( );
   }// end of onReset method
 
-  saveStudent() {
+  saveStudent( ) {
     console.log('Saving student ');
     console.log('this.id = ' + this.id);
-    //this.saveStudentInformation();
+    // this.saveStudentInformation();
     if (this.id === -1) {
       console.log(' ************* create Student! ');
       this.studentService.createStudent(this.student)

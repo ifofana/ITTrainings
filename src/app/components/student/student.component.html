@@ -54,21 +54,24 @@
   
           <div class="form-group col">
             <label>Gender:</label>
-            <select class="form-control">
-              <option value="unknown">UnKnown</option>
-              <option value="male">Male</option>
-              <option value="female">Female</option>
+            <select (ngModelChange)="selectChange($event)" class="form-control" [(ngModel)]="selectedValue">
+              <option *ngFor="let oneGender of listGenders" [ngValue]="oneGender.id">{{oneGender.gender}}</option>
             </select>
           </div>
   
           <div class="form-group col">
-            <label>Date of Birth:</label>
-            <input type="date" class="form-control" />
+            <label>Date of Birth:</label>            
+            <input type="date" #dob="ngModel"
+              [ngModel]="student.dob | date: 'yyyy-MM-dd' "
+              (ngModelChange)="student.dob = $event" 
+              class="form-control" name="dob" required="required">
           </div>
   
           <div class="form-group col">
             <label>Age:</label>
-            <input type="number" class="form-control" />
+            <input type="number" #lastName="ngModel"
+                [(ngModel)]="student.age" class="form-control"
+                name="age" required="required">
           </div>
         </div><!--End of form row--><!--End of form row for Student gender, age-->
   
@@ -78,28 +81,22 @@
         </div>
         <!-- need figure out how to hid and unhide textarea when the user checks the Allergies/Medical Conditions box-->
         <div class="form-group" >
-          <textarea  rows="2" class="form-control"></textarea>
+          <textarea  rows="2" #textArea="ngModel" [(ngModel)]="student.textArea" name="textArea" class="form-control"></textarea>
         </div>
 
         <div class="form-row">
           <div class="form-group col">
-            <label>Select of Day</label>
-            <select class="form-control">
-              <option value="Saturday">Saturday</option>
-              <option value="Sunday">Sunday</option>
+            <label>Select of Day</label>           
+            <select class="form-control" (ngModelChange)="selectDayChange($event)" [(ngModel)]=student.classDay>
+              <option *ngFor="let oneOption of listDays" [ngValue]="oneOption.id">{{oneOption.name}}</option>
             </select>
           </div>
           
           <div class="form-group col">
             <label>Select the class according to age group</label>
-            <select  class="form-control">
-              <option value="foundtion">Foundition - 5 & 6 years old</option>
-              <option value="beginner">Beginner - 7 & 8 years old</option>
-              <option value="intermediate">Intermediate - 9 & 10 years old</option>
-              <option value="proficient">Proficient - 11 & 12 years old</option>
-              <option value="advanced">Advanced - 13 & 14 years old</option>
-              <option value="youth">Youth - 15 & 16 years old</option>
-              <option value="adult">Adult - 17 & 18 years old</option>
+            <select  class="form-control" (ngModelChange)="selectAgeGroup($event)" [(ngModel)]=student.classSelection>
+              <option *ngFor="let oneOption of listAgeGroup" [ngValue]="oneOption.id">{{oneOption.name}}</option>
+              
             </select>
           </div>
         </div><!--End of form row--><!--End of form row for Student class and class selection-->

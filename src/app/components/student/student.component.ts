@@ -15,6 +15,28 @@ export class StudentComponent implements OnInit {
   id: number;
   student: Student;
 
+  listGenders = [
+    {id: 1, gender: "UnKnown"},
+    {id: 2, gender: "Male"},
+    {id: 3, gender: "Female"}
+  ];
+  selectedValue = null;
+
+  listDays = [
+    { id: 0, name: "Saturday"},
+    { id: 1, name: "Sunday"}
+  ];
+
+  listAgeGroup = [
+    { id: 0, value: "foundtion", name: "Foundition - 5 & 6 years old"},
+    { id: 1, value: "beginner", name: "Beginner - 7 & 8 years old"},
+    { id: 2, value: "intermediate", name: "Intermediate - 9 & 10 years old"},
+    { id: 3, value: "proficient", name: "Proficient - 11 & 12 years old"},
+    { id: 4, value: "advanced", name: "Advanced - 13 & 14 years old"},
+    { id: 5, value: "youth", name: "Youth - 15 & 16 years old"},
+    { id: 6, value: "adult", name: "Adult - 17 & 18 years old"}
+  ];
+
   registerStudentForm: FormGroup;
   studentFirstName: any;
   studentMiddleName: any;
@@ -84,10 +106,25 @@ export class StudentComponent implements OnInit {
     this.registerStudentForm.reset( );
   }// end of onReset method
 
+  selectChange( $event) {
+    //In my case $event come with a id value
+    this.selectedValue = this.listGenders[$event];
+  }
+
+  selectDayChange( $event) {
+    //In my case $event come with a id value
+    this.student.classDay = this.listDays[$event].name;
+  }
+
+  selectAgeGroup( $event ) {
+    this.student.classSelection = this.listAgeGroup[$event].name;
+  }
+
   saveStudent( ) {
     console.log('Saving student ');
     console.log('this.id = ' + this.id);
     // this.saveStudentInformation();
+    console.log('Selected Value=' + this.selectedValue);
     if (this.id === -1) {
       console.log(' ************* create Student! ');
       this.studentService.createStudent(this.student)

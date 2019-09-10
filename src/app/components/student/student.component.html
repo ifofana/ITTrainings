@@ -35,9 +35,9 @@
           <!--Input for Student Middle Name-->
           <div class="form-group col-md-4">
             <label>Middle Name:</label>
-            <input type="text" #middleName="ngModel"
-                [(ngModel)]="student.middleName" class="form-control"
-                name="middleName" required="required" minlength="3">
+            <input type="text" #middlename="ngModel"
+                [(ngModel)]="student.middlename" class="form-control"
+                name="middlename" required="required" minlength="3">
           </div>
   
           <!--Input for Student Last Name-->
@@ -81,7 +81,7 @@
         </div>
         <!-- need figure out how to hid and unhide textarea when the user checks the Allergies/Medical Conditions box-->
         <div *ngIf="isShown" id="divshow" class="form-group" >
-          <textarea  rows="2" #textArea="ngModel" [(ngModel)]="student.textArea" name="textArea" class="form-control"></textarea>
+          <textarea  rows="2" #textArea="ngModel" [(ngModel)]="student.allerges" name="textArea" class="form-control"></textarea>
         </div>
 
         <div class="form-row">

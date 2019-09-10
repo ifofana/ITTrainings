@@ -24,12 +24,12 @@
         <tbody>
             <tr *ngFor="let s of students">
                 <td>{{s.firstName}}</td>
-                <td>{{s.middleName}}</td>
+                <td>{{s.middlename}}</td>
                 <td>{{s.lastName}}</td>
                 <td>{{s.gender}}</td>
                 <td>{{s.dob}}</td>
                 <td>{{s.age}}</td>                
-                <td>{{s.textArea}}</td>
+                <td>{{s.allerges}}</td>
                 <td>{{s.classDay}}</td>
                 <td>{{s.classSelection}}</td>
                 <td><button (click)="updateStudent(s.id)" class="btn btn-success">Update</button></td>

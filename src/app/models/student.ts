@@ -2,12 +2,12 @@
 export class Student {
   id: number;
   firstName: string;
-  middleName: string;
+  middlename: string;
   lastName: string;
   dob: Date;
   age: number;
   gender: string;
-  textArea: string;
+  allerges: string;
   classSelection: string;
   classDay: string;
   }

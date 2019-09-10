@@ -81,11 +81,11 @@ export class StudentComponent implements OnInit {
       firstName:  [' ', [ Validators.required, Validators.pattern('[a-zA-Z ]*') ] ],
       middleName: [' ', [ Validators.required, Validators.pattern('[a-zA-Z ]*') ] ],
       lastName: [' ', [ Validators.required, Validators.pattern('[a-zA-Z ]*') ] ],
-      dOB: [' ', Validators.required ],
+      dob: [' ', Validators.required ],
       age: [' ', Validators.required],
       gender: [' ', Validators.required ],
       allergiesMedicalCondition: [false],
-      textArea: [''],
+      allerges: [''],
       classDay: [' ', Validators.required],
       classSelection: [' ', Validators.required]
     });
@@ -95,12 +95,12 @@ export class StudentComponent implements OnInit {
   saveStudentInformation( ) {
     this.student = new Student( );
     this.student.firstName = this.studentFirstName.value;
-    this.student.middleName = this.studentMiddleName.value;
+    this.student.middlename = this.studentMiddleName.value;
     this.student.lastName = this.studentLastName.value;
     this.student.dob = this.studentDOB.value;
     this.student.age = this.studentAge.value;
     this.student.gender = this.studentGender.value;
-    this.student.textArea = this.studentAllergiesMedicalCondition.value;
+    this.student.allerges = this.studentAllergiesMedicalCondition.value;
     this.student.classDay = this.studentClassDay;
     this.student.classSelection = this.studentClassSelection;
     this.submitForm = true;

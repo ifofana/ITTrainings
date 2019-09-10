@@ -4,6 +4,7 @@ import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
 
 import { StudentDataService } from '../../services/student-data.service';
 import { Student } from '../../models/student';
+import { Gender } from '../../models/gender';
 
 @Component({
   selector: 'app-student',
@@ -15,12 +16,13 @@ export class StudentComponent implements OnInit {
   id: number;
   student: Student;
 
-  listGenders = [
-    {id: 1, gender: "UnKnown"},
-    {id: 2, gender: "Male"},
-    {id: 3, gender: "Female"}
+  selectedGenderValue: null;
+
+  genders: Gender[] = [
+    {id: 1, name: 'UnKnown'},
+    {id: 2, name: 'Male'},
+    {id: 3, name: 'Female'}
   ];
-  selectedValue = null;
 
   listDays = [
     { id: 0, name: "Saturday"},
@@ -112,11 +114,6 @@ export class StudentComponent implements OnInit {
     this.registerStudentForm.reset( );
   }// end of onReset method
 
-  selectChange( $event) {
-    //In my case $event come with a id value
-    this.selectedValue = this.listGenders[$event];
-  }
-
   selectDayChange( $event) {
     //In my case $event come with a id value
     this.student.classDay = this.listDays[$event].name;
@@ -126,11 +123,15 @@ export class StudentComponent implements OnInit {
     this.student.classSelection = this.listAgeGroup[$event].name;
   }
 
+  onGenderDropdownChange(e){
+    console.log(e)//you will get the id  
+    this.selectedGenderValue =e //if you want to bind it to your model
+  }
+
   saveStudent( ) {
     console.log('Saving student ');
     console.log('this.id = ' + this.id);
     // this.saveStudentInformation();
-    console.log('Selected Value=' + this.selectedValue);
     if (this.id === -1) {
       console.log(' ************* create Student! ');
       this.studentService.createStudent(this.student)

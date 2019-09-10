@@ -19,8 +19,14 @@
     <h4 class="card-header">Student Information Form</h4>
   
     <div class="card-body">
+
+      <div class="alert alert-warning" *ngIf="studentForm.dirty && studentForm.invalid">Enter valid values</div>
+      <div class="alert alert-warning" *ngIf="firstName.dirty && firstName.invalid">Enter at least 5 characters in First Name</div>
+      <div class="alert alert-warning" *ngIf="lastName.dirty && lastName.invalid">Enter at least 5 characters in Last Name</div>
+      <div class="alert alert-warning" *ngIf="dob.dirty && dob.invalid">Enter valid Start Date</div>
+      <div class="alert alert-warning" *ngIf="age.dirty && age.invalid">Enter valid Age</div>
   
-      <form #studentForm="ngForm" (ngSubmit)="saveStudent( )" >
+      <form #studentForm="ngForm" (ngSubmit)="saveStudent()" >
   
         <div class="form-row">
   
@@ -54,8 +60,10 @@
   
           <div class="form-group col">
             <label>Gender:</label>
-            <select (ngModelChange)="selectChange($event)" class="form-control" [(ngModel)]="selectedValue">
-              <option *ngFor="let oneGender of listGenders" [ngValue]="oneGender.id">{{oneGender.gender}}</option>
+            <select class="form-control" [(ngModel)]="student.gender">
+                <option *ngFor="let gender of genders" [(ngValue)]="gender.name">
+                  {{gender.name}}
+                </option>
             </select>
           </div>
   
@@ -69,7 +77,7 @@
   
           <div class="form-group col">
             <label>Age:</label>
-            <input type="number" #lastName="ngModel"
+            <input type="number" #age="ngModel"
                 [(ngModel)]="student.age" class="form-control"
                 name="age" required="required">
           </div>
@@ -109,8 +117,6 @@
       </form>
   
     </div><!--End of the Card Body-->
-  
-    
   
   </div><!--End of card-->
   

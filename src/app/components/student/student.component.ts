@@ -37,6 +37,12 @@ export class StudentComponent implements OnInit {
     { id: 6, value: "adult", name: "Adult - 17 & 18 years old"}
   ];
 
+  isShown: boolean = false; // hidden by default
+
+  toggleShow() {
+    this.isShown = ! this.isShown;
+  }
+
   registerStudentForm: FormGroup;
   studentFirstName: any;
   studentMiddleName: any;

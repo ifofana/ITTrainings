@@ -1,18 +1,8 @@
 <!--
+# Filename: student.component.html
 # Date: 16 Aug 2019
 # Author: ISG IT Department
-#
-# Copyright 2019-$Date: 16 Aug 2019 by Islamic Society of Germantown
-# All Rights Reserved.  Printed in the United States of America.
-# No part of this document may be reproduced, decompiled, reverse
-# engineered, disassembled, analyzed or otherwise manipulated to
-# discover the source code of the software and/or its underlying
-# methods/modes of operation, stored in a retrieval system or
-# transmitted in any form or by any means, electronic, mechanical,
-# photocopying, recording, or otherwise without the prior written
-# permission of Islamic Society of Germantown.
-#
-# Purpose: Provide User Interface.
+# Purpose: User Interface for student information form
 -->
 
 <div class="card m-3">
@@ -21,12 +11,12 @@
     <div class="card-body">
 
       <div class="alert alert-warning" *ngIf="studentForm.dirty && studentForm.invalid">Enter valid values</div>
-      <div class="alert alert-warning" *ngIf="firstName.dirty && firstName.invalid">Enter at least 5 characters in First Name</div>
-      <div class="alert alert-warning" *ngIf="lastName.dirty && lastName.invalid">Enter at least 5 characters in Last Name</div>
+      <div class="alert alert-warning" *ngIf="firstName.dirty && firstName.invalid">Enter at least 3 characters in First Name</div>
+      <div class="alert alert-warning" *ngIf="lastName.dirty && lastName.invalid">Enter at least 3 characters in Last Name</div>
       <div class="alert alert-warning" *ngIf="dob.dirty && dob.invalid">Enter valid Start Date</div>
       <div class="alert alert-warning" *ngIf="age.dirty && age.invalid">Enter valid Age</div>
   
-      <form #studentForm="ngForm" (ngSubmit)="saveStudent()" >
+      <form #studentForm="ngForm" (ngSubmit)="saveStudent( )" >
   
         <div class="form-row">
   
@@ -60,10 +50,8 @@
   
           <div class="form-group col">
             <label>Gender:</label>
-            <select class="form-control" [(ngModel)]="student.gender">
-                <option *ngFor="let gender of genders" [(ngValue)]="gender.name">
-                  {{gender.name}}
-                </option>
+            <select class="form-control" (ngModelChange)="selectGender($event)" [(ngModel)]="student.gender">
+                <option *ngFor="let oneOption of listGender" [ngValue]="oneOption.id">{{oneOption.name}}"</option>
             </select>
           </div>
   
@@ -84,10 +72,10 @@
         </div><!--End of form row--><!--End of form row for Student gender, age-->
   
         <div class="form-group form-check-inline">
-          <input type="checkbox" (click)="toggleShow()" class="form-check-input" />
+          <input type="checkbox" (click)="toggleShow( )" class="form-check-input" />
           <label class="form-check-label">Allergies/Medical Conditions</label>
         </div>
-        <!-- need figure out how to hid and unhide textarea when the user checks the Allergies/Medical Conditions box-->
+        <!--If the user checks the checkbox then textArea will appear-->
         <div *ngIf="isShown" id="divshow" class="form-group" >
           <textarea  rows="2" #textArea="ngModel" [(ngModel)]="student.allerges" name="textArea" class="form-control"></textarea>
         </div>
@@ -110,9 +98,10 @@
         </div><!--End of form row--><!--End of form row for Student class and class selection-->
 
         <div class="card-footer text-center">
-          <button type="submit" class="btn btn-primary mr-2">Save Form</button>
-      
-          <button type="reset"  class="btn btn-secondary">Clear Form</button>
+          <input type="submit" class="btn btn-primary mr-2" value="Save Form" />
+          
+          <input type="reset" value="Clear Form"      />
+          <!--<input type="reset"  class="btn btn-secondary" value='Clear Form' />-->
         </div><!--End of card footer-->
       </form>
   

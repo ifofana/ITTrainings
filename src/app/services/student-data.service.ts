@@ -27,21 +27,21 @@ export class StudentDataService {
     return this.http.get<Student[]>(`${API_URL}/api/students`, {headers: this.headers});
   }
 
-  deleteStudent(id) {
+  deleteStudent(id: any) {
     return this.http.delete(`${API_URL}/api/students/${id}`, {headers: this.headers});
   }
 
-  retrieveStudent(id) {
+  retrieveStudent(id: any) {
     return this.http.get<Student>(`${API_URL}/api/students/${id}`, {headers: this.headers});
   }
 
-  updateStudent(id, student) {// http://localhost:8080/api/students/1
+  updateStudent({ id, student }: { id: any; student: any; }) {// http://localhost:8080/api/students/1
     console.log('=====================> updateStudent');
     console.log('=====================> ' + id);
     return this.http.put(`${API_URL}/api/students/${id}`, student, {headers: this.headers});
   }
 
-  createStudent(student) {// http://localhost:8080/api/students
+  createStudent(student: any) {// http://localhost:8080/api/students
 
     return this.http.post(`${API_URL}/api/students/`, student, {headers: this.headers});
   }

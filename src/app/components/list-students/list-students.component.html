@@ -1,6 +1,6 @@
 <div class="container">
 
-    <h1>List of Students</h1>
+    <h3>List of Students</h3>
 
     <div class="alert alert-success" *ngIf="message">{{message}}</div>
 
@@ -8,40 +8,23 @@
         <thead>
             <tr>
                 <th>First Name</th>
-                <th>Middle Name</th>
                 <th>Last Name</th>
-                <th>Gender</th>
-                <th>Date of Birth</th>
-                <th>Age</th>
-                <th>Allergies/Medical Conditions</th>
-                <th>Day of Class</th>
-                <th>Class Selection</th>
-                <td>Update</td>
-                <td>Delete</td>
             </tr>
         </thead>
 
         <tbody>
             <tr *ngFor="let s of students">
                 <td>{{s.firstName}}</td>
-                <td>{{s.middlename}}</td>
                 <td>{{s.lastName}}</td>
-                <td>{{s.gender}}</td>
-                <td>{{s.dob}}</td>
-                <td>{{s.age}}</td>                
-                <td>{{s.allerges}}</td>
-                <td>{{s.classDay}}</td>
-                <td>{{s.classSelection}}</td>
-                <td><button (click)="updateStudent(s.id)" class="btn btn-success">Update</button></td>
-                <td><button (click)="deleteStudent(s.id)" class="btn btn-warning">Delete</button></td>
-                
+                <td><button (click)="updateStudent(s.id)" class="btn btn-success">View|Edit</button></td>
+                <td><button (click)="deleteStudent(s.id)" class="btn btn-warning">Delete</button></td>    
             </tr>
         </tbody>
     </table>
 
     <div class="row">
         <!-- Must get course id  -->
-        <button (click)="addStudent()" class="btn btn-success">Register</button>
+        <button (click)="addStudent( )" class="btn btn-success">Register</button>
     </div>
     
 </div>

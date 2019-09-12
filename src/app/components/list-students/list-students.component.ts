@@ -32,7 +32,7 @@ export class ListStudentsComponent implements OnInit {
     );
   }
 
-  deleteStudent(id) {
+  deleteStudent(id: any) {
     console.log(`delete student ${id}`);
     this.studentService.deleteStudent(id).subscribe(
       response => {
@@ -43,7 +43,7 @@ export class ListStudentsComponent implements OnInit {
     );
   }
 
-  updateStudent(id) {
+  updateStudent(id: any) {
     console.log(`update ${id}`);
     this.router.navigate(['students', id]);
   }

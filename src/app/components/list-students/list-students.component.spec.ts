@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ListStudentsComponent } from './list-students.component';
 
-describe('ListStudentsComponent', () => {
+describe('ListStudentsComponent', ( ) => {
   let component: ListStudentsComponent;
   let fixture: ComponentFixture<ListStudentsComponent>;
 
@@ -16,10 +16,10 @@ describe('ListStudentsComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(ListStudentsComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+    fixture.detectChanges( );
   });
 
-  it('should create', () => {
+  it('should create', ( ) => {
     expect(component).toBeTruthy();
   });
 });

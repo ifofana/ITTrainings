@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-// import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
 
 import { StudentDataService } from '../../services/student-data.service';
 import { Student } from '../../models/student';
@@ -11,6 +10,7 @@ import { Student } from '../../models/student';
   templateUrl: './student.component.html',
   styleUrls: ['./student.component.css']
 })
+
 export class StudentComponent implements OnInit {
 
   id: number;
@@ -69,16 +69,16 @@ export class StudentComponent implements OnInit {
     this.isShown = ! this.isShown;
   }
 
-  selectDayChange($event) {
+  selectDayChange($event: any) {
     // In my case $event come with a id value
     this.student.classDay = this.listDays[$event].name;
   }
 
-  selectAgeGroup($event) {
+  selectAgeGroup($event: any) {
     this.student.classSelection = this.listAgeGroup[$event].name;
   }
 
-  selectGender($event) {
+  selectGender($event: any) {
     this.student.gender = this.listGender[$event].name;
   }
 
@@ -95,7 +95,7 @@ export class StudentComponent implements OnInit {
           this.router.navigate(['students']);
         });
     } else {
-      this.studentService.updateStudent(this.id, this.student)
+      this.studentService.updateStudent({ id: this.id, student: this.student })
       .subscribe(
         data => {
           console.log(data);

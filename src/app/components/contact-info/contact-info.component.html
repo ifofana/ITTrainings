@@ -1,1 +1,81 @@
-<p>contact-info works!</p>
+<!--
+# Date: 16 Aug 2019
+# Author: ISG IT Department
+#
+# Copyright 2019-$Date: 16 Aug 2019 by Islamic Society of Germantown
+# All Rights Reserved.  Printed in the United States of America.
+# No part of this document may be reproduced, decompiled, reverse
+# engineered, disassembled, analyzed or otherwise manipulated to
+# discover the source code of the software and/or its underlying
+# methods/modes of operation, stored in a retrieval system or
+# transmitted in any form or by any means, electronic, mechanical,
+# photocopying, recording, or otherwise without the prior written
+# permission of Islamic Society of Germantown.
+#
+# Purpose: Provide User Interface.
+-->
+
+<div class="card m-3">
+    <h4 class="card-header">Contact_Information-Form</h4>
+
+    <div class="card-body">
+
+        <form [formGroup]="registerContactForm" (ngSubmit)="saveContactInformation(saveContactInformation)">
+
+            <div class="form-row">
+
+                <!--Input for contact Name-->
+                <div class="form-group col-md-4">
+                    <label>contact_name:</label>
+                    <input type="text" class="form-control" formControlName="contactName" />
+                </div>
+
+                <!--Input for nature of contact relation with the student-->
+                <div class="form-group col-md-4">
+                    <label> contact_relationship_to_student:</label>
+                    <input type="text" class="form-control" formControlName="contact relationship to student" />
+                </div>
+
+                <!--Input for phonenumber -->
+                <div class="form-group col-md-4">
+                    <label> contact_phone_number:</label>
+                    <input type="phone" class="form-control" formControlName="contact phone number" />
+                </div>
+                <!--Input for alternative  phonenumber -->
+                <div class="form-group col">
+                    <label> contact_alt_phone_number:</label>
+                    <input type="phone" class="form-control" formControlName="contact alt phone number" />
+                </div>
+            </div>
+            <!--End of form row for Contact's name-->
+
+            <div class="form-row">
+
+
+                <div class="form-group col">
+                    <label> contact_email :</label>
+                    <input type="email" class="form-control" formControlName="contact email" />
+                </div>
+            </div>
+            <!--End of form row-->
+            <!--End of form row for Student gender, age-->
+
+            <div class="form-group form-check-inline">
+                <input type="email" class="form-check-input" formControlName="contact alt email" />
+                <label class="form-check-label"> contact_alt_email:</label>
+            </div>
+
+        </form>
+
+    </div>
+    <!--End of the Card Body-->
+
+    <div class="card-footer text-center">
+        <button type="submit" class="btn btn-primary mr-2">Save Form</button>
+
+        <button type="reset" class="btn btn-secondary">Clear Form</button>
+    </div>
+    <!--End of card footer-->
+
+</div>
+<!--End of card-->

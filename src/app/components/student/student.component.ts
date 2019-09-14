@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { StudentDataService } from '../../services/student-data.service';
 import { Student } from '../../models/student';
-// import { Gender } from '../../models/gender';
+import { Gender } from '../../models/gender';
 
 @Component({
   selector: 'app-student',
@@ -45,10 +45,7 @@ export class StudentComponent implements OnInit {
 
   constructor(private studentService: StudentDataService,
               private route: ActivatedRoute,
-              // private formBuilder: FormBuilder,
-              private router: Router) {
-                // this.createStudentForm( );
-              }
+              private router: Router) { }
 
   ngOnInit( ) {
 

@@ -3,6 +3,8 @@
 # Date: 16 Aug 2019
 # Author: ISG IT Department
 # Purpose: User Interface for student information form
+# Note: If ngModel is used within a form tag, either the name attribute must be set 
+# or the form control must be defined as 'standalone' in ngModelOptions
 -->
 
 <div class="card m-3">
@@ -23,25 +25,40 @@
           <!--Input for Student First Name-->
           <div class="form-group col-md-4">
             <label>First Name:</label>
-            <input type="text" #firstName="ngModel"
-                [(ngModel)]="student.firstName" class="form-control"
-                name="firstName" required="required" minlength="3">
+            <input type="text" 
+                  #firstName="ngModel"
+                  [(ngModel)]="student.firstName" 
+                  [ngModelOptions]="{standalone: true}"
+                  class="form-control"
+                  name="firstName" 
+                  required="required" 
+                  minlength="3" />
           </div>
   
           <!--Input for Student Middle Name-->
           <div class="form-group col-md-4">
             <label>Middle Name:</label>
-            <input type="text" #middlename="ngModel"
-                [(ngModel)]="student.middlename" class="form-control"
-                name="middlename" required="required" minlength="3">
+            <input type="text" 
+                  #middlename="ngModel"
+                  [(ngModel)]="student.middlename" 
+                  [ngModelOptions]="{standalone: true}"
+                  class="form-control"
+                  name="middlename" 
+                  required="required"
+                  minlength="3" />
           </div>
   
           <!--Input for Student Last Name-->
           <div class="form-group col-md-4">
             <label>Last Name:</label>
-            <input type="text" #lastName="ngModel"
-                [(ngModel)]="student.lastName" class="form-control"
-                name="lastName" required="required" minlength="3">
+            <input type="text" 
+                  #lastName="ngModel"
+                  [(ngModel)]="student.lastName" 
+                  [ngModelOptions]="{standalone: true}"
+                  class="form-control"
+                  name="lastName" 
+                  required="required" 
+                  minlength="3" />
           </div>
   
         </div><!--End of form row for Student's name-->
@@ -50,58 +67,90 @@
   
           <div class="form-group col">
             <label>Gender:</label>
-            <select class="form-control" (ngModelChange)="selectGender($event)" [(ngModel)]="student.gender">
-                <option *ngFor="let oneOption of listGender" [ngValue]="oneOption.id">{{oneOption.name}}"</option>
+            <select class="form-control" 
+                    (ngModelChange)="selectGender($event)" 
+                    [(ngModel)]="student.gender"
+                    [ngModelOptions]="{standalone: true}" >
+                <option *ngFor="let oneOption of listGender" 
+                        [ngValue]="oneOption.id">{{oneOption.name}}
+                </option>
             </select>
           </div>
   
           <div class="form-group col">
             <label>Date of Birth:</label>            
-            <input type="date" #dob="ngModel"
-              [ngModel]="student.dob | date: 'yyyy-MM-dd' "
-              (ngModelChange)="student.dob = $event" 
-              class="form-control" name="dob" required="required">
+            <input type="date" 
+                  #dob="ngModel"
+                  [ngModel]="student.dob | date: 'yyyy-MM-dd' "
+                  [ngModelOptions]="{standalone: true}"
+                  (ngModelChange)="student.dob = $event" 
+                  class="form-control"
+                  name="dob" 
+                  required="required" />
           </div>
   
           <div class="form-group col">
             <label>Age:</label>
-            <input type="number" #age="ngModel"
-                [(ngModel)]="student.age" class="form-control"
-                name="age" required="required">
+            <input type="number"
+                  #age="ngModel"
+                  [(ngModel)]="student.age" 
+                  [ngModelOptions]="{standalone: true}"
+                  class="form-control"
+                  name="age" 
+                  required="required" />
           </div>
         </div><!--End of form row--><!--End of form row for Student gender, age-->
   
         <div class="form-group form-check-inline">
-          <input type="checkbox" (click)="toggleShow( )" class="form-check-input" />
+          <input type="checkbox" 
+                (click)="toggleShow( )" 
+                class="form-check-input" />
           <label class="form-check-label">Allergies/Medical Conditions</label>
         </div>
+
         <!--If the user checks the checkbox then textArea will appear-->
         <div *ngIf="isShown" id="divshow" class="form-group" >
-          <textarea  rows="2" #textArea="ngModel" [(ngModel)]="student.allerges" name="textArea" class="form-control"></textarea>
+          <textarea  rows="2" 
+                    #textArea="ngModel" 
+                    [(ngModel)]="student.allerges" 
+                    [ngModelOptions]="{standalone: true}"
+                    name="textArea" 
+                    class="form-control">
+          </textarea>
         </div>
 
         <div class="form-row">
+          
           <div class="form-group col">
             <label>Select of Day</label>           
-            <select class="form-control" (ngModelChange)="selectDayChange($event)" [(ngModel)]=student.classDay>
-              <option *ngFor="let oneOption of listDays" [ngValue]="oneOption.id">{{oneOption.name}}</option>
+            <select class="form-control" 
+                    (ngModelChange)="selectDayChange($event)" 
+                    [(ngModel)]=student.classDay
+                    [ngModelOptions]="{standalone: true}" >
+              <option *ngFor="let oneOption of listDays" 
+                      [ngValue]="oneOption.id">{{oneOption.name}}
+              </option>
             </select>
           </div>
           
           <div class="form-group col">
             <label>Select the class according to age group</label>
-            <select  class="form-control" (ngModelChange)="selectAgeGroup($event)" [(ngModel)]=student.classSelection>
-              <option *ngFor="let oneOption of listAgeGroup" [ngValue]="oneOption.id">{{oneOption.name}}</option>
-              
+            <select  class="form-control" 
+                    (ngModelChange)="selectAgeGroup($event)" 
+                    [(ngModel)]=student.classSelection
+                    [ngModelOptions]="{standalone: true}" >
+              <option *ngFor="let oneOption of listAgeGroup" 
+                      [ngValue]="oneOption.id">{{oneOption.name}}
+              </option>
             </select>
           </div>
+
         </div><!--End of form row--><!--End of form row for Student class and class selection-->
 
         <div class="card-footer text-center">
           <input type="submit" class="btn btn-primary mr-2" value="Save Form" />
           
-          <input type="reset" value="Clear Form"      />
-          <!--<input type="reset"  class="btn btn-secondary" value='Clear Form' />-->
+          <input type="reset" class="btn btn-secondary mr-2" value="Clear Form"/>
         </div><!--End of card footer-->
       </form>
   

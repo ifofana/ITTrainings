@@ -31,7 +31,7 @@
                   [ngModelOptions]="{standalone: true}"
                   class="form-control"
                   name="firstName" 
-                  required="required" 
+                  required 
                   minlength="3" />
           </div>
   
@@ -44,7 +44,6 @@
                   [ngModelOptions]="{standalone: true}"
                   class="form-control"
                   name="middlename" 
-                  required="required"
                   minlength="3" />
           </div>
   
@@ -57,7 +56,7 @@
                   [ngModelOptions]="{standalone: true}"
                   class="form-control"
                   name="lastName" 
-                  required="required" 
+                  required
                   minlength="3" />
           </div>
   
@@ -86,7 +85,7 @@
                   (ngModelChange)="student.dob = $event" 
                   class="form-control"
                   name="dob" 
-                  required="required" />
+                  required />
           </div>
   
           <div class="form-group col">
@@ -97,7 +96,7 @@
                   [ngModelOptions]="{standalone: true}"
                   class="form-control"
                   name="age" 
-                  required="required" />
+                  required />
           </div>
         </div><!--End of form row--><!--End of form row for Student gender, age-->
   

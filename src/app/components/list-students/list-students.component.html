@@ -16,15 +16,15 @@
             <tr *ngFor="let s of students">
                 <td>{{s.firstName}}</td>
                 <td>{{s.lastName}}</td>
-                <td><button (click)="updateStudent(s.id)" class="btn btn-success">View|Edit</button></td>
-                <td><button (click)="deleteStudent(s.id)" class="btn btn-warning">Delete</button></td>    
+                <td><button (click)="updateStudent(s.id)" class="btn btn-btn btn-info">View|Edit</button></td>
+                <td><button (click)="deleteStudent(s.id)" class="btn btn-danger">Delete</button></td>    
             </tr>
         </tbody>
     </table>
 
     <div class="row">
         <!-- Must get course id  -->
-        <button (click)="addStudent( )" class="btn btn-success">Register</button>
+        <button (click)="addStudent( )" class="btn btn-success">Add Student</button>
     </div>
     
 </div>

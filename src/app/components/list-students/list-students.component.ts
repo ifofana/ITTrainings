@@ -6,8 +6,7 @@ import { StudentDataService } from '../../services/student-data.service';
 
 @Component({
   selector: 'app-list-students',
-  templateUrl: './list-students.component.html',
-  styleUrls: ['./list-students.component.css']
+  templateUrl: './list-students.component.html'
 })
 export class ListStudentsComponent implements OnInit {
 
@@ -15,7 +14,7 @@ export class ListStudentsComponent implements OnInit {
 
   message: string;
 
-  courseId = 3;
+  // courseId = 3;
 
   constructor(private studentService: StudentDataService, private router: Router) { }
 

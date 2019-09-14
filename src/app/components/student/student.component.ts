@@ -3,12 +3,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { StudentDataService } from '../../services/student-data.service';
 import { Student } from '../../models/student';
-import { Gender } from '../../models/gender';
 
 @Component({
   selector: 'app-student',
-  templateUrl: './student.component.html',
-  styleUrls: ['./student.component.css']
+  templateUrl: './student.component.html'
 })
 
 export class StudentComponent implements OnInit {
@@ -51,7 +49,7 @@ export class StudentComponent implements OnInit {
 
     this.id = this.route.snapshot.params.id;
 
-    this.student = new Student();
+    this.student = new Student( );
 
     if (this.id !== -1) {
       this.studentService.retrieveStudent(this.id)
@@ -102,7 +100,7 @@ export class StudentComponent implements OnInit {
     }
   }
 
-  courseId(id: number) {
+  courseId( ) {
     throw new Error('Method not implemented.');
   }
 

@@ -1,4 +1,4 @@
-export class Gender {
+/*export class Gender {
     id: number;
     name: string;
-}
+} */

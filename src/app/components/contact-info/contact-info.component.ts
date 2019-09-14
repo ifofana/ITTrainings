@@ -15,7 +15,7 @@ export class ContactInfoComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private router: Router) { }
 
-  ngOnInit() {
+  ngOnInit( ) {
 
     this.contact = new Contact();
   }

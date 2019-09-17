@@ -42,7 +42,7 @@ export class ListStudentsComponent implements OnInit {
     );
   }
 
-  updateStudent(id: any) {
+  updateStudent(id) {
     console.log(`update ${id}`);
     this.router.navigate(['students', id]);
   }

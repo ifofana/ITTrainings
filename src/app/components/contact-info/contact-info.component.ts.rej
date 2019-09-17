@@ -1,0 +1,24 @@
+diff a/src/app/components/contact-info/contact-info.component.ts b/src/app/components/contact-info/contact-info.component.ts	(rejected hunks)
+@@ -1,5 +1,6 @@
+ import { Component, OnInit } from '@angular/core';
+ import { ActivatedRoute, Router } from '@angular/router';
++import { Contact } from 'src/app/models/contact';
+ 
+ @Component({
+   selector: 'app-contact-info',
+@@ -8,9 +9,15 @@
+ })
+ export class ContactInfoComponent implements OnInit {
+ 
++  id: number;
++
++  contact: Contact;
++
+   constructor(private route: ActivatedRoute, private router: Router) { }
+ 
+   ngOnInit() {
++
++    this.contact = new Contact();
+   }
+ 
+ }

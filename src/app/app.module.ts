@@ -28,7 +28,8 @@ import { DetailComponent } from './components/detail/detail.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { UnauthorizedComponent } from './components/unauthorized/unauthorized.component';
-import { ContactInfoComponent } from './components/contact-info/contact-info.component';
+import {ContactInfoComponent } from './components/contact-info/contact-info.component';
+
 
 
 @NgModule({

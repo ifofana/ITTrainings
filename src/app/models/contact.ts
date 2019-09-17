@@ -6,4 +6,9 @@ export class Contact {
     contactEmail: string;
     contactAltEmail: string;
     contactRelationshipToStudent: string;
+  phonenumber: any;
+  relationshiptostudent: any;
+  altphonenumber: any;
+  altemail: any;
+  email: any;
 } // end of contact class

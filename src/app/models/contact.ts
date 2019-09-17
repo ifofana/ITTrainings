@@ -1,6 +1,6 @@
 export class Contact {
     id: number;
-    name: string;    
+    name: string;
     contactPhoneNumber: string;
     contactAltPhoneNumber: string;
     contactEmail: string;

@@ -16,7 +16,7 @@
 -->
 
 <div class="card m-3">
-    <h4 class="card-header">Contact_Information-Form</h4>
+    <h4 class="card-header">Contact Information Form</h4>
 
     <div class="card-body">
 
@@ -25,45 +25,42 @@
             <div class="form-row">
 
                 <!--Input for contact Name-->
-                <div class="form-group col-md-4">
-                    <label>contact_name:</label>
+                <div class="form-group col">
+                    <label>Full Name:</label>
                     <input type="text" class="form-control" formControlName="contactName" />
                 </div>
 
-                <!--Input for nature of contact relation with the student-->
-                <div class="form-group col-md-4">
-                    <label> contact_relationship_to_student:</label>
+                <div class="form-group col">
+                    <label>Relationship to Student:</label>
                     <input type="text" class="form-control" formControlName="contact relationship to student" />
                 </div>
-
+            </div><!--End of form-row for name and relationship-->
+            
+            <div class="form-row">   
                 <!--Input for phonenumber -->
-                <div class="form-group col-md-4">
-                    <label> contact_phone_number:</label>
-                    <input type="phone" class="form-control" formControlName="contact phone number" />
+                <div class="form-group col">
+                    <label> Primary Phone Number:</label>
+                    <input type="phone" class="form-control" formControlName="primary phone number" />
                 </div>
                 <!--Input for alternative  phonenumber -->
                 <div class="form-group col">
-                    <label> contact_alt_phone_number:</label>
+                    <label> Alt Phone Number:</label>
                     <input type="phone" class="form-control" formControlName="contact alt phone number" />
                 </div>
-            </div>
-            <!--End of form row for Contact's name-->
+            </div><!--end of form-row and telephones-->
 
             <div class="form-row">
-
+                <div class="form-group col">
+                    <label> Primary Email :</label>
+                    <input type="email" class="form-control" formControlName="primary email" />
+                </div>
 
                 <div class="form-group col">
-                    <label> contact_email :</label>
-                    <input type="email" class="form-control" formControlName="contact email" />
+                    <label> Alt Email :</label>
+                    <input type="email" class="form-control" formControlName="secondary email" />
                 </div>
             </div>
-            <!--End of form row-->
-            <!--End of form row for Student gender, age-->
-
-            <div class="form-group form-check-inline">
-                <input type="email" class="form-check-input" formControlName="contact alt email" />
-                <label class="form-check-label"> contact_alt_email:</label>
-            </div>
+            
 
         </form>
 

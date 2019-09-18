@@ -14,8 +14,6 @@ export class ListStudentsComponent implements OnInit {
 
   message: string;
 
-  // courseId = 3;
-
   constructor(private studentService: StudentDataService, private router: Router) { }
 
   ngOnInit() {
@@ -42,7 +40,7 @@ export class ListStudentsComponent implements OnInit {
     );
   }
 
-  updateStudent(id: any) {
+  updateStudent(id) {
     console.log(`update ${id}`);
     this.router.navigate(['students', id]);
   }

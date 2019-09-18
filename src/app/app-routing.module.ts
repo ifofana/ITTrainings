@@ -21,7 +21,7 @@ import { CourseComponent } from './components/course/course.component';
 import { ListStudentsComponent } from './components/list-students/list-students.component';
 import { StudentComponent } from './components/student/student.component';
 import { SignupComponent } from './components/signup/signup.component'; // Not being used
-import { ContactInfoComponent } from './components/contact-info/contact-info.component';
+import { ContactComponent } from './components/contact/contact.component';
 
 const routes: Routes = [
 	//public pages
@@ -56,7 +56,7 @@ const routes: Routes = [
 	{ path: 'students/:id', component: StudentComponent, 
 			canActivate: [AuthGuard],
 			data: {roles: [Role.ADMIN, Role.USER]}},
-	{ path: 'contactinfo', component: ContactInfoComponent, 
+{ path: 'contact', component: ContactComponent,
 			canActivate: [AuthGuard],
 			data: {roles: [Role.ADMIN, Role.USER]}},
 	{ path: 'logout', component: LogoutComponent, 

@@ -56,7 +56,7 @@ const routes: Routes = [
 	{ path: 'students/:id', component: StudentComponent, 
 			canActivate: [AuthGuard],
 			data: {roles: [Role.ADMIN, Role.USER]}},
-	{ path: 'contactinfo', component: ContactInfoComponent, 
+{ path: 'contact', component: ContactComponent,
 			canActivate: [AuthGuard],
 			data: {roles: [Role.ADMIN, Role.USER]}},
 	{ path: 'logout', component: LogoutComponent, 

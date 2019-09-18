@@ -20,21 +20,21 @@ export class StudentComponent implements OnInit {
   // Flag for the text area, default is hidden
   isShown = false;
 
-  constructor(private studentService: StudentDataService, private route: ActivatedRoute, private router: Router) { 
+  constructor(private studentService: StudentDataService, private route: ActivatedRoute, private router: Router) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
   }
 
   ngOnInit( ) {
 
-    this.id = this.route.snapshot.params['id'];
+    this.id = this.route.snapshot.params.id;
 
-    this.student = new Student();
+    this.student = new Student( );
 
     if (this.id !== -1) {
       this.studentService.retrieveStudent(this.id)
         .subscribe(
           data => this.student = data
-        )
+        );
     }
   }
 
@@ -52,7 +52,8 @@ export class StudentComponent implements OnInit {
           console.log(data);
           this.router.navigate(['students']);
         }
-      )
+      );
+
     } else {
       this.studentService.updateStudent(this.id, this.student)
       .subscribe(
@@ -64,8 +65,8 @@ export class StudentComponent implements OnInit {
     }
   }
 
-  courseId( ) {
-    throw new Error('Method not implemented.');
-  }
+  /*courseId( ) {
+   // throw new Error('Method not implemented.');
+  }*/
 
 }

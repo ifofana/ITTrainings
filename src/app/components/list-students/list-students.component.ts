@@ -14,8 +14,6 @@ export class ListStudentsComponent implements OnInit {
 
   message: string;
 
-  // courseId = 3;
-
   constructor(private studentService: StudentDataService, private router: Router) { }
 
   ngOnInit() {

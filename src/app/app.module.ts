@@ -28,13 +28,7 @@ import { DetailComponent } from './components/detail/detail.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { UnauthorizedComponent } from './components/unauthorized/unauthorized.component';
-<<<<<<< HEAD
-import {ContactInfoComponent } from './components/contact-info/contact-info.component';
-
-=======
 import { ContactComponent } from './components/contact/contact.component';
->>>>>>> af1eea9fcfbd0670aa9c5ca5aa42e1f717d05bc2
-
 
 @NgModule({
   declarations: [

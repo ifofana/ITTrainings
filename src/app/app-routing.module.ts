@@ -22,7 +22,7 @@ import { ListStudentsComponent } from './components/list-students/list-students.
 import { StudentComponent } from './components/student/student.component';
 import { SignupComponent } from './components/signup/signup.component'; // Not being used
 import { ContactComponent } from './components/contact/contact.component';
-
+import {GuardienComponent}  from './components/guardien/guardien.component';
 const routes: Routes = [
 	//public pages
 	{ path: '', redirectTo: 'login', pathMatch: 'full'},
@@ -56,9 +56,12 @@ const routes: Routes = [
 	{ path: 'students/:id', component: StudentComponent, 
 			canActivate: [AuthGuard],
 			data: {roles: [Role.ADMIN, Role.USER]}},
-{ path: 'contact', component: ContactComponent,
+   { path: 'contact', component: ContactComponent,
 			canActivate: [AuthGuard],
 			data: {roles: [Role.ADMIN, Role.USER]}},
+   { path: 'Guardien', component: GuardienComponent,
+			canActivate: [AuthGuard],
+			data: {roles: [Role.ADMIN, Role.USER]}},		
 	{ path: 'logout', component: LogoutComponent, 
 			canActivate: [AuthGuard],
 			data: {roles: [Role.ADMIN, Role.USER]}},

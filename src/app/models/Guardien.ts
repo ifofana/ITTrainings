@@ -1,4 +1,4 @@
-export class ParentGuard {
+export class Guardien {
     id: number;
     name: string;
     addressOne: string;

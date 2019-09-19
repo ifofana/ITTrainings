@@ -1,14 +1,9 @@
 export class Contact {
-    id: number;
-    name: string;
-    contactPhoneNumber: string;
-    contactAltPhoneNumber: string;
-    contactEmail: string;
-    contactAltEmail: string;
-    contactRelationshipToStudent: string;
-  phonenumber: any;
-  relationshiptostudent: any;
-  altphonenumber: any;
-  altemail: any;
-  email: any;
+  id: number;
+  name: string;
+  phoneNumber: string;
+  altPhoneNumber: string;
+  email: string;
+  altEmail: string;
+  relationshipToStudent: string;
 } // end of contact class

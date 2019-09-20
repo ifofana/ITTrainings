@@ -9,20 +9,18 @@ import { WelcomeDataService } from '../../service/data/welcome-data.service';
 })
 export class WelcomeComponent implements OnInit {
 
-	message = 'Some Welcome Message'
-	welcomeMessageFromService = ''
-	name = ''
+message = 'Some Welcome Message';
+welcomeMessageFromService = ' ';
+name = ' ';
 
-  constructor(private route : ActivatedRoute, private service: WelcomeDataService) { }
+  constructor(private route: ActivatedRoute, private service: WelcomeDataService) { }
 
-  ngOnInit() {
-	  this.name = this.route.snapshot.params['name'];
-  }
+  ngOnInit() { this.name = this.route.snapshot.params.name; }
 
-  getWelcomeMessage() {
-	//console.log(this.service.executeHelloWorldBeanService());
+  getWelcomeMessage( ) {
+// console.log(this.service.executeHelloWorldBeanService());
 
-	 this.service.executeHelloWorldBeanService().subscribe(
+this.service.executeHelloWorldBeanService( ).subscribe(
 		 response => this.handleSuccessfulResponse(response),
 		 error => this.handleErrorResponse(error)
 	 );
@@ -31,7 +29,7 @@ export class WelcomeComponent implements OnInit {
   }
 
   getWelcomeMessageWithParmeter() {
-	//console.log(this.service.executeHelloWorldBeanService());
+	// console.log(this.service.executeHelloWorldBeanService());
 
 	 this.service.executeHelloWorldBeanServicePathVariable(this.name).subscribe(
 		 response => this.handleSuccessfulResponse(response),
@@ -41,14 +39,14 @@ export class WelcomeComponent implements OnInit {
 	 console.log('last line of getwelcome message');
   }
 
-  handleSuccessfulResponse(response){
-	//this.welcomeMessageFromService = response.message;
+  handleSuccessfulResponse(response) {
+	// this.welcomeMessageFromService = response.message;
 	console.log(response);
 	console.log(response.message);
 	this.welcomeMessageFromService = response.message;
   }
 
-  handleErrorResponse(error){
+  handleErrorResponse(error) {
 	console.log(error);
 	console.log(error.error);
 	console.log(error.error.message);

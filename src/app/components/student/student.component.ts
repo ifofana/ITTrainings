@@ -64,9 +64,4 @@ export class StudentComponent implements OnInit {
       );
     }
   }
-
-  /*courseId( ) {
-   // throw new Error('Method not implemented.');
-  }*/
-
 }

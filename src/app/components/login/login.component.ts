@@ -15,17 +15,12 @@ export class LoginComponent implements OnInit {
 	user: User = new User();
 	errorMessage: string;
 
-	constructor(
-		private userService: UserService,
-		private router: Router
-	) {
-				
-	}
+constructor(private userService: UserService, private router: Router) { }
 
 	ngOnInit() {
-		if(this.userService.currentUserValue) {
+		if (this.userService.currentUserValue) {
 			//this.router.navigate(['/profile']);
-			this.router.navigate(['/welcome'])
+			this.router.navigate(['/welcome']);
 			return;
 		}
 	}

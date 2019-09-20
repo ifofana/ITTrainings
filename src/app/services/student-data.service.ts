@@ -24,7 +24,7 @@ export class StudentDataService {
   }
 
   retrieveAllStudents( ): Observable<any> {
-    return this.http.get<Student[]>(`${API_URL}/api/students`, {headers: this.headers});
+    return this.http.get<Student[ ]>(`${API_URL}/api/students`, {headers: this.headers});
   }
 
   deleteStudent(id: any) {

@@ -1,8 +1,10 @@
 <!--
+# Filename: contact.component.html
 # Date: 16 Aug 2019
 # Author: ISG IT Department
-#
 # Purpose: User Interface for contact information form
+# Note: If ngModel is used within a form tag, either the name attribute must be set 
+# or the form control must be defined as 'standalone' in ngModelOptions
 -->
 
 <div class="card m-3">
@@ -10,19 +12,35 @@
 
     <div class="card-body">
 
-        <form [formGroup]="registerContactForm" (ngSubmit)="saveContactInformation(saveContactInformation)">
+        <form #contactForm="ngForm" (ngSubmit)="saveContact( )">
 
             <div class="form-row">
 
                 <!--Input for contact Name-->
                 <div class="form-group col">
                     <label>Full Name:</label>
-                    <input type="text" class="form-control" formControlName="contactName" />
+                    <input type="text" 
+                    #firstName="ngModel"
+                    [(ngModel)]="contact.name" 
+                    [ngModelOptions]="{standalone: true}"
+                    class="form-control"
+                    name="name" 
+                    required 
+                    pattern="[A-Za-z]"
+                    minlength="3"/>
                 </div>
 
                 <div class="form-group col">
                     <label>Relationship to Student:</label>
-                    <input type="text" class="form-control" formControlName="contact relationship to student" />
+                    <input type="text" 
+                    #relationshipToStudent="ngModel"
+                    [(ngModel)]="contact.relationshipToStudent" 
+                    [ngModelOptions]="{standalone: true}"
+                    class="form-control"
+                    name="relationshipToStudent" 
+                    required 
+                    pattern="[A-Za-z]"
+                    minlength="3"/>
                 </div>
             </div><!--End of form-row for name and relationship-->
             
@@ -30,30 +48,53 @@
                 <!--Input for phonenumber -->
                 <div class="form-group col">
                     <label> Primary Phone Number:</label>
-                    <input type="phone" class="form-control" formControlName="primary phone number" />
+                    <input type="tel" 
+                    #phoneNumber="ngModel"
+                    [(ngModel)]="contact.phoneNumber" 
+                    [ngModelOptions]="{standalone: true}"
+                    class="form-control"
+                    name="phoneNumber" 
+                    required 
+                    pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" />
                 </div>
                 <!--Input for alternative  phonenumber -->
                 <div class="form-group col">
                     <label> Alt Phone Number:</label>
-                    <input type="phone" class="form-control" formControlName="contact alt phone number" />
+                    <input type="tel" 
+                    #altPhoneNumber="ngModel"
+                    [(ngModel)]="contact.altPhoneNumber" 
+                    [ngModelOptions]="{standalone: true}"
+                    class="form-control"
+                    name="altPhoneNumber" 
+                    pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" />
                 </div>
-            </div><!--end of form-row and telephones-->
+            </div><!--end of form-row and contact's telephones-->
 
             <div class="form-row">
                 <div class="form-group col">
                     <label> Primary Email :</label>
-                    <input type="email" class="form-control" formControlName="primary email" />
+                    <input type="email" 
+                    #email="ngModel"
+                    [(ngModel)]="contact.email" 
+                    [ngModelOptions]="{standalone: true}"
+                    class="form-control"
+                    name="email" 
+                    required />
                 </div>
 
                 <div class="form-group col">
                     <label> Alt Email :</label>
-                    <input type="email" class="form-control" formControlName="secondary email" />
+                    <input type="email"
+                    #altEmail="ngModel"
+                    [(ngModel)]="contact.altEmail" 
+                    [ngModelOptions]="{standalone: true}"
+                    class="form-control"
+                    name="altEmail" 
+                    />
                 </div>
-            </div>
+            </div><!--end of form-row and contact's emails-->
             
-
         </form>
-
     </div>
     <!--End of the Card Body-->
 

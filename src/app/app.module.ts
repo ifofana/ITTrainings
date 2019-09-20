@@ -17,8 +17,6 @@ import { LoginComponent } from './components/login/login.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { ErrorComponent } from './components/error/error.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { ListCoursesComponent } from './components/list-courses/list-courses.component';
-import { CourseComponent } from './components/course/course.component';
 import { ListStudentsComponent } from './components/list-students/list-students.component';
 import { StudentComponent } from './components/student/student.component';
 import { SignupComponent } from './components/signup/signup.component';
@@ -29,8 +27,8 @@ import { AdminComponent } from './components/admin/admin.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { UnauthorizedComponent } from './components/unauthorized/unauthorized.component';
 import { ContactComponent } from './components/contact/contact.component';
-import {GuardienComponent}   from'./components/guardien/guardien.component';
-  
+import { ListContactsComponent } from './components/list-contacts/list-contacts.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,8 +38,6 @@ import {GuardienComponent}   from'./components/guardien/guardien.component';
     LogoutComponent,
     ErrorComponent,
     FooterComponent,
-    ListCoursesComponent,
-    CourseComponent,
     ListStudentsComponent,
     StudentComponent,
     SignupComponent,
@@ -52,7 +48,7 @@ import {GuardienComponent}   from'./components/guardien/guardien.component';
     NotFoundComponent,
     UnauthorizedComponent,
     ContactComponent,
-    GuardienComponent
+    ListContactsComponent
   ],
 
   imports: [

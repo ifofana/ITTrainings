@@ -18,7 +18,7 @@
       <div class="alert alert-warning" *ngIf="dob.dirty && dob.invalid">Enter valid Start Date</div>
       <div class="alert alert-warning" *ngIf="age.dirty && age.invalid">Enter valid Age</div>
   
-      <form #studentForm="ngForm" (ngSubmit)="saveStudent( )" >
+      <form #studentForm="ngForm" (ngSubmit)="saveStudent( )">
   
         <div class="form-row">
   
@@ -66,9 +66,10 @@
   
           <div class="form-group col">
             <label>Gender:</label>
-            <select class="form-control" [value]="student.gender" (change)="student.gender=$event.target.value">
-              <option value="Male">Male</option>
-              <option value="Female">Female</option>
+            <select class="form-control" 
+                    [value]="student.gender" (change)="student.gender=$event.target.value">
+              <option value="male">Male</option>
+              <option value="female">Female</option>
             </select>
           </div>
   
@@ -135,7 +136,6 @@
               <option value="adult">Adult - 17 & 18 years old</option>
             </select>
           </div>
-
         </div><!--End of form row--><!--End of form row for Student class and class selection-->
 
         <div class="card-footer text-center">

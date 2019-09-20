@@ -1,0 +1,29 @@
+<div class="container">
+
+    <h3>List of Contact Information</h3>
+
+    <div class="alert alert-success" *ngIf="message">{{message}}</div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Contact Full Name</th>
+                <th>Contact E-Mail Address</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let c of contacts">
+                <td>{{c.name}}</td>
+                <td>{{c.email}}</td>
+                <td><button (click)="updateContact(c.id)" class="btn btn-btn btn-info">View|Edit</button></td>
+                <td><button (click)="deleteContact(c.id)" class="btn btn-danger">Delete</button></td>    
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="row">
+        <button (click)="addContact( )" class="btn btn-success">Add Contact</button>
+    </div>
+    
+</div>

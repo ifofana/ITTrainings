@@ -17,11 +17,11 @@ export class ListStudentsComponent implements OnInit {
   constructor(private studentService: StudentDataService, private router: Router) { }
 
   ngOnInit() {
-    this.refreshStudents();
+    this.refreshStudents( );
   }
 
-  refreshStudents() {
-    this.studentService.retrieveAllStudents().subscribe(
+  refreshStudents( ) {
+    this.studentService.retrieveAllStudents( ).subscribe(
       response => {
         console.log(response);
         this.students = response;
@@ -34,13 +34,13 @@ export class ListStudentsComponent implements OnInit {
     this.studentService.deleteStudent(id).subscribe(
       response => {
         console.log(response);
-        this.message = `Delete of Student ${id} Successfull!`;
+        this.message = `Delete of student ${id} Successfull!`;
         this.refreshStudents();
       }
     );
   }
 
-  updateStudent(id) {
+  updateStudent(id: any) {
     console.log(`update ${id}`);
     this.router.navigate(['students', id]);
   }

@@ -2,12 +2,12 @@
 
 
 <div class="card m-3">
-    <h4 class="card-header">ParentGuard_Info </h4>
+    <h4 class="card-header">guardien </h4>
 
     <div class="card-body">
 
-        <form [formGroup]="registerContactForm" (ngSubmit)="save ParentGuardInformation       (saveParentGuardInformation)">
-
+        <form [formGroup]="registerGuardienForm" (ngSubmit)="saveGuardienform(saveGuardienform)" >
+    </form>
             <div class="form-row">
 
                 <!--Input for guardien Name-->
@@ -17,7 +17,7 @@
                 </div>
 
                 <div class="form-group col">
-                    <label>Address_1:</label>
+                    <label>AddressOne:</label>
                     <input type="Adress" class="form-control" formControlName="primaryadress" />
                 </div>
             </div><!--End of form-row for name and relationship-->
@@ -25,7 +25,7 @@
             <div class="form-row">   
              
                 <div class="form-group col">
-                    <label> Adress_2:</label>
+                    <label> AdressTwo:</label>
                     <input type="Adress_2" class="form-control" formControlName="secondary adress" />
                 </div>
                 <!--Input for city -->
@@ -36,6 +36,7 @@
             </div>
 
             <div class="form-row">
+
                 <div class="form-group col">
                     <label> State:</label>
                     <input type="text" class="form-control" formControlName="state" />
@@ -61,8 +62,6 @@
                     <label>Alt_Email</label>
                     <input type="email" class="form-control" formControlName="secondaryemail" />  
 
-        </form>
-
     </div>
     <!--End of the Card Body-->
 
@@ -74,4 +73,5 @@
     <!--End of card footer-->
 
 </div>
+
 <!--End of card-->

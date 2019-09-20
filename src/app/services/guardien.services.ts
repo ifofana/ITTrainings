@@ -37,7 +37,7 @@ import { Guardien } from '../models/Guardien';
     }// end of parameterized constructor
 
     // This method get all the Guardien
-    retrieveAllGuardien( ): Observable<any> {
+    retrieveAllGuardien( ):Observable<any> {
       return this.http.get<Guardien[ ]>(`${API_URL}/api/guardien`, {headers: this.headers});
     } // end of retrieveAllguardiens method
 
@@ -61,7 +61,7 @@ import { Guardien } from '../models/Guardien';
     }
 
     // Create a guardieninformation
-    createGuardien(guardien: Guardien) {
-      return this.http.post(`${API_URL}/api/guardien/`, guardien, {headers: this.headers});
+    createGuardien(guardien) {
+      return this.http.post(`${API_URL}/api/Guardien/`, guardien, {headers: this.headers});
     }
   }

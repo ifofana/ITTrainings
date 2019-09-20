@@ -29,7 +29,8 @@ import { AdminComponent } from './components/admin/admin.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { UnauthorizedComponent } from './components/unauthorized/unauthorized.component';
 import { ContactComponent } from './components/contact/contact.component';
-
+import {GuardienComponent}   from'./components/guardien/guardien.component';
+  
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,7 +51,8 @@ import { ContactComponent } from './components/contact/contact.component';
     AdminComponent,
     NotFoundComponent,
     UnauthorizedComponent,
-    ContactComponent
+    ContactComponent,
+    GuardienComponent
   ],
 
   imports: [

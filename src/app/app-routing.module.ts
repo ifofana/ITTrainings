@@ -60,7 +60,6 @@ const routes: Routes = [
 			canActivate: [AuthGuard],
 			data: {roles: [Role.ADMIN, Role.USER]}},
    { path: 'Guardien', component: GuardienComponent,
-			canActivate: [AuthGuard],
 			data: {roles: [Role.ADMIN, Role.USER]}},		
 	{ path: 'logout', component: LogoutComponent, 
 			canActivate: [AuthGuard],

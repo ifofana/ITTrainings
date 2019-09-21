@@ -28,6 +28,9 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { UnauthorizedComponent } from './components/unauthorized/unauthorized.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { ListContactsComponent } from './components/list-contacts/list-contacts.component';
+import { Guardien } from './models/Guardien';
+import { GuardienComponent } from './components/guardien/guardien.component';
+import { ListGuardiensComponent } from './components/list-guardiens/list-guardiens.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +51,9 @@ import { ListContactsComponent } from './components/list-contacts/list-contacts.
     NotFoundComponent,
     UnauthorizedComponent,
     ContactComponent,
-    ListContactsComponent
+    ListContactsComponent,
+    GuardienComponent,
+    ListGuardiensComponent
   ],
 
   imports: [

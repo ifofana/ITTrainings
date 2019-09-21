@@ -19,6 +19,7 @@ import { ListStudentsComponent } from './components/list-students/list-students.
 import { StudentComponent } from './components/student/student.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { ListContactsComponent} from './components/list-contacts/list-contacts.component';
+import { Guardien } from './models/Guardien';
 
 const routes: Routes = [
 
@@ -48,7 +49,12 @@ const routes: Routes = [
 
 { path: 'contacts/:id', component: ContactComponent, canActivate: [AuthGuard], data: {roles: [Role.ADMIN, Role.USER]} },
 
+{ path : 'guardien', component:  Guardien,canActivate:[AuthGuard],data:{roles:[Role.ADMIN,Role.USER]}},
+
+{path  : 'guardien/:id',component: Guardien,canActivate:[AuthGuard],data:{roles:[Role.ADMIN,Role.USER]}},
+
 { path: 'logout', component: LogoutComponent, canActivate: [AuthGuard], data: {roles: [Role.ADMIN, Role.USER]} },
+
 
 // public pages
 { path: '404', component: NotFoundComponent},

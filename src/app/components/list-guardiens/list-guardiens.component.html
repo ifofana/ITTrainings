@@ -1,0 +1,28 @@
+<div class="container">
+
+    <h3>List of Guardien Information</h3>
+
+    <div class="alert alert-success" *ngIf="message">{{message}}</div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Guardien Full Name</th>
+                <th>Guardien E-Mail Address</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let c of Guardiens">
+                <td>{{c.name}}</td>
+                <td>{{c.email}}</td>
+                <td><button (click)="updateGuardien(c.id)" class="btn btn-btn btn-info">View|Edit</button></td>
+                <td><button (click)="deleteGuardien(c.id)" class="btn btn-danger">Delete</button></td>    
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="row">
+        <button (click)="AddGuardien( )" class="btn btn-success">Add Guardien</button>
+    </div>
+</div>

@@ -49,9 +49,9 @@ const routes: Routes = [
 
 { path: 'contacts/:id', component: ContactComponent, canActivate: [AuthGuard], data: {roles: [Role.ADMIN, Role.USER]} },
 
-{ path : 'guardien', component:  Guardien,canActivate:[AuthGuard],data:{roles:[Role.ADMIN,Role.USER]}},
+{ path : 'guardien', component:  Guardien, canActivate: [AuthGuard], data: {roles: [Role.ADMIN, Role.USER]} },
 
-{path  : 'guardien/:id',component: Guardien,canActivate:[AuthGuard],data:{roles:[Role.ADMIN,Role.USER]}},
+{path  : 'guardien/:id', component: Guardien, canActivate: [AuthGuard], data: {roles: [Role.ADMIN, Role.USER]} },
 
 { path: 'logout', component: LogoutComponent, canActivate: [AuthGuard], data: {roles: [Role.ADMIN, Role.USER]} },
 

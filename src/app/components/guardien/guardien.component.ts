@@ -10,12 +10,12 @@ import { User } from 'src/app/models/user';
   styleUrls: ['./guardien.component.css']
 })
 export class GuardienComponent implements OnInit {
-id :number;
-guardien : Guardien;
-currentUser : User;
+id: number;
+guardien: Guardien;
+currentUser: User;
 
-  constructor(private guardienService: GuardienDataService, 
-    private route: ActivatedRoute, private router: Router) {
+  constructor(private guardienService: GuardienDataService,
+              private route: ActivatedRoute, private router: Router) {
 
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
    }
@@ -25,7 +25,7 @@ currentUser : User;
     this.guardien = new Guardien();
     if (this.id !== -1) {
       this.guardienService.retrieveGuardien(this.id).subscribe(
-          data => this.guardien= data
+          data => this.guardien = data
         );
       }
   }

@@ -13,11 +13,11 @@
         </thead>
 
         <tbody>
-            <tr *ngFor="let c of Guardiens">
-                <td>{{c.name}}</td>
-                <td>{{c.email}}</td>
-                <td><button (click)="updateGuardien(c.id)" class="btn btn-btn btn-info">View|Edit</button></td>
-                <td><button (click)="deleteGuardien(c.id)" class="btn btn-danger">Delete</button></td>    
+            <tr *ngFor="let g of Guardiens">
+                <td>{{G.name}}</td>
+                <td>{{G.email}}</td>
+                <td><button (click)="updateGuardien(g.id)" class="btn btn-btn btn-info">View|Edit</button></td>
+                <td><button (click)="deleteGuardien(g.id)" class="btn btn-danger">Delete</button></td>    
             </tr>
         </tbody>
     </table>

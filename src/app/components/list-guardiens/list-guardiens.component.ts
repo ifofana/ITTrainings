@@ -38,7 +38,7 @@ deleteGuardien(id: any) {
 updateGuardien(id: any) {
   console.log(`update ${id}`);
   this.router.navigate(['guardiens', id]);
-}// end of updateContact method
+}// end of updateGuardien method
 
 addGuardien( ) {
   console.log('Go to Guardien Form');

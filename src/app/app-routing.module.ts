@@ -50,9 +50,15 @@ const routes: Routes = [
 
 { path: 'contacts/:id', component: ContactComponent, canActivate: [AuthGuard], data: {roles: [Role.ADMIN, Role.USER]} },
 
+<<<<<<< HEAD
 { path : 'guardien', component:  ListGuardiensComponent ,canActivate:[AuthGuard],data:{roles:[Role.ADMIN,Role.USER]}},
+||||||| merged common ancestors
+{ path : 'guardien', component:  Guardien,canActivate:[AuthGuard],data:{roles:[Role.ADMIN,Role.USER]}},
+=======
+{ path : 'guardien', component:  Guardien, canActivate: [AuthGuard], data: {roles: [Role.ADMIN, Role.USER]} },
+>>>>>>> 151a5910ebc6633ef2866b24f4bcf0b182a386b0
 
-{path  : 'guardien/:id',component: Guardien,canActivate:[AuthGuard],data:{roles:[Role.ADMIN,Role.USER]}},
+{path  : 'guardien/:id', component: Guardien, canActivate: [AuthGuard], data: {roles: [Role.ADMIN, Role.USER]} },
 
 { path: 'logout', component: LogoutComponent, canActivate: [AuthGuard], data: {roles: [Role.ADMIN, Role.USER]} },
 

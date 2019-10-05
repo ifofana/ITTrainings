@@ -19,7 +19,7 @@ import { ListStudentsComponent } from './components/list-students/list-students.
 import { StudentComponent } from './components/student/student.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { ListContactsComponent} from './components/list-contacts/list-contacts.component';
-import { Guardien } from './models/Guardien';
+import { Guardien} from './models/Guardien';
 import { ListGuardiensComponent } from './components/list-guardiens/list-guardiens.component';
 
 const routes: Routes = [

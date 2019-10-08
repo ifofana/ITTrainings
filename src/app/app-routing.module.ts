@@ -22,6 +22,7 @@ import { ListContactsComponent} from './components/list-contacts/list-contacts.c
 import { Guardien} from './models/Guardien';
 import { ListGuardiensComponent } from './components/list-guardiens/list-guardiens.component';
 import { GuardienComponent } from './components/guardien/guardien.component';
+import { StepperComponent } from './components/stepper/stepper.component';
 
 const routes: Routes = [
 
@@ -33,6 +34,8 @@ const routes: Routes = [
 { path: 'register', component: RegisterComponent},
 
 // admin+user
+{ path: 'studentstepper', component: StepperComponent, canActivate: [AuthGuard], data: {roles: [Role.ADMIN, Role.USER]} },
+
 { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard], data: {roles: [Role.ADMIN, Role.USER]} },
 
 { path: 'detail/:id', component: DetailComponent, canActivate: [AuthGuard], data: {roles: [Role.ADMIN]} },

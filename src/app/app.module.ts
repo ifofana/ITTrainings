@@ -1,6 +1,7 @@
 /* Import diffent classes from @angular library */
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
@@ -31,6 +32,22 @@ import { ListContactsComponent } from './components/list-contacts/list-contacts.
 import { Guardien } from './models/Guardien';
 import { GuardienComponent } from './components/guardien/guardien.component';
 import { ListGuardiensComponent } from './components/list-guardiens/list-guardiens.component';
+import { StepperComponent } from './components/stepper/stepper.component';
+
+import { CdkStepperModule } from '@angular/cdk/stepper';
+
+import { 
+  MatStepperModule,
+  MatSelectModule, 
+  MatButtonModule, 
+  MatInputModule, 
+  MatListModule, 
+  MatGridListModule,
+  MatAutocompleteModule,
+  MatIconModule
+} from '@angular/material';
+
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 @NgModule({
   declarations: [
@@ -53,7 +70,8 @@ import { ListGuardiensComponent } from './components/list-guardiens/list-guardie
     ContactComponent,
     ListContactsComponent,
     GuardienComponent,
-    ListGuardiensComponent
+    ListGuardiensComponent,
+    StepperComponent
   ],
 
   imports: [
@@ -61,13 +79,24 @@ import { ListGuardiensComponent } from './components/list-guardiens/list-guardie
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    MatStepperModule,
+    MatInputModule,
+    MatButtonModule,
+    MatSelectModule,
+    MatAutocompleteModule,
+    BrowserAnimationsModule,
+    MatListModule,
+    MatGridListModule,
+    MatIconModule,
+    MatDatepickerModule,
     HttpClientModule
   ],
 
   providers: [
-     {provide: HTTP_INTERCEPTORS, useClass: HttpIntercepterBasicAuthService, multi: true}
+    { provide: HTTP_INTERCEPTORS, useClass: HttpIntercepterBasicAuthService, multi: true }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 
 export class AppModule { }

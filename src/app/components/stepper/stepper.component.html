@@ -1,0 +1,84 @@
+<mat-horizontal-stepper linear #stepper>
+    <mat-step [stepControl]="firstFormGroup" errorMessage="Name is required.">
+        <form [formGroup]="firstFormGroup">
+            <ng-template matStepLabel>Fill out Student Information Form</ng-template>
+            <div class="form-row">
+                <!--Input for Student First Name-->
+                <div class="form-group col-md-4">
+                    <mat-form-field matLine>
+                        <label>First Name:</label>
+                        <input matInput formControlName="firstCtrl" required>
+                    </mat-form-field>
+                </div>
+                <!--Input for Student Middle Name-->
+                <div class="form-group col-md-4">
+                    <mat-form-field matLine>
+                        <label>Middle Name:</label>
+                        <input matInput formControlName="middleCtrl" required>
+                    </mat-form-field>
+                </div>
+                <!--Input for Student Last Name-->
+                <div class="form-group col-md-4">
+                    <mat-form-field matLine>
+                        <label>Last Name:</label>
+                        <input matInput formControlName="lastCtrl" required>
+                    </mat-form-field>
+                </div>
+            </div>
+            <!--End of form row for Student's name-->
+            <div class="form-row">                 
+                <div class="form-group col-md-4">
+                    <mat-form-field matLine>
+                        <label>Gender:</label>
+                        <mat-select formControlName="genderCtrl">                            
+                            <mat-option [value]="choice" *ngFor="let choice of genderChoices">{{ choice }}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>       
+                <!-- <div class="form-group col-md-4">
+                    <mat-form-field matLine>
+                        <label>Date of Birth:</label>
+                        <input matInput [matDatepicker]="dobCtrl" placeholder="Choose a date">
+                        <mat-datepicker-toggle matSuffix [for]="dobCtrl"></mat-datepicker-toggle>
+                        <mat-datepicker #dobCtrl startView="year" [startAt]="startDate"></mat-datepicker>
+                    </mat-form-field>
+                </div>             -->
+            </div>
+            <div class="form-row">
+                <button mat-button matStepperNext class="btn btn-primary">Next</button>
+            </div>
+        </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup" errorMessage="Address is required.">
+        <form [formGroup]="secondFormGroup">
+            <ng-template matStepLabel>Fill out Contact Information Form</ng-template>
+            <mat-form-field>
+                <input matInput placeholder="Address" formControlName="secondCtrl" required>
+            </mat-form-field>
+            <div>
+                <button mat-button matStepperPrevious class="btn btn-primary">Back</button>
+                <button mat-button matStepperNext class="btn btn-primary">Next</button>
+            </div>
+        </form>
+    </mat-step>
+    <mat-step [stepControl]="thirdFormGroup" errorMessage="Email is required.">
+        <form [formGroup]="thirdFormGroup">
+            <ng-template matStepLabel>Fill out Guardian Information Form</ng-template>
+            <mat-form-field>
+                <input matInput placeholder="Email" formControlName="emailCtrl" required>
+            </mat-form-field>
+            <div>
+                <button mat-button matStepperPrevious class="btn btn-primary">Back</button>
+                <button mat-button matStepperNext class="btn btn-primary">Next</button>
+            </div>
+        </form>
+    </mat-step>
+    <mat-step>
+        <ng-template matStepLabel>Done</ng-template>
+        You are now done.
+        <div>
+            <button mat-button matStepperPrevious class="btn btn-primary">Back</button>
+            <button mat-button (click)="stepper.reset()" class="btn btn-primary">Reset</button>
+        </div>
+    </mat-step>
+</mat-horizontal-stepper>

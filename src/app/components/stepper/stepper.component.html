@@ -34,15 +34,19 @@
                             <mat-option [value]="choice" *ngFor="let choice of genderChoices">{{ choice }}</mat-option>
                         </mat-select>
                     </mat-form-field>
-                </div>       
-                <!-- <div class="form-group col-md-4">
-                    <mat-form-field matLine>
-                        <label>Date of Birth:</label>
-                        <input matInput [matDatepicker]="dobCtrl" placeholder="Choose a date">
-                        <mat-datepicker-toggle matSuffix [for]="dobCtrl"></mat-datepicker-toggle>
-                        <mat-datepicker #dobCtrl startView="year" [startAt]="startDate"></mat-datepicker>
+                </div> 
+                <div class="form-group col-md-4">
+                    <mat-form-field matLine>   
+                        <label>Date of Birth:</label>             
+                        <input matInput type="date" formControlName="dobCtrl">
                     </mat-form-field>
-                </div>             -->
+                </div>      
+                <div class="form-group col-md-4">                    
+                    <mat-form-field>
+                        <label>Age:</label>
+                        <input matInput type="number" formControlName="ageCtrl" required>    
+                    </mat-form-field>
+                </div>
             </div>
             <div class="form-row">
                 <button mat-button matStepperNext class="btn btn-primary">Next</button>

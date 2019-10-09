@@ -31,8 +31,9 @@ export class StepperComponent implements OnInit {
       firstCtrl: ['', Validators.required],
       middleCtrl: ['', Validators.required],
       lastCtrl: ['', Validators.required],
-      genderCtrl: ['', Validators.required]//,
-      //dobCtrl: ['', Validators.required]
+      genderCtrl: ['', Validators.required],
+      dobCtrl: ['', Validators.required],
+      ageCtrl: ['', Validators.required]
     });
     this.secondFormGroup = this._formBuilder.group({
       secondCtrl: ['', Validators.required]

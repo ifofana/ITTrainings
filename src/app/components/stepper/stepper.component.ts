@@ -24,6 +24,21 @@ export class StepperComponent implements OnInit {
     'Female'
   ];
 
+  dayChoices = [
+    'Saturday',
+    'Sunday'
+  ];
+
+  ageGroupChoices = [
+    'Foundition - 5 & 6 years old',
+    'Beginner - 7 & 8 years old',
+    'Intermediate - 9 & 10 years old',
+    'Proficient - 11 & 12 years old',
+    'Advanced - 13 & 14 years old',
+    'Youth - 15 & 16 years old',
+    'Adult - 17 & 18 years old'
+  ];
+
   // Flag for the text area, default is hidden
   isShown = false;
 
@@ -38,7 +53,9 @@ export class StepperComponent implements OnInit {
       dobCtrl: ['', Validators.required],
       ageCtrl: ['', Validators.required],
       alCheckCtrl: ['', Validators.required],
-      alergiesCtrl: ['', Validators.required]
+      alergiesCtrl: ['', Validators.required],
+      classDayCtrl: ['', Validators.required],
+      classSelectionCtrl: ['', Validators.required]
     });
     this.secondFormGroup = this._formBuilder.group({
       secondCtrl: ['', Validators.required]

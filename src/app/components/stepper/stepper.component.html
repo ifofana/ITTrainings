@@ -12,10 +12,10 @@
                 </div>
                 <!--Input for Student Middle Name-->
                 <div class="form-group col-md-4">
-                    <mat-form-field matLine>
-                        <label>Middle Name:</label>
-                        <input matInput formControlName="middleCtrl" required>
-                    </mat-form-field>
+                	<mat-form-field matLine>
+                		<label>Middle Name:</label>
+                   		<input matInput formControlName="middleCtrl" required>
+                	</mat-form-field>
                 </div>
                 <!--Input for Student Last Name-->
                 <div class="form-group col-md-4">
@@ -52,14 +52,30 @@
                 <div class="form-group col-md-4">                    
                     <input type="checkbox" formControlName="alCheckCtrl" (change)="onChkChange()">Allergies/Medical Conditions
                 </div>
-            </div>
-            <div class="form-row">           
                 <!--If the user checks the checkbox then textArea will appear-->      
-                <div class="form-group" *ngIf="isShown">
+                <div class="form-group col-md-4" *ngIf="isShown">
                     <mat-form-field>
-                        <textarea matInput 
+                        <textarea matInput required="isShown"
                             formControlName="alergiesCtrl">
                         </textarea>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="form-row">                 
+                <div class="form-group col-md-4">
+                    <mat-form-field matLine>
+                        <label>Select of Day:</label>
+                        <mat-select formControlName="classDayCtrl">                            
+                            <mat-option [value]="choice" *ngFor="let choice of dayChoices">{{ choice }}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div> 
+                <div class="form-group col-md-4">
+                    <mat-form-field matLine>
+                        <label>Select the class according to age group:</label>
+                        <mat-select formControlName="classSelectionCtrl">                            
+                            <mat-option [value]="choice" *ngFor="let choice of ageGroupChoices">{{ choice }}</mat-option>
+                        </mat-select>
                     </mat-form-field>
                 </div>
             </div>

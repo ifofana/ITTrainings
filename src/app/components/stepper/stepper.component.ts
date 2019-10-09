@@ -24,6 +24,9 @@ export class StepperComponent implements OnInit {
     'Female'
   ];
 
+  // Flag for the text area, default is hidden
+  isShown = false;
+
   constructor(private _formBuilder: FormBuilder) { }
 
   ngOnInit() {
@@ -33,7 +36,9 @@ export class StepperComponent implements OnInit {
       lastCtrl: ['', Validators.required],
       genderCtrl: ['', Validators.required],
       dobCtrl: ['', Validators.required],
-      ageCtrl: ['', Validators.required]
+      ageCtrl: ['', Validators.required],
+      alCheckCtrl: ['', Validators.required],
+      alergiesCtrl: ['', Validators.required]
     });
     this.secondFormGroup = this._formBuilder.group({
       secondCtrl: ['', Validators.required]
@@ -43,6 +48,11 @@ export class StepperComponent implements OnInit {
     });
   }
 
+  // When isShown flag is true then the onChkChange be tell the text area to be seen
+  onChkChange() {
+    console.log('Checked value changed.');
+    this.isShown = ! this.isShown;
+  }
 }
 
 export class DatepickerStartViewExample {

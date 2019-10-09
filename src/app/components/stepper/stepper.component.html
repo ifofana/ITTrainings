@@ -48,6 +48,21 @@
                     </mat-form-field>
                 </div>
             </div>
+            <div class="form-row">                 
+                <div class="form-group col-md-4">                    
+                    <input type="checkbox" formControlName="alCheckCtrl" (change)="onChkChange()">Allergies/Medical Conditions
+                </div>
+            </div>
+            <div class="form-row">           
+                <!--If the user checks the checkbox then textArea will appear-->      
+                <div class="form-group" *ngIf="isShown">
+                    <mat-form-field>
+                        <textarea matInput 
+                            formControlName="alergiesCtrl">
+                        </textarea>
+                    </mat-form-field>
+                </div>
+            </div>
             <div class="form-row">
                 <button mat-button matStepperNext class="btn btn-primary">Next</button>
             </div>

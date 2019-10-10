@@ -1,7 +1,7 @@
 <mat-horizontal-stepper linear #stepper>
     <mat-step [stepControl]="firstFormGroup" errorMessage="Name is required.">
         <form [formGroup]="firstFormGroup">
-            <ng-template matStepLabel>Fill out Student Information Form</ng-template>
+            <ng-template matStepLabel><h3 class="head text-center">Fill out Student Info Form</h3></ng-template>
             <div class="form-row">
                 <!--Input for Student First Name-->
                 <div class="form-group col-md-4">
@@ -84,7 +84,7 @@
     </mat-step>
     <mat-step [stepControl]="secondFormGroup" errorMessage="Address is required.">
         <form [formGroup]="secondFormGroup">
-            <ng-template matStepLabel>Fill out Contact Information Form</ng-template>
+            <ng-template matStepLabel><h3 class="head text-center">Fill out Contact Info Form</h3></ng-template>
             <div class="form-row">                
                 <div class="form-group col-md-4">                   
                     <mat-form-field>
@@ -135,7 +135,7 @@
     </mat-step>
     <mat-step [stepControl]="thirdFormGroup" errorMessage="Email is required.">
         <form [formGroup]="thirdFormGroup">
-            <ng-template matStepLabel>Fill out Guardian Information Form</ng-template>             
+            <ng-template matStepLabel><h3 class="head text-center">Fill out Guardian Info Form</h3></ng-template>             
             <mat-form-field>
                 <label>Full Name:</label>
                 <input matInput formControlName="guardianFullNameCtrl" required>
@@ -199,7 +199,7 @@
         </form>
     </mat-step>
     <mat-step>
-        <ng-template matStepLabel>Done</ng-template>
+        <ng-template matStepLabel><h3 class="head text-center">Done</h3></ng-template>
         You are now done.
         <div>
             <button mat-button matStepperPrevious class="btn btn-primary">Back</button>

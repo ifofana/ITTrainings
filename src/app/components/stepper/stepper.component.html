@@ -52,15 +52,13 @@
                 <div class="form-group col-md-4">                    
                     <input type="checkbox" formControlName="alCheckCtrl" (change)="onChkChange()">Allergies/Medical Conditions
                 </div>
-                <!--If the user checks the checkbox then textArea will appear-->      
-                <div class="form-group col-md-4" *ngIf="isShown">
-                    <mat-form-field>
-                        <textarea matInput required="isShown"
-                            formControlName="alergiesCtrl">
-                        </textarea>
-                    </mat-form-field>
-                </div>
             </div>
+            <!--If the user checks the checkbox then textArea will appear-->
+            <mat-form-field *ngIf="isShown">
+                <textarea matInput required="isShown"
+                    formControlName="alergiesCtrl">
+                </textarea>
+            </mat-form-field>
             <div class="form-row">                 
                 <div class="form-group col-md-4">
                     <mat-form-field matLine>
@@ -90,6 +88,9 @@
             <mat-form-field>
                 <input matInput placeholder="Address" formControlName="secondCtrl" required>
             </mat-form-field>
+            <mat-form-field>
+                    <input matInput placeholder="Address" formControlName="secondCtrl" required>
+                </mat-form-field>
             <div>
                 <button mat-button matStepperPrevious class="btn btn-primary">Back</button>
                 <button mat-button matStepperNext class="btn btn-primary">Next</button>

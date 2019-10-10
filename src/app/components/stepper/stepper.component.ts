@@ -66,7 +66,12 @@ export class StepperComponent implements OnInit {
       contactAltEmailCtrl: ['', Validators.required]
     });
     this.thirdFormGroup = this._formBuilder.group({
-      emailCtrl: ['', Validators.required]
+      guardianFullNameCtrl: ['', Validators.required],
+      guardianAddressOneCtrl: ['', Validators.required],
+      guardianAddressTwoCtrl: ['', Validators.required],
+      guardianCityCtrl: ['', Validators.required],
+      guardianStateCtrl: ['', Validators.required],
+      guardianZipCodeCtrl: ['', Validators.required]
     });
   }
 

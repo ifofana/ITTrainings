@@ -88,35 +88,41 @@
             <div class="form-row">                
                 <div class="form-group col-md-4">                   
                     <mat-form-field>
-                        <input matInput placeholder="Full Name:" formControlName="contactFullNameCtrl" required>
+                        <label>Full Name:</label>
+                        <input matInput formControlName="contactFullNameCtrl" required>
                     </mat-form-field>
                 </div>                
                 <div class="form-group col-md-4">
                     <mat-form-field>
-                        <input matInput placeholder="Relationship to Student:" formControlName="contactRelationshipToStudentCtrl" required>
+                        <label>Relationship to Student:</label>
+                        <input matInput formControlName="contactRelationshipToStudentCtrl" required>
                     </mat-form-field>
                 </div>               
             </div>
             <div class="form-row">                
                 <div class="form-group col-md-4">                   
                     <mat-form-field>
-                        <input matInput placeholder="Primary Phone Number:" formControlName="contactPhoneNumberCtrl" required>
+                        <label>Primary Phone Number:</label>
+                        <input matInput formControlName="contactPhoneNumberCtrl" required>
                     </mat-form-field>
                 </div>                
                 <div class="form-group col-md-4">
                     <mat-form-field>
-                        <input matInput placeholder="Alt Phone Number:" formControlName="contactAltPhoneNumberCtrl" required>
+                        <label>Alt Phone Number:</label>
+                        <input matInput formControlName="contactAltPhoneNumberCtrl" required>
                     </mat-form-field>
                 </div>                
             </div>
             <div class="form-row">                
                 <div class="form-group col-md-4">                   
                     <mat-form-field>
-                        <input matInput placeholder="Primary Email:" formControlName="contactEmailCtrl" required>
+                        <label>Primary Email:</label>
+                        <input matInput formControlName="contactEmailCtrl" required>
                     </mat-form-field>
                 </div>                
                 <div class="form-group col-md-4">
                     <mat-form-field>
+                        <label>Alt Email:</label>
                         <input matInput placeholder="Alt Email:" formControlName="contactAltEmailCtrl" required>
                     </mat-form-field>
                 </div>              
@@ -129,10 +135,39 @@
     </mat-step>
     <mat-step [stepControl]="thirdFormGroup" errorMessage="Email is required.">
         <form [formGroup]="thirdFormGroup">
-            <ng-template matStepLabel>Fill out Guardian Information Form</ng-template>
+            <ng-template matStepLabel>Fill out Guardian Information Form</ng-template>             
             <mat-form-field>
-                <input matInput placeholder="Email" formControlName="emailCtrl" required>
-            </mat-form-field>
+                <label>Full Name:</label>
+                <input matInput formControlName="guardianFullNameCtrl" required>
+            </mat-form-field>     
+            <mat-form-field>
+                <label>Street Address One:</label>
+                <input matInput formControlName="guardianAddressOneCtrl" required>
+            </mat-form-field>   
+            <mat-form-field>
+                <label>Street Address Two:</label>
+                <input matInput formControlName="guardianAddressTwoCtrl" required>
+            </mat-form-field> 
+            <div class="form-row">                
+                <div class="form-group col-md-4">                   
+                    <mat-form-field>
+                        <label>City:</label>
+                        <input matInput formControlName="guardianCityCtrl" required>
+                    </mat-form-field>
+                </div>                
+                <div class="form-group col-md-4">
+                    <mat-form-field>
+                        <label>State:</label>
+                        <input matInput formControlName="guardianStateCtrl" required>
+                    </mat-form-field>
+                </div>         
+                <div class="form-group col-md-4">
+                    <mat-form-field>
+                        <label>Zip:</label>
+                        <input matInput formControlName="guardianZipCodeCtrl" required>
+                    </mat-form-field>
+                </div>     
+            </div>    
             <div>
                 <button mat-button matStepperPrevious class="btn btn-primary">Back</button>
                 <button mat-button matStepperNext class="btn btn-primary">Next</button>

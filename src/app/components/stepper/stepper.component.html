@@ -85,12 +85,42 @@
     <mat-step [stepControl]="secondFormGroup" errorMessage="Address is required.">
         <form [formGroup]="secondFormGroup">
             <ng-template matStepLabel>Fill out Contact Information Form</ng-template>
-            <mat-form-field>
-                <input matInput placeholder="Address" formControlName="secondCtrl" required>
-            </mat-form-field>
-            <mat-form-field>
-                    <input matInput placeholder="Address" formControlName="secondCtrl" required>
-                </mat-form-field>
+            <div class="form-row">                
+                <div class="form-group col-md-4">                   
+                    <mat-form-field>
+                        <input matInput placeholder="Full Name:" formControlName="contactFullNameCtrl" required>
+                    </mat-form-field>
+                </div>                
+                <div class="form-group col-md-4">
+                    <mat-form-field>
+                        <input matInput placeholder="Relationship to Student:" formControlName="contactRelationshipToStudentCtrl" required>
+                    </mat-form-field>
+                </div>               
+            </div>
+            <div class="form-row">                
+                <div class="form-group col-md-4">                   
+                    <mat-form-field>
+                        <input matInput placeholder="Primary Phone Number:" formControlName="contactPhoneNumberCtrl" required>
+                    </mat-form-field>
+                </div>                
+                <div class="form-group col-md-4">
+                    <mat-form-field>
+                        <input matInput placeholder="Alt Phone Number:" formControlName="contactAltPhoneNumberCtrl" required>
+                    </mat-form-field>
+                </div>                
+            </div>
+            <div class="form-row">                
+                <div class="form-group col-md-4">                   
+                    <mat-form-field>
+                        <input matInput placeholder="Primary Email:" formControlName="contactEmailCtrl" required>
+                    </mat-form-field>
+                </div>                
+                <div class="form-group col-md-4">
+                    <mat-form-field>
+                        <input matInput placeholder="Alt Email:" formControlName="contactAltEmailCtrl" required>
+                    </mat-form-field>
+                </div>              
+            </div>            
             <div>
                 <button mat-button matStepperPrevious class="btn btn-primary">Back</button>
                 <button mat-button matStepperNext class="btn btn-primary">Next</button>

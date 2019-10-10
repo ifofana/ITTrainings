@@ -167,7 +167,31 @@
                         <input matInput formControlName="guardianZipCodeCtrl" required>
                     </mat-form-field>
                 </div>     
-            </div>    
+            </div>  
+            <div class="form-row">                
+                <div class="form-group col-md-4">                   
+                    <mat-form-field>
+                        <label>Primary Phone Number:</label>
+                        <input matInput formControlName="guardianPhoneNumberCtrl" required>
+                    </mat-form-field>  
+                </div>                
+                <div class="form-group col-md-4">              
+                    <mat-form-field>
+                        <label>Alt Phone Number:</label>
+                        <input matInput formControlName="guardianAltPhoneNumberCtrl" required>
+                    </mat-form-field>
+                </div>
+                <div class="form-group col-md-4">                   
+                    <mat-form-field>
+                        <label>Primary Email:</label>
+                        <input matInput formControlName="guardianEmailCtrl" required>
+                    </mat-form-field>                
+                    <mat-form-field>
+                        <label>Alt Email:</label>
+                        <input matInput placeholder="Alt Email:" formControlName="guardianAltEmailCtrl" required>
+                    </mat-form-field>
+                </div>              
+            </div>   
             <div>
                 <button mat-button matStepperPrevious class="btn btn-primary">Back</button>
                 <button mat-button matStepperNext class="btn btn-primary">Next</button>

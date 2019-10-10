@@ -71,7 +71,11 @@ export class StepperComponent implements OnInit {
       guardianAddressTwoCtrl: ['', Validators.required],
       guardianCityCtrl: ['', Validators.required],
       guardianStateCtrl: ['', Validators.required],
-      guardianZipCodeCtrl: ['', Validators.required]
+      guardianZipCodeCtrl: ['', Validators.required],
+      guardianPhoneNumberCtrl: ['', Validators.required],
+      guardianAltPhoneNumberCtrl: ['', Validators.required],
+      guardianEmailCtrl: ['', Validators.required],
+      guardianAltEmailCtrl: ['', Validators.required]
     });
   }
 

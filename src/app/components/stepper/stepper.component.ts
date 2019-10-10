@@ -42,6 +42,8 @@ export class StepperComponent implements OnInit {
   // Flag for the text area, default is hidden
   isShown = false;
 
+  formSubmitted: boolean = false;
+
   constructor(private _formBuilder: FormBuilder) { }
 
   ngOnInit() {
@@ -83,6 +85,14 @@ export class StepperComponent implements OnInit {
   onChkChange() {
     console.log('Checked value changed.');
     this.isShown = ! this.isShown;
+  }
+
+  submit() {
+    console.log('submitted');
+    console.log(this.firstFormGroup.value);
+    console.log(this.secondFormGroup.value);
+    console.log(this.thirdFormGroup.value);
+    this.formSubmitted = true;
   }
 }
 

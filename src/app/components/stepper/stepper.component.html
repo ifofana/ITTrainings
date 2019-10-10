@@ -200,10 +200,27 @@
     </mat-step>
     <mat-step>
         <ng-template matStepLabel><h3 class="head text-center">Done</h3></ng-template>
-        You are now done.
+        <p class="narrow text-center">
+            You are now done. Here is a copy of the information you have entered:
+        </p>
+        <div class="row">
+            <div class="col-xs-offset-1 col-xs-10 col-sm-offset-3 col-sm-8 col-md-offset-4 col-md-8">                    
+                <div *ngIf="formSubmitted">
+                    <h4>Details submitted successfully</h4>
+                </div>
+                <div *ngIf="!formSubmitted">
+                    <h4>Following details submitted, please confirm and hit submit</h4>
+                    <br/>Student Full Name: {{firstFormGroup.get('firstCtrl').value}} 
+                        {{firstFormGroup.get('lastCtrl').value}}
+                    <br/>Contact Email : {{secondFormGroup.get('contactEmailCtrl').value}}
+                    <br/>Guardian Full Name :{{thirdFormGroup.get('guardianFullNameCtrl').value}}                    
+                </div>
+            </div>
+        </div>
         <div>
             <button mat-button matStepperPrevious class="btn btn-primary">Back</button>
             <button mat-button (click)="stepper.reset()" class="btn btn-primary">Reset</button>
+            <button mat-button (click)="submit()" class="btn btn-primary">Submit</button>
         </div>
     </mat-step>
 </mat-horizontal-stepper>

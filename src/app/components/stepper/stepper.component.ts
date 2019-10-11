@@ -1,6 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
+import { Student } from 'src/app/models/student';
+import { StudentDataService } from 'src/app/services/student-data.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { User } from 'src/app/models/user';
 
 /**
  * @title Stepper that displays errors in the steps
@@ -44,7 +48,13 @@ export class StepperComponent implements OnInit {
 
   formSubmitted: boolean = false;
 
-  constructor(private _formBuilder: FormBuilder) { }
+  student: Student;
+  currentUser: User;
+
+  constructor(private studentService: StudentDataService, 
+    private route: ActivatedRoute, 
+    private router: Router,
+    private _formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.firstFormGroup = this._formBuilder.group({
@@ -79,6 +89,8 @@ export class StepperComponent implements OnInit {
       guardianEmailCtrl: ['', Validators.required],
       guardianAltEmailCtrl: ['', Validators.required]
     });
+
+    this.student = new Student( );
   }
 
   // When isShown flag is true then the onChkChange be tell the text area to be seen
@@ -93,6 +105,23 @@ export class StepperComponent implements OnInit {
     console.log(this.secondFormGroup.value);
     console.log(this.thirdFormGroup.value);
     this.formSubmitted = true;
+    this.student.firstName = this.firstFormGroup.get('firstCtrl').value;
+    this.student.middlename = this.firstFormGroup.get('middleCtrl').value;
+    this.student.lastName = this.firstFormGroup.get('lastCtrl').value;
+    this.student.gender = this.firstFormGroup.get('genderCtrl').value;
+    this.student.dob = this.firstFormGroup.get('dobCtrl').value;
+    this.student.age = this.firstFormGroup.get('ageCtrl').value;
+    this.student.allerges = this.firstFormGroup.get('alergiesCtrl').value;
+    this.student.classDay = this.firstFormGroup.get('classDayCtrl').value;
+    this.student.classSelection = this.firstFormGroup.get('classSelectionCtrl').value;
+    console.log(' ************* create Student! ');
+    this.studentService.createStudent(this.student)
+    .subscribe(
+      data => {
+        console.log(data);
+        this.router.navigate(['students']);
+      }
+    );
   }
 }
 

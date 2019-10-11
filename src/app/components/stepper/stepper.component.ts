@@ -42,6 +42,8 @@ export class StepperComponent implements OnInit {
   // Flag for the text area, default is hidden
   isShown = false;
 
+  formSubmitted: boolean = false;
+
   constructor(private _formBuilder: FormBuilder) { }
 
   ngOnInit() {
@@ -66,7 +68,16 @@ export class StepperComponent implements OnInit {
       contactAltEmailCtrl: ['', Validators.required]
     });
     this.thirdFormGroup = this._formBuilder.group({
-      emailCtrl: ['', Validators.required]
+      guardianFullNameCtrl: ['', Validators.required],
+      guardianAddressOneCtrl: ['', Validators.required],
+      guardianAddressTwoCtrl: ['', Validators.required],
+      guardianCityCtrl: ['', Validators.required],
+      guardianStateCtrl: ['', Validators.required],
+      guardianZipCodeCtrl: ['', Validators.required],
+      guardianPhoneNumberCtrl: ['', Validators.required],
+      guardianAltPhoneNumberCtrl: ['', Validators.required],
+      guardianEmailCtrl: ['', Validators.required],
+      guardianAltEmailCtrl: ['', Validators.required]
     });
   }
 
@@ -74,6 +85,14 @@ export class StepperComponent implements OnInit {
   onChkChange() {
     console.log('Checked value changed.');
     this.isShown = ! this.isShown;
+  }
+
+  submit() {
+    console.log('submitted');
+    console.log(this.firstFormGroup.value);
+    console.log(this.secondFormGroup.value);
+    console.log(this.thirdFormGroup.value);
+    this.formSubmitted = true;
   }
 }
 

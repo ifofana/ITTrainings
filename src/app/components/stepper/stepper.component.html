@@ -210,10 +210,34 @@
                 </div>
                 <div *ngIf="!formSubmitted">
                     <h4>Following details submitted, please confirm and hit submit</h4>
-                    <br/>Student Full Name: {{firstFormGroup.get('firstCtrl').value}} 
+                    <br/><br/><b>Student Info</b>
+                    <br/>Full Name: {{firstFormGroup.get('firstCtrl').value}} 
+                        {{firstFormGroup.get('middleCtrl').value}}
                         {{firstFormGroup.get('lastCtrl').value}}
-                    <br/>Contact Email : {{secondFormGroup.get('contactEmailCtrl').value}}
-                    <br/>Guardian Full Name :{{thirdFormGroup.get('guardianFullNameCtrl').value}}                    
+                    <br/>Gender: {{firstFormGroup.get('genderCtrl').value}}
+                    <br/>Date of Birth: {{firstFormGroup.get('dobCtrl').value}}
+                    <br/>Age: {{firstFormGroup.get('ageCtrl').value}}
+                    <br/>Allergies/Medical Conditions: {{firstFormGroup.get('alergiesCtrl').value}}
+                    <br/>Class Day: {{firstFormGroup.get('classDayCtrl').value}}
+                    <br/>Age Group Selection: {{firstFormGroup.get('classSelectionCtrl').value}}
+                    <br/><br/><b>Contact Info</b>
+                    <br/>Full Name: {{secondFormGroup.get('contactFullNameCtrl').value}}
+                    <br/>Relationship to Student: {{secondFormGroup.get('contactRelationshipToStudentCtrl').value}}
+                    <br/>Primary Phone Number: {{secondFormGroup.get('contactPhoneNumberCtrl').value}}
+                    <br/>Alt Phone Number: {{secondFormGroup.get('contactAltPhoneNumberCtrl').value}}
+                    <br/>Primary Email: {{secondFormGroup.get('contactEmailCtrl').value}}
+                    <br/>Alt Email: {{secondFormGroup.get('contactAltEmailCtrl').value}}
+                    <br/><br/><b>Guardian Info</b>
+                    <br/>Guardian Full Name: {{thirdFormGroup.get('guardianFullNameCtrl').value}}
+                    <br/>Street Address One: {{thirdFormGroup.get('guardianAddressOneCtrl').value}}
+                    <br/>Street Address Two: {{thirdFormGroup.get('guardianAddressTwoCtrl').value}}
+                    <br/>City: {{thirdFormGroup.get('guardianCityCtrl').value}}
+                    <br/>State: {{thirdFormGroup.get('guardianStateCtrl').value}}
+                    <br/>Zip: {{thirdFormGroup.get('guardianZipCodeCtrl').value}}
+                    <br/>Primary Phone Number: {{thirdFormGroup.get('guardianPhoneNumberCtrl').value}}
+                    <br/>Alt Phone Number: {{thirdFormGroup.get('guardianAltPhoneNumberCtrl').value}}
+                    <br/>Primary Email: {{thirdFormGroup.get('guardianEmailCtrl').value}}
+                    <br/>Alt Email: {{thirdFormGroup.get('guardianAltEmailCtrl').value}}
                 </div>
             </div>
         </div>

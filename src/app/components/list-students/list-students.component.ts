@@ -47,7 +47,7 @@ export class ListStudentsComponent implements OnInit {
 
   addStudent() {
     console.log('Go to Student Form');
-    this.router.navigate(['students', -1]);
+    this.router.navigate(['studentstepper']);
   }
 
 }

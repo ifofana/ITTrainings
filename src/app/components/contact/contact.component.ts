@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { ContactDataService } from '../../services/contact-data.service';
-import { Contact } from 'src/app/models/contact';
+import { Contact } from '../../models/contact';
 import { User } from 'src/app/models/user';
 
 @Component({

@@ -5,7 +5,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import {map} from 'rxjs/operators';
 
 import { User } from '../models/user';
-import { API_URL } from '../app.constants';
+import { API_URL, AUTHENTICATED_USER } from '../app.constants';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +16,7 @@ export class UserService {
   private currentUserSubject: BehaviorSubject<User>;
 
   constructor(private http: HttpClient) {
-    this.currentUserSubject = new BehaviorSubject<User> (JSON.parse(localStorage.getItem('currentUser')));
+    this.currentUserSubject = new BehaviorSubject<User> (JSON.parse(localStorage.getItem(AUTHENTICATED_USER)));
     this.currentUser = this.currentUserSubject.asObservable();
   }
 
@@ -32,7 +32,7 @@ export class UserService {
     return this.http.get<any> (API_URL + '/api/user/login', {headers}).pipe(
       map(response => {
         if (response) {
-          localStorage.setItem('currentUser', JSON.stringify(response));
+          localStorage.setItem(AUTHENTICATED_USER, JSON.stringify(response));
           this.currentUserSubject.next(response);
         }
         return response;
@@ -43,7 +43,7 @@ export class UserService {
   logOut( ): Observable<any> {
     return this.http.post(API_URL + '/api/user/logout', {}).pipe(
       map(response => {
-        localStorage.removeItem('currentUser');
+        localStorage.removeItem(AUTHENTICATED_USER);
         this.currentUserSubject.next(null);
       })
     );
@@ -55,7 +55,7 @@ export class UserService {
   }
 
   public get isUserLoggedIn( ) {
-    const user = sessionStorage.getItem('currentUser');
+    const user = sessionStorage.getItem(AUTHENTICATED_USER);
     return !(user === null);
   }
 

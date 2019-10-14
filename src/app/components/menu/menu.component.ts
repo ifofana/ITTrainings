@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthenticationService } from '../../service/authentication.service';
+import { User } from 'src/app/models/user';
+import { UserService } from 'src/app/services/user.service';
+import { Router } from '@angular/router';
+import { Role } from 'src/app/models/role';
 
 @Component({
   selector: 'app-menu',
@@ -8,12 +11,27 @@ import { AuthenticationService } from '../../service/authentication.service';
 })
 export class MenuComponent implements OnInit {
 
-  isUserLoggedIn = false;
+  currentUser: User;
 
-  constructor(private authenticationService: AuthenticationService) { }
+  constructor(private userService: UserService, private router: Router) { 
+    this.userService.currentUser.subscribe(data => {
+      this.currentUser = data;
+    });
+  }
 
   ngOnInit() {
-  this.isUserLoggedIn = this.authenticationService.isUserLoggedIn();
+  
+  }
+
+  logOut( ) {
+    this.userService.logOut().subscribe(data => {
+      sessionStorage.removeItem('currentUser');
+      this.router.navigate(['/login']);
+    });
+  }
+
+  get isAdmin( ) {
+    return this.currentUser && this.currentUser.role === Role.ADMIN;
   }
 
 }

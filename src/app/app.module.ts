@@ -7,9 +7,6 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 
-/* Import HttpIntercepterBasicAuthService class from http-intercepter-basic-auth.service package */
-import { HttpIntercepterBasicAuthService } from './service/http/http-intercepter-basic-auth.service';
-
 /* Import different componet classes from user component packages */
 import { AppComponent } from './app.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
@@ -92,9 +89,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
     HttpClientModule
   ],
 
-  providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: HttpIntercepterBasicAuthService, multi: true }
-  ],
+  providers: [],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

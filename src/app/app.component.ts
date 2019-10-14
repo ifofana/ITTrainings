@@ -18,23 +18,12 @@ import { Role } from './models/role';
 
 export class AppComponent {
   title = 'IITrainings';
-  currentUser: User;
+  
 
   constructor(private userService: UserService, private router: Router) {
-    this.userService.currentUser.subscribe(data => {
-      this.currentUser = data;
-    });
+    
   }
 
-  logOut( ) {
-    this.userService.logOut().subscribe(data => {
-      sessionStorage.removeItem('currentUser');
-      this.router.navigate(['/login']);
-    });
-  }
-
-  get isAdmin( ) {
-    return this.currentUser && this.currentUser.role === Role.ADMIN;
-  }
+  
 
 } // end AppComponent class

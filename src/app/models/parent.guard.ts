@@ -1,4 +1,4 @@
-export class Guardien {
+export class ParentGuard {
     id: number;
     name: string;
     addressOne: string;
@@ -10,4 +10,5 @@ export class Guardien {
     altPhoneNumber: string;
     email: string;
     altEmail: string;
+    pgRelationshipToStudent: string;
 }

@@ -17,7 +17,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from '../models/user';
 import { API_URL } from 'src/app/app.constants';
-import { Guardien } from '../models/Guardien';
+import { ParentGuard } from '../models/parent.guard';
 
 @Injectable({
     providedIn: 'root'
@@ -38,7 +38,7 @@ import { Guardien } from '../models/Guardien';
 
     // This method get all the Guardien
     retrieveAllGuardien( ):Observable<any> {
-      return this.http.get<Guardien[ ]>(`${API_URL}/api/guardien`, {headers: this.headers});
+      return this.http.get<ParentGuard[ ]>(`${API_URL}/api/guardien`, {headers: this.headers});
     } // end of retrieveAllguardiens method
 
     // This method delete a Guardien
@@ -50,14 +50,14 @@ import { Guardien } from '../models/Guardien';
      * This method get one of the guardien by its id number
      */
     retrieveGuardien(id: any) {
-      return this.http.get<Guardien>(`${API_URL}/api/guardien/${id}`, {headers: this.headers} );
+      return this.http.get<ParentGuard>(`${API_URL}/api/guardien/${id}`, {headers: this.headers} );
     }// end of retrieveGuardien method
 
     // Update guardien information form
     updateGuardien(id , Gardien) {
       console.log('=====================> updateGuardien');
       console.log('=====================> ' + id);
-      return this.http.put(`${API_URL}/api/guardien/${id}`, Guardien, {headers: this.headers});
+      return this.http.put(`${API_URL}/api/guardien/${id}`, ParentGuard, {headers: this.headers});
     }
 
     // Create a guardieninformation

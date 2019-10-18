@@ -19,7 +19,7 @@ import { ListStudentsComponent } from './components/list-students/list-students.
 import { StudentComponent } from './components/student/student.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { ListContactsComponent} from './components/list-contacts/list-contacts.component';
-import { Guardien} from './models/Guardien';
+import { ParentGuard} from './models/parent.guard';
 import { ListGuardiensComponent } from './components/list-guardiens/list-guardiens.component';
 import { GuardienComponent } from './components/guardien/guardien.component';
 import { StepperComponent } from './components/stepper/stepper.component';

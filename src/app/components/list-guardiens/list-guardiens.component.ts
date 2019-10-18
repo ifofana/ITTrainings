@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Guardien } from 'src/app/models/Guardien';
+import { ParentGuard } from 'src/app/models/parent.guard';
 import { Router } from '@angular/router';
 import { GuardienDataService } from 'src/app/services/guardien.services';
 
@@ -9,7 +9,7 @@ import { GuardienDataService } from 'src/app/services/guardien.services';
   styleUrls: ['./list-guardiens.component.css']
 })
 export class ListGuardiensComponent implements OnInit {
-guardiens:Guardien[];
+guardiens:ParentGuard[];
 message:string;
   constructor(private guardienService:GuardienDataService, private router :Router) { }
 

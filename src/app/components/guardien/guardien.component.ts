@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Guardien } from 'src/app/models/Guardien';
+import { ParentGuard } from 'src/app/models/parent.guard';
 import { ActivatedRoute, Router } from '@angular/router';
 import { GuardienDataService } from '..//..//services/guardien.services';
 import { User } from 'src/app/models/user';
@@ -11,7 +11,7 @@ import { User } from 'src/app/models/user';
 })
 export class GuardienComponent implements OnInit {
 id: number;
-guardien: Guardien;
+guardien: ParentGuard;
 currentUser: User;
 
   constructor(private guardienService: GuardienDataService,
@@ -22,7 +22,7 @@ currentUser: User;
 
   ngOnInit() {
     this.id = this.route.snapshot.params.id;
-    this.guardien = new Guardien();
+    this.guardien = new ParentGuard();
     if (this.id !== -1) {
       this.guardienService.retrieveGuardien(this.id).subscribe(
           data => this.guardien = data

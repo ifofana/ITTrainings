@@ -10,4 +10,10 @@ export class Student {
   allerges: string;
   classSelection: string;
   classDay: string;
+
+  displayName(): any {
+    return this.firstName + ' ' + this.middlename + ' ' + this.lastName + ' '
+      + this.dob + ' ' + this.age + ' ' + this.gender + ' ' + this.allerges + ' '
+      + this.classSelection + ' ' + this.classDay;
   }
+}

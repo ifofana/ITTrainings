@@ -14,7 +14,7 @@ import { User } from 'src/app/models/user';
   templateUrl: './stepper.component.html',
   styleUrls: ['./stepper.component.css'],
   providers: [{
-    provide: STEPPER_GLOBAL_OPTIONS, useValue: {showError: true}
+    provide: STEPPER_GLOBAL_OPTIONS, useValue: {showError: false}
   }]
 })
 

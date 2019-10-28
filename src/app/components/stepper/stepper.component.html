@@ -1,5 +1,5 @@
-<mat-horizontal-stepper linear #stepper>
-    <mat-step [stepControl]="firstFormGroup" errorMessage="Name is required.">
+<mat-horizontal-stepper #stepper>
+    <mat-step [stepControl]="firstFormGroup">
         <form [formGroup]="firstFormGroup">
             <ng-template matStepLabel><h3 class="head text-center">Fill out Student Info Form</h3></ng-template>
             <div class="form-row">

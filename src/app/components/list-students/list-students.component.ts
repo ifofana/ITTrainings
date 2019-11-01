@@ -48,6 +48,10 @@ export class ListStudentsComponent implements OnInit {
   addStudent() {
     console.log('Go to Student Form');
     this.router.navigate(['studentstepper']);
-  }
 
 }
+    viewStudentDetails(id:any){
+      console.log('Go to StudentDetailsComponent');
+    this.router.navigate(['studentdetails']);
+    }
+  }

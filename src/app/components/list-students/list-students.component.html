@@ -20,8 +20,8 @@
                 <td>{{s.firstName}}</td>
                 <td>{{s.middleName}}</td>
                 <td>{{s.lastName}}</td>
-                <td><button (click)="updateStudent(s.id)" class="btn btn-btn btn-info">View|Edit</button></td>
-                <td><button (click)="deleteStudent(s.id)" class="btn btn-danger">Delete</button></td>    
+                <td><button (click)="viewStudentDetails(s.id)"class="btn btn-btn btn-info">View|Edit</button></td>
+                <td><button (click)="deleteStudent(s.id)" class="btn btn-danger">Delete</button></td>   
             </tr>
         </tbody>
     </table>
@@ -29,5 +29,4 @@
     <div class="row">
         <button (click)="addStudent()" class="btn btn-success">Add Student</button>
     </div>
-    
-</div>
+    </div>

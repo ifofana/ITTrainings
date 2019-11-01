@@ -23,6 +23,7 @@ import { ParentGuard} from './models/parent.guard';
 import { ListGuardiensComponent } from './components/list-guardiens/list-guardiens.component';
 import { GuardienComponent } from './components/guardien/guardien.component';
 import { StepperComponent } from './components/stepper/stepper.component';
+import { StudentDetailsComponent } from './components/student-details/student-details.component';
 
 const routes: Routes = [
 
@@ -56,7 +57,9 @@ const routes: Routes = [
 
 { path : 'guardiens', component:  ListGuardiensComponent, canActivate: [AuthGuard], data: {roles: [Role.ADMIN, Role.USER]} },
 
-{path  : 'guardien/:id', component: GuardienComponent, canActivate: [AuthGuard], data: {roles: [Role.ADMIN, Role.USER]} },
+{ path : 'studentdetails', component:  StudentDetailsComponent, canActivate: [AuthGuard], data: {roles: [Role.ADMIN, Role.USER]} },
+
+{ path  : 'guardien/:id', component: GuardienComponent, canActivate: [AuthGuard], data: {roles: [Role.ADMIN, Role.USER]} },
 
 { path: 'logout', component: LogoutComponent, canActivate: [AuthGuard], data: {roles: [Role.ADMIN, Role.USER]} },
 

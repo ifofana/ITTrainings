@@ -1,1 +1,35 @@
-<p>student-details works!</p>
+<div class="containain">
+
+<p>studentdetails </p>
+
+<div class="alert alert-success" *ngIf="message">{{message}}</div>
+
+
+
+<table class="table">
+
+
+    <thead>
+        <tr>
+
+            <th>student<th>
+            <th>contact </th>
+            <th>guardien </th>
+
+        </tr>
+    </thead>
+         <tbody>
+             <tr *ngFor="let  s of studentdetails">
+             <td>{{s.name}}</td>   
+             <td>{{c.name}}</td> 
+             <td>{{g.name}}</td>
+
+             </tr>
+  </tbody>
+  </table>
+    
+
+</div>
+
+
+

@@ -55,11 +55,11 @@ const routes: Routes = [
 
 { path: 'contacts/:id', component: ContactComponent, canActivate: [AuthGuard], data: {roles: [Role.ADMIN, Role.USER]} },
 
-{ path : 'guardiens', component:  ListGuardiensComponent, canActivate: [AuthGuard], data: {roles: [Role.ADMIN, Role.USER]} },
+{ path : 'guardians', component:  ListGuardiensComponent, canActivate: [AuthGuard], data: {roles: [Role.ADMIN, Role.USER]} },
 
 { path : 'studentdetails', component:  StudentDetailsComponent, canActivate: [AuthGuard], data: {roles: [Role.ADMIN, Role.USER]} },
 
-{ path  : 'guardien/:id', component: GuardienComponent, canActivate: [AuthGuard], data: {roles: [Role.ADMIN, Role.USER]} },
+{ path  : 'guardian/:id', component: GuardienComponent, canActivate: [AuthGuard], data: {roles: [Role.ADMIN, Role.USER]} },
 
 { path: 'logout', component: LogoutComponent, canActivate: [AuthGuard], data: {roles: [Role.ADMIN, Role.USER]} },
 

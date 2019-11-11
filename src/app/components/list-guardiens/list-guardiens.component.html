@@ -1,6 +1,6 @@
 <div class="container">
 
-    <h3>List of Guardien Information</h3>
+    <h3>List of Guardians</h3>
 
     <div class="alert alert-success" *ngIf="message">{{message}}</div>
 
@@ -16,13 +16,13 @@
             <tr *ngFor="let pg of ParentGuard">
                 <td>{{pg.pgName}}</td>
                 <td>{{pg.pgEmail}}</td>
-                <td><button (click)="updateGuardien(pg.id)" class="btn btn-btn btn-info">View|Edit</button></td>
-                <td><button (click)="deleteGuardien(pg.id)" class="btn btn-danger">Delete</button></td>    
+                <td><button (click)="updateGuardian(pg.id)" class="btn btn-btn btn-info">View|Edit</button></td>
+                <td><button (click)="deleteGuardian(pg.id)" class="btn btn-danger">Delete</button></td>    
             </tr>
         </tbody>
     </table>
 
     <div class="row">
-        <button (click)="addGuardien()" class="btn btn-success">Add Guardien</button>
+        <button (click)="addGuardian()" class="btn btn-success">Add Guardian</button>
     </div>
 </div>

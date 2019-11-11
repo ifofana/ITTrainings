@@ -10,46 +10,46 @@ import { GuardienDataService } from 'src/app/services/guardien.services';
 })
 export class ListGuardiensComponent implements OnInit {
 
-  guardiens: ParentGuard[];
+  guardians: ParentGuard[];
 
   message: string;
 
-  constructor(private guardienService: GuardienDataService, private router: Router) { }
+  constructor(private guardianService: GuardienDataService, private router: Router) { }
 
   ngOnInit() { 
-    this.refreshGurdiens(); 
+    this.refreshGuardians(); 
   }
 
-  refreshGurdiens() {
-    this.guardienService.retrieveAllGuardien().subscribe(
+  refreshGuardians() {
+    this.guardianService.retrieveAllGuardians().subscribe(
       response => {
         console.log(response);
-        this.guardiens = response;
+        this.guardians = response;
       }
     );
 
   }
-  deleteGuardien(id: any) {
-    console.log(`delete guardien ${id}`);
-    this.guardienService.deleteGuardien(id).subscribe(
+  deleteGuardian(id: any) {
+    console.log(`delete guardian ${id}`);
+    this.guardianService.deleteGuardian(id).subscribe(
       response => {
         console.log(response);
-        this.message = `Delete of guardien ${id} Successfull!`;
-        this.refreshGurdiens();
+        this.message = `Delete of guardian ${id} Successfull!`;
+        this.refreshGuardians();
       }
     );
-  }// end of deleteGuardien
+  }// end of deleteGuardian
 
-  updateGuardien(id: any) {
+  updateGuardian(id: any) {
     console.log(`update ${id}`);
-    this.router.navigate(['guardien', id]);
-  }// end of updateGuardien method
+    this.router.navigate(['guardian', id]);
+  }// end of updateGuardian method
 
-  addGuardien() {
-    console.log('Go to Guardien Form');
-    this.router.navigate(['guardien', -1]);
-  }// end of addGuardien method
+  addGuardian() {
+    console.log('Go to Guardian Form');
+    this.router.navigate(['guardian', -1]);
+  }// end of addGuardian method
 
 
-}// end of ListGuardiensComponent class
+}// end of ListGuardiansComponent class
 

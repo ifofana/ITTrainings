@@ -36,32 +36,32 @@ import { ParentGuard } from '../models/parent.guard';
       });
     }// end of parameterized constructor
 
-    // This method get all the Guardien
-    retrieveAllGuardien( ):Observable<any> {
+    // This method get all the Guardian
+    retrieveAllGuardians( ):Observable<any> {
       return this.http.get<ParentGuard[ ]>(`${API_URL}/api/guardians`, {headers: this.headers});
-    } // end of retrieveAllguardiens method
+    } // end of retrieveAllGuardians method
 
-    // This method delete a Guardien
-    deleteGuardien(id: any) {
+    // This method delete a Guardian
+    deleteGuardian(id: any) {
       return this.http.delete(`${API_URL}/api/guardians/${id}`, {headers: this.headers} );
     }// end of deleteGurdien method
 
     /*
-     * This method get one of the guardien by its id number
+     * This method get one of the guardian by its id number
      */
-    retrieveGuardien(id: any) {
+    retrieveGuardian(id: any) {
       return this.http.get<ParentGuard>(`${API_URL}/api/guardians/${id}`, {headers: this.headers} );
-    }// end of retrieveGuardien method
+    }// end of retrieveGuardian method
 
-    // Update guardien information form
-    updateGuardien(id , Gardien) {
-      console.log('=====================> updateGuardien');
+    // Update guardian information form
+    updateGuardian(id , Gardien) {
+      console.log('=====================> updateGuardian');
       console.log('=====================> ' + id);
       return this.http.put(`${API_URL}/api/guardians/${id}`, ParentGuard, {headers: this.headers});
     }
 
-    // Create a guardieninformation
-    createGuardien(guardien) {
-      return this.http.post(`${API_URL}/api/guardians/`, guardien, {headers: this.headers});
+    // Create a guardian
+    createGuardian(guardian) {
+      return this.http.post(`${API_URL}/api/guardians/`, guardian, {headers: this.headers});
     }
   }

@@ -10,42 +10,43 @@ import { User } from 'src/app/models/user';
   styleUrls: ['./guardien.component.css']
 })
 export class GuardienComponent implements OnInit {
-id: number;
-guardien: ParentGuard;
-currentUser: User;
+  id: number;
+  guardian: ParentGuard;
+  currentUser: User;
 
-  constructor(private guardienService: GuardienDataService,
-              private route: ActivatedRoute, private router: Router) {
+  constructor(private guardianService: GuardienDataService,
+    private route: ActivatedRoute, private router: Router) {
 
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-   }
+  }
 
   ngOnInit() {
     this.id = this.route.snapshot.params.id;
-    this.guardien = new ParentGuard();
+    this.guardian = new ParentGuard();
     if (this.id !== -1) {
-      this.guardienService.retrieveGuardien(this.id).subscribe(
-          data => this.guardien = data
-        );
-      }
+      this.guardianService.retrieveGuardian(this.id).subscribe(
+        data => this.guardian = data
+      );
+    }
   }
-  saveGuardien( ) {
+
+  saveGuardian() {
     if (this.id === -1) {
-      console.log(' ************* create guardien! ');
-      this.guardienService.createGuardien(this.guardien).subscribe(
-        (        data: any) => {
+      console.log(' ************* create guardian! ');
+      this.guardianService.createGuardian(this.guardian).subscribe(
+        data => {
           console.log(data);
-          this.router.navigate(['guardien']);
+          this.router.navigate(['guardians']);
         }
       );
     } else {
-      this.guardienService.updateGuardien(this.id, this.guardien).subscribe(
+      this.guardianService.updateGuardian(this.id, this.guardian).subscribe(
         data => {
           console.log(data);
-          this.router.navigate(['guardien']);
+          this.router.navigate(['guardians']);
         }
       );
 
-      }
     }
   }
+}

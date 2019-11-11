@@ -1,79 +1,136 @@
-
-
-
 <div class="card m-3">
-    <h4 class="card-header">guardien </h4>
+    <h4 class="card-header">Parent/Guardian Information Form </h4>
 
     <div class="card-body">
 
-        <form [formGroup]="registerGuardienForm" (ngSubmit)="saveGuardienform(saveGuardienform)" >
+        <form #parentGuardianForm="ngForm" (ngSubmit)="saveGuardian()">
    
             <div class="form-row">
-
-                <!--Input for guardien Name-->
-                <div class="form-group col">
+                <div class="form-group col-md-4">
                     <label>Full Name:</label>
-                    <input type="text" class="form-control" formControlName="GuardName" />
+                    <input type="text" 
+                        #pgName="ngModel"
+                        [(ngModel)]="guardian.pgName" 
+                        [ngModelOptions]="{standalone: true}"
+                        class="form-control"
+                        name="pgName" 
+                        required 
+                        minlength="3" />
                 </div>
-
-                <div class="form-group col">
-                    <label>AddressOne:</label>
-                    <input type="text" class="form-control" formControlName="primaryadress" />
+                <div class="form-group col-md-4">
+                    <label>Address One:</label>
+                    <input type="text" 
+                        #pgAddressOne="ngModel"
+                        [(ngModel)]="guardian.pgAddressOne" 
+                        [ngModelOptions]="{standalone: true}"
+                        class="form-control"
+                        name="pgAddressOne" 
+                        required 
+                        minlength="3" />
                 </div>
-            </div><!--End of form-row for name and relationship-->
+            </div>
             
-            <div class="form-row">   
-             
-                <div class="form-group col">
-                    <label> AdressTwo:</label>
-                    <input type="text" class="form-control" formControlName="secondary adress" />
+            <div class="form-row">             
+                <div class="form-group col-md-4">
+                    <label>Address Two:</label>
+                    <input type="text" 
+                        #pgAddressTwo="ngModel"
+                        [(ngModel)]="guardian.pgAddressTwo" 
+                        [ngModelOptions]="{standalone: true}"
+                        class="form-control"
+                        name="pgAddressTwo" 
+                        required 
+                        minlength="3" />
                 </div>
-                <!--Input for city -->
-                <div class="form-group col">
-                    <label> city:</label>
-                    <input type="text" class="form-control" formControlName="city" />
+                <div class="form-group col-md-4">
+                    <label>City:</label>
+                    <input type="text" 
+                        #pgCity="ngModel"
+                        [(ngModel)]="guardian.pgCity" 
+                        [ngModelOptions]="{standalone: true}"
+                        class="form-control"
+                        name="pgCity" 
+                        required 
+                        minlength="3" />
                 </div>
             </div>
 
             <div class="form-row">
-
-                <div class="form-group col">
-                    <label> State:</label>
-                    <input type="text" class="form-control" formControlName="state" />
+                <div class="form-group col-md-4">
+                    <label>State:</label>
+                    <input type="text" 
+                        #pgState="ngModel"
+                        [(ngModel)]="guardian.pgState" 
+                        [ngModelOptions]="{standalone: true}"
+                        class="form-control"
+                        name="pgState" 
+                        required 
+                        minlength="3" />
                 </div>
-                <div class="form-group col">
-                    <label> Zipcode:</label>
-                    <input type="text" class="form-control" formControlName="zipcode" />
-                  <div>
-              <div class="form-group col">
-                    <label> Phone:</label>
-                    <input type="tel" class="form-control" formControlName="primary phone" />
+                <div class="form-group col-md-4">
+                    <label>Zip Code:</label>
+                    <input type="text" 
+                        #pgZipCode="ngModel"
+                        [(ngModel)]="guardian.pgZipCode" 
+                        [ngModelOptions]="{standalone: true}"
+                        class="form-control"
+                        name="pgZipCode" 
+                        required 
+                        minlength="3" />
                 </div>
-                 <div class="form row">
-              <div class="form-group col">
-                    <label>Alt_Phone:</label>
-                    <input type="tel" class="form-control" formControlName="secondary phone" />
-                </div>
-                <div class="form-group col">
-                    <label>Email</label>
-                    <input type="email" class="form-control" formControlName="primary email" />
             </div>
-            <div class="form-group col">
-            <label>Alt_Email</label>
-            <input type="email" class="form-control" formControlName="secondaryemail" /> 
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label>Email:</label>
+                    <input type="text" 
+                        #pgEmail="ngModel"
+                        [(ngModel)]="guardian.pgEmail" 
+                        [ngModelOptions]="{standalone: true}"
+                        class="form-control"
+                        name="pgEmail" 
+                        required 
+                        minlength="3" />
+                </div>
+                <div class="form-group col-md-4">
+                    <label>Alt Email:</label>
+                    <input type="text" 
+                        #pgAltEmail="ngModel"
+                        [(ngModel)]="guardian.pgAltEmail" 
+                        [ngModelOptions]="{standalone: true}"
+                        class="form-control"
+                        name="pgAltEmail" 
+                        required 
+                        minlength="3" />
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label>Phone:</label>
+                    <input type="text" 
+                        #pgPhoneNumber="ngModel"
+                        [(ngModel)]="guardian.pgPhoneNumber" 
+                        [ngModelOptions]="{standalone: true}"
+                        class="form-control"
+                        name="pgPhoneNumber" 
+                        required 
+                        minlength="3" />
+                </div>
+                <div class="form-group col-md-4">
+                    <label>Alt Phone:</label>
+                    <input type="text" 
+                        #pgAltPhoneNumber="ngModel"
+                        [(ngModel)]="guardian.pgAltPhoneNumber" 
+                        [ngModelOptions]="{standalone: true}"
+                        class="form-control"
+                        name="pgAltPhoneNumber" 
+                        required 
+                        minlength="3" />
+                </div>
             </div>
             <div class="card-footer text-center">
-                <button type="submit" class="btn btn-primary mr-2">Save Form</button>
-        
+                <button type="submit" class="btn btn-primary mr-2">Save Form</button>        
                 <button type="reset" class="btn btn-secondary">Clear Form</button>
             </div> 
-        
+        </form>
     </div>
-    <!--End of the Card Body-->
-
-    
-    <!--End of card footer-->
-
 </div>
-
-<!--End of card-->

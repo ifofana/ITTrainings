@@ -7,7 +7,7 @@
     <div class="card-body">
 
         <form [formGroup]="registerGuardienForm" (ngSubmit)="saveGuardienform(saveGuardienform)" >
-    </form>
+   
             <div class="form-row">
 
                 <!--Input for guardien Name-->
@@ -58,18 +58,20 @@
                     <label>Email</label>
                     <input type="email" class="form-control" formControlName="primary email" />
             </div>
-                      <div class="form-group col">
-                    <label>Alt_Email</label>
-                    <input type="email" class="form-control" formControlName="secondaryemail" />  
-
+            <div class="form-group col">
+            <label>Alt_Email</label>
+            <input type="email" class="form-control" formControlName="secondaryemail" /> 
+            </div>
+            <div class="card-footer text-center">
+                <button type="submit" class="btn btn-primary mr-2">Save Form</button>
+        
+                <button type="reset" class="btn btn-secondary">Clear Form</button>
+            </div> 
+        
     </div>
     <!--End of the Card Body-->
 
-    <div class="card-footer text-center">
-        <button type="submit" class="btn btn-primary mr-2">Save Form</button>
-
-        <button type="reset" class="btn btn-secondary">Clear Form</button>
-    </div>
+    
     <!--End of card footer-->
 
 </div>

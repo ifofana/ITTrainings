@@ -1,20 +1,23 @@
+import { Student } from './student';
+
 export class ParentGuard {
     id: number;
-    name: string;
-    addressOne: string;
-    addressTwo: string;
-    city: string;
-    state: string;
-    zipCode: string;
-    phoneNumber: string;
-    altPhoneNumber: string;
-    email: string;
-    altEmail: string;
+    pgName: string;
+    pgAddressOne: string;
+    pgAddressTwo: string;
+    pgCity: string;
+    pgState: string;
+    pgZipCode: string;
+    pgPhoneNumber: string;
+    pgAltPhoneNumber: string;
+    pgEmail: string;
+    pgAltEmail: string;
     pgRelationshipToStudent: string;
+    students: Student[];
 
     displayName(): any {
-        return this.name + ' ' + this.addressOne + ' ' + this.addressTwo + ' '
-      + this.city + ' ' + this.state + ' ' + this.zipCode + ' ' + this.phoneNumber + ' '
-      + this.altPhoneNumber + ' ' + this.email + ' ' + this.altEmail + ' ' + this.pgRelationshipToStudent;
+        return this.pgName + ' ' + this.pgAddressOne + ' ' + this.pgAddressTwo + ' '
+      + this.pgCity + ' ' + this.pgState + ' ' + this.pgZipCode + ' ' + this.pgPhoneNumber + ' '
+      + this.pgAltPhoneNumber + ' ' + this.pgEmail + ' ' + this.pgAltEmail + ' ' + this.pgRelationshipToStudent;
     }
 }

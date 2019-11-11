@@ -55,14 +55,14 @@ import { API_URL } from 'src/app/app.constants';
     }// end of retrieveContact method
 
     // Update contact information form
-    updateContact(id: string | number, contact: Contact) {
+    updateContact(id, contact) {
       console.log('=====================> updateContact');
       console.log('=====================> ' + id);
       return this.http.put(`${API_URL}/api/contacts/${id}`, contact, {headers: this.headers});
     }
 
     // Create a contact information
-    createContact(contact: Contact) {
+    createContact(contact) {
       return this.http.post(`${API_URL}/api/contacts/`, contact, {headers: this.headers});
     }
   }

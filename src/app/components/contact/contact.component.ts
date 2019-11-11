@@ -22,7 +22,7 @@ export class ContactComponent implements OnInit {
 
   ngOnInit( ) {
     this.id = this.route.snapshot.params.id;
-
+    console.log('id is ' + this.id);
     // Declare and create new object of Contact class
     this.contact = new Contact( );
 
@@ -33,7 +33,7 @@ export class ContactComponent implements OnInit {
     }// end of if statement
   }// end of ngOnInit method
 
-  saveContact( ) {
+  saveContact() {
     if (this.id === -1) {
       console.log(' ************* create Contact! ');
       this.contactService.createContact(this.contact).subscribe(

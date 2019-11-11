@@ -12,7 +12,13 @@
 
     <div class="card-body">
 
-        <form #contactForm="ngForm" (ngSubmit)="saveContact( )">
+        <div class="alert alert-warning" *ngIf="contactForm.dirty && contactForm.invalid">Enter valid values</div>
+        <div class="alert alert-warning" *ngIf="contactName.dirty && contactName.invalid">Enter at least 3 characters in Contact Name</div>
+        <div class="alert alert-warning" *ngIf="contactRelationshipToStudent.dirty && contactRelationshipToStudent.invalid">Enter at least 3 characters in contact relationship to student</div>
+        <div class="alert alert-warning" *ngIf="contactPhoneNumber.dirty && contactPhoneNumber.invalid">Enter valid phone number</div>
+        <div class="alert alert-warning" *ngIf="contactAltPhoneNumber.dirty && contactAltPhoneNumber.invalid">Enter valid alt phone number</div>
+
+        <form #contactForm="ngForm" (ngSubmit)="saveContact()">
 
             <div class="form-row">
 
@@ -20,24 +26,24 @@
                 <div class="form-group col">
                     <label>Full Name:</label>
                     <input type="text" 
-                    #firstName="ngModel"
-                    [(ngModel)]="contact.name" 
-                    [ngModelOptions]="{standalone: true}"
-                    class="form-control"
-                    name="name" 
-                    required 
-                    pattern="[A-Za-z]"
-                    minlength="3"/>
+                        #contactName="ngModel"
+                        [(ngModel)]="contact.contactName" 
+                        [ngModelOptions]="{standalone: true}"
+                        class="form-control"
+                        name="contactName" 
+                        required 
+                        pattern="[A-Za-z]"
+                        minlength="3" />                    
                 </div>
 
                 <div class="form-group col">
                     <label>Relationship to Student:</label>
                     <input type="text" 
-                    #relationshipToStudent="ngModel"
-                    [(ngModel)]="contact.relationshipToStudent" 
+                    #contactRelationshipToStudent="ngModel"
+                    [(ngModel)]="contact.contactRelationshipToStudent" 
                     [ngModelOptions]="{standalone: true}"
                     class="form-control"
-                    name="relationshipToStudent" 
+                    name="contactRelationshipToStudent" 
                     required 
                     pattern="[A-Za-z]"
                     minlength="3"/>
@@ -48,24 +54,24 @@
                 <!--Input for phonenumber -->
                 <div class="form-group col">
                     <label> Primary Phone Number:</label>
-                    <input type="tel" 
-                    #phoneNumber="ngModel"
-                    [(ngModel)]="contact.phoneNumber" 
+                    <input type="text" 
+                    #contactPhoneNumber="ngModel"
+                    [(ngModel)]="contact.contactPhoneNumber" 
                     [ngModelOptions]="{standalone: true}"
                     class="form-control"
-                    name="phoneNumber" 
+                    name="contactPhoneNumber" 
                     required 
                     pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" />
                 </div>
                 <!--Input for alternative  phonenumber -->
                 <div class="form-group col">
                     <label> Alt Phone Number:</label>
-                    <input type="tel" 
-                    #altPhoneNumber="ngModel"
-                    [(ngModel)]="contact.altPhoneNumber" 
+                    <input type="text" 
+                    #contactAltPhoneNumber="ngModel"
+                    [(ngModel)]="contact.contactAltPhoneNumber" 
                     [ngModelOptions]="{standalone: true}"
                     class="form-control"
-                    name="altPhoneNumber" 
+                    name="contactAltPhoneNumber" 
                     pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" />
                 </div>
             </div><!--end of form-row and contact's telephones-->
@@ -73,36 +79,33 @@
             <div class="form-row">
                 <div class="form-group col">
                     <label> Primary Email :</label>
-                    <input type="email" 
-                    #email="ngModel"
-                    [(ngModel)]="contact.email" 
+                    <input type="text" 
+                    #contactEmail="ngModel"
+                    [(ngModel)]="contact.contactEmail" 
                     [ngModelOptions]="{standalone: true}"
                     class="form-control"
-                    name="email" 
+                    name="contactEmail" 
                     required />
                 </div>
 
                 <div class="form-group col">
                     <label> Alt Email :</label>
-                    <input type="email"
-                    #altEmail="ngModel"
-                    [(ngModel)]="contact.altEmail" 
+                    <input type="text"
+                    #contactAltEmail="ngModel"
+                    [(ngModel)]="contact.contactAltEmail" 
                     [ngModelOptions]="{standalone: true}"
                     class="form-control"
-                    name="altEmail" 
-                    />
+                    name="contactAltEmail" />
                 </div>
             </div><!--end of form-row and contact's emails-->
-            
+            <div class="card-footer text-center">
+                <button type="submit" class="btn btn-primary mr-2">Save Form</button>
+        
+                <button type="reset" class="btn btn-secondary">Clear Form</button>
+            </div>
         </form>
     </div>
     <!--End of the Card Body-->
-
-    <div class="card-footer text-center">
-        <button type="submit" class="btn btn-primary mr-2">Save Form</button>
-
-        <button type="reset" class="btn btn-secondary">Clear Form</button>
-    </div>
     <!--End of card footer-->
 
 </div>

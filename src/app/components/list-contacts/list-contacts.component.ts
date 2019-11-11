@@ -50,7 +50,7 @@ export class ListContactsComponent implements OnInit {
     this.router.navigate(['contacts', id]);
   }// end of updateContact method
 
-  addContact( ) {
+  addContact() {
     console.log('Go to Contact Form');
     this.router.navigate(['contacts', -1]);
   }// end of addContact method

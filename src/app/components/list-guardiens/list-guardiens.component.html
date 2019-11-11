@@ -13,7 +13,7 @@
         </thead>
 
         <tbody>
-            <tr *ngFor="let pg of ParentGuard">
+            <tr *ngFor="let pg of guardians">
                 <td>{{pg.pgName}}</td>
                 <td>{{pg.pgEmail}}</td>
                 <td><button (click)="updateGuardian(pg.id)" class="btn btn-btn btn-info">View|Edit</button></td>

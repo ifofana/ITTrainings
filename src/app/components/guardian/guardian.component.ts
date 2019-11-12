@@ -5,11 +5,11 @@ import { GuardianDataService } from '../../services/guardian-data.services';
 import { User } from 'src/app/models/user';
 
 @Component({
-  selector: 'app-guardien',
-  templateUrl: './guardien.component.html',
-  styleUrls: ['./guardien.component.css']
+  selector: 'app-guardian',
+  templateUrl: './guardian.component.html',
+  styleUrls: ['./guardian.component.css']
 })
-export class GuardienComponent implements OnInit {
+export class GuardianComponent implements OnInit {
   id: number;
   guardian: ParentGuard;
   currentUser: User;

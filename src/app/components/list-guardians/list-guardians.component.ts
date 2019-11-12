@@ -4,11 +4,11 @@ import { Router } from '@angular/router';
 import { GuardianDataService } from 'src/app/services/guardian-data.services';
 
 @Component({
-  selector: 'app-list-guardiens',
-  templateUrl: './list-guardiens.component.html',
-  styleUrls: ['./list-guardiens.component.css']
+  selector: 'app-list-guardians',
+  templateUrl: './list-guardians.component.html',
+  styleUrls: ['./list-guardians.component.css']
 })
-export class ListGuardiensComponent implements OnInit {
+export class ListGuardiansComponent implements OnInit {
 
   guardians: ParentGuard[];
 

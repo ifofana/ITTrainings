@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ListGuardiensComponent } from './list-guardiens.component';
+import { GuardianComponent } from './guardian.component';
 
-describe('ListGuardiensComponent', () => {
-  let component: ListGuardiensComponent;
-  let fixture: ComponentFixture<ListGuardiensComponent>;
+describe('GuardianComponent', () => {
+  let component: GuardianComponent;
+  let fixture: ComponentFixture<GuardianComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ListGuardiensComponent ]
+      declarations: [ GuardianComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ListGuardiensComponent);
+    fixture = TestBed.createComponent(GuardianComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

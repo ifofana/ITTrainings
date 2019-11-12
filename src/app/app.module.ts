@@ -27,8 +27,8 @@ import { UnauthorizedComponent } from './components/unauthorized/unauthorized.co
 import { ContactComponent } from './components/contact/contact.component';
 import { ListContactsComponent } from './components/list-contacts/list-contacts.component';
 import { ParentGuard} from './models/parent.guard';
-import { GuardienComponent } from './components/guardien/guardien.component';
-import { ListGuardiensComponent } from './components/list-guardiens/list-guardiens.component';
+import { GuardianComponent } from './components/guardian/guardian.component';
+import { ListGuardiansComponent } from './components/list-guardians/list-guardians.component';
 import { StepperComponent } from './components/stepper/stepper.component';
 
 import { CdkStepperModule } from '@angular/cdk/stepper';
@@ -67,8 +67,8 @@ import { StudentDetailsComponent } from './components/student-details/student-de
     UnauthorizedComponent,
     ContactComponent,
     ListContactsComponent,
-    GuardienComponent,
-    ListGuardiensComponent,
+    GuardianComponent,
+    ListGuardiansComponent,
     StepperComponent,
     StudentDetailsComponent
   ],

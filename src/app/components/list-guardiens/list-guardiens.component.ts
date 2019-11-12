@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ParentGuard } from 'src/app/models/parent.guard';
 import { Router } from '@angular/router';
-import { GuardienDataService } from 'src/app/services/guardien.services';
+import { GuardianDataService } from 'src/app/services/guardian-data.services';
 
 @Component({
   selector: 'app-list-guardiens',
@@ -14,7 +14,7 @@ export class ListGuardiensComponent implements OnInit {
 
   message: string;
 
-  constructor(private guardianService: GuardienDataService, private router: Router) { }
+  constructor(private guardianService: GuardianDataService, private router: Router) { }
 
   ngOnInit() { 
     this.refreshGuardians(); 

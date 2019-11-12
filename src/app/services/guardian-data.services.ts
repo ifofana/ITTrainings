@@ -23,7 +23,7 @@ import { ParentGuard } from '../models/parent.guard';
     providedIn: 'root'
   })
 
-  export class GuardienDataService {
+  export class GuardianDataService {
 
     currentUser: User;
     headers: HttpHeaders;
@@ -57,7 +57,7 @@ import { ParentGuard } from '../models/parent.guard';
     updateGuardian(id , Gardien) {
       console.log('=====================> updateGuardian');
       console.log('=====================> ' + id);
-      return this.http.put(`${API_URL}/api/guardians/${id}`, ParentGuard, {headers: this.headers});
+      return this.http.put(`${API_URL}/api/guardians/update/${id}`, ParentGuard, {headers: this.headers});
     }
 
     // Create a guardian

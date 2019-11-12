@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ParentGuard } from 'src/app/models/parent.guard';
 import { ActivatedRoute, Router } from '@angular/router';
-import { GuardienDataService } from '..//..//services/guardien.services';
+import { GuardianDataService } from '../../services/guardian-data.services';
 import { User } from 'src/app/models/user';
 
 @Component({
@@ -14,7 +14,7 @@ export class GuardienComponent implements OnInit {
   guardian: ParentGuard;
   currentUser: User;
 
-  constructor(private guardianService: GuardienDataService,
+  constructor(private guardianService: GuardianDataService,
     private route: ActivatedRoute, private router: Router) {
 
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));

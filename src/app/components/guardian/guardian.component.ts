@@ -46,7 +46,6 @@ export class GuardianComponent implements OnInit {
           this.router.navigate(['guardians']);
         }
       );
-
     }
   }
 }

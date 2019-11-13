@@ -37,7 +37,7 @@ import { ParentGuard } from '../models/parent.guard';
     }// end of parameterized constructor
 
     // This method get all the Guardian
-    retrieveAllGuardians( ):Observable<any> {
+    retrieveAllGuardians( ): Observable<any> {
       return this.http.get<ParentGuard[ ]>(`${API_URL}/api/guardians`, {headers: this.headers});
     } // end of retrieveAllGuardians method
 
@@ -54,10 +54,10 @@ import { ParentGuard } from '../models/parent.guard';
     }// end of retrieveGuardian method
 
     // Update guardian information form
-    updateGuardian(id , Gardien) {
+    updateGuardian(id, guardian) {
       console.log('=====================> updateGuardian');
       console.log('=====================> ' + id);
-      return this.http.put(`${API_URL}/api/guardians/${id}`, ParentGuard, {headers: this.headers});
+      return this.http.put(`${API_URL}/api/guardians/${id}`, guardian, {headers: this.headers});
     }
 
     // Create a guardian

@@ -22,7 +22,7 @@
             </thead>
             <tbody>
               <tr *ngFor="let item of userList; index as ind">
-                <th scope="row">{{ind}}</th>
+                <th scope="row">{{item.id}}</th>
                 <td>{{item.name}}</td>
                 <td>{{item.username}}</td>
                 <td>{{item.role}}</td>

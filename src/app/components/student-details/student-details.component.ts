@@ -12,6 +12,15 @@ export class StudentDetailsComponent implements OnInit {
   studentId: string;
   currentStudent: Student;
 
+  /***
+   * select st.student_first_name, st.student_last_name,
+        ci.contact_name, pg.pg_name
+      from student_info st 
+          join parentguard_info pg on pg.pg_id = st.parentguard_id
+          join contact_info ci on ci.contact_id = st.contact_id
+      where st.student_id = 1;
+  ***/
+
   constructor(private router: Router, private route: ActivatedRoute) {
     this.currentStudent = JSON.parse(localStorage.getItem('detailStudent'));
   }

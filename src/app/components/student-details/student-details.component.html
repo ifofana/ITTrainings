@@ -1,10 +1,15 @@
 <div class="container">
-    <header class="jumbotron">
-        <h1 class="display-3">
-            <strong>{{currentStudent.firstName}}</strong> details are displayed...
-        </h1>
-        <h1 class="display-3">
-            <strong>{{studentId}}</strong>
-        </h1>
-    </header>
+    <div class="jumbotron">
+        <div class="display-4">
+            <strong>{{currentStudent.firstName + ' ' + currentStudent.middlename + ' ' + currentStudent.lastName | uppercase}}</strong> details are displayed...
+        </div>
+    </div>
+    <div class="jumbotron">
+        <div><span class="font-weight-bold">Gender: </span>{{currentStudent.gender}}</div>
+        <div><span class="font-weight-bold">Date of Birth: </span>{{currentStudent.dob | date: 'yyyy-MM-dd'}}</div>
+        <div><span class="font-weight-bold">Age: </span>{{currentStudent.age}}</div>
+        <div><span class="font-weight-bold">Allergies/Medical Conditions: </span>{{currentStudent.allerges}}</div>
+        <div><span class="font-weight-bold">Class Day: </span>{{currentStudent.classDay}}</div>
+        <div><span class="font-weight-bold">Age Group: </span>{{currentStudent.classSelection}}</div>
+    </div>
 </div>

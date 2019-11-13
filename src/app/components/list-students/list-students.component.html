@@ -18,7 +18,7 @@
         <tbody>
             <tr *ngFor="let s of students">
                 <td>{{s.firstName}}</td>
-                <td>{{s.middleName}}</td>
+                <td>{{s.middlename}}</td>
                 <td>{{s.lastName}}</td>
                 <td><button (click)="viewStudentDetails(s)"class="btn btn-btn btn-info">Detail</button></td>
                 <td><button (click)="deleteStudent(s.id)" class="btn btn-danger">Delete</button></td>   

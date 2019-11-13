@@ -10,18 +10,18 @@ import { StudentDataService } from '../../services/student-data.service';
 })
 export class ListStudentsComponent implements OnInit {
 
-  students: Student[ ];
+  students: Student[];
 
   message: string;
 
   constructor(private studentService: StudentDataService, private router: Router) { }
 
   ngOnInit() {
-    this.refreshStudents( );
+    this.refreshStudents();
   }
 
-  refreshStudents( ) {
-    this.studentService.retrieveAllStudents( ).subscribe(
+  refreshStudents() {
+    this.studentService.retrieveAllStudents().subscribe(
       response => {
         console.log(response);
         this.students = response;
@@ -50,9 +50,12 @@ export class ListStudentsComponent implements OnInit {
     //this.router.navigate(['studentstepper']);
     this.router.navigate(['students', -1]);
 
-}
-    viewStudentDetails(id:any){
-      console.log('Go to StudentDetailsComponent');
-    this.router.navigate(['studentdetails']);
-    }
   }
+
+  viewStudentDetails(student: Student) {
+    console.log('Go to StudentDetailsComponent');
+    localStorage.setItem("detailStudent", JSON.stringify(student));
+    this.router.navigate(['/studentdetails', student.id]);
+
+  }
+}

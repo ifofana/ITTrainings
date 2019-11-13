@@ -1,35 +1,10 @@
-<div class="containain">
-
-<p>studentdetails </p>
-
-<div class="alert alert-success" *ngIf="message">{{message}}</div>
-
-
-
-<table class="table">
-
-
-    <thead>
-        <tr>
-
-            <th>student<th>
-            <th>contact </th>
-            <th>guardien </th>
-
-        </tr>
-    </thead>
-         <tbody>
-             <tr *ngFor="let  s of studentdetails">
-             <td>{{s.name}}</td>   
-             <td>{{c.name}}</td> 
-             <td>{{g.name}}</td>
-
-             </tr>
-  </tbody>
-  </table>
-    
-
+<div class="container">
+    <header class="jumbotron">
+        <h1 class="display-3">
+            <strong>{{currentStudent.firstName}}</strong> details are displayed...
+        </h1>
+        <h1 class="display-3">
+            <strong>{{studentId}}</strong>
+        </h1>
+    </header>
 </div>
-
-
-

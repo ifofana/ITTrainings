@@ -57,7 +57,7 @@ const routes: Routes = [
 
 { path : 'guardians', component:  ListGuardiansComponent, canActivate: [AuthGuard], data: {roles: [Role.ADMIN, Role.USER]} },
 
-{ path : 'studentdetails', component:  StudentDetailsComponent, canActivate: [AuthGuard], data: {roles: [Role.ADMIN, Role.USER]} },
+{ path : 'studentdetails/:id', component:  StudentDetailsComponent, canActivate: [AuthGuard], data: {roles: [Role.ADMIN, Role.USER]} },
 
 { path  : 'guardian/:id', component: GuardianComponent, canActivate: [AuthGuard], data: {roles: [Role.ADMIN, Role.USER]} },
 

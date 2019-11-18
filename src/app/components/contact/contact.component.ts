@@ -32,9 +32,9 @@ export class ContactComponent implements OnInit {
         classSelection: "",
         classDay: "",
         isShown: false,
-        addressLines: [
+        parentGuardians: [
           {
-            addressLine: "",
+            pgName: "",
           }
         ]
       }
@@ -89,7 +89,7 @@ export class ContactComponent implements OnInit {
         classDay: [''],
         classSelection: [''],
         isShown: false,
-        addressLines: this.fb.array([])
+        parentGuardians: this.fb.array([])
       })
     )
   }
@@ -99,14 +99,14 @@ export class ContactComponent implements OnInit {
     control.removeAt(index)
   }
 
-  addNewAddressLine(control) {
+  addNewParentGuardian(control) {
     control.push(
       this.fb.group({
-        addressLine: ['']
+        pgName: ['']
       }))
   }
 
-  deleteAddressLine(control, index) {
+  deleteParentGuardian(control, index) {
     control.removeAt(index)
   }
 
@@ -124,15 +124,15 @@ export class ContactComponent implements OnInit {
         classDay: x.classDay,
         classSelection: x.classSelection,
         isShown: x.isShown,
-        addressLines: this.setAddressLines(x) }))
+        parentGuardians: this.setParentGuardians(x) }))
     })
   }
 
-  setAddressLines(x) {
+  setParentGuardians(x) {
     let arr = new FormArray([])
-    x.addressLines.forEach(y => {
+    x.parentGuardians.forEach(y => {
       arr.push(this.fb.group({ 
-        addressLine: y.addressLine 
+        pgName: y.pgName 
       }))
     })
     return arr;

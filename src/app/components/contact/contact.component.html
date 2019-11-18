@@ -120,29 +120,29 @@
                                 </div>
                                 <div class="form-group col">
                                     <button style="margin-right:5px;" type="button" class="btn btn-success btn-sm"
-                                        (click)="addNewAddressLine(student.controls.addressLines)">
+                                        (click)="addNewParentGuardian(student.controls.parentGuardians)">
                                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add New
-                                        Address Line
+                                        Parent/Guardian
                                     </button>
                                 </div>
                             </div>
                             <div class="form-inline">
                                 <div class="form-group">
-                                    <div formArrayName="addressLines">
+                                    <div formArrayName="parentGuardians">
                                         <div style="margin-top:5px; margin-bottom:5px;"
-                                            *ngFor="let lines of student.get('addressLines').controls; let j=index">
+                                            *ngFor="let lines of student.get('parentGuardians').controls; let j=index">
                                             <div [formGroupName]="j">
                                                 <div class="form-group">
                                                     <label style="margin-right:5px;" class="col-form-label"
-                                                        for="emailId">Address Line {{j + 1}}</label>
-                                                    <input formControlName="addressLine" class="form-control"
+                                                        for="emailId">Parent/Guardian {{j + 1}}</label>
+                                                    <input formControlName="pgName" class="form-control"
                                                         style="margin-right:5px;" type="email"
-                                                        placeholder="Address lines" id="address" name="address" />
+                                                        placeholder="Parent/Guardian Names" id="pgName" name="pgName" />
                                                     <button style="margin-right:5px;" type="button"
                                                         class="btn btn-danger btn-sm"
-                                                        (click)="deleteAddressLine(student.controls.addressLines, j)">
+                                                        (click)="deleteParentGuardian(student.controls.parentGuardians, j)">
                                                         <span class="glyphicon glyphicon-minus"
-                                                            aria-hidden="true">Remove Address Line</span>
+                                                            aria-hidden="true">Remove Parent/Guardian</span>
                                                     </button>
                                                 </div>
                                             </div>

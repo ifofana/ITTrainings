@@ -13,10 +13,41 @@
     <div class="card-body">
 
         <form [formGroup]="myForm" (ngSubmit)="onSubmit(f)" #f="ngForm">
-            <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" id="name" class="form-control" placeholder="Name" name="name" formControlName="name"
-                    required>
+            <div class="form-row">
+                <div class="form-group col">
+                    <label for="contactName">Full Name:</label>
+                    <input type="text" id="contactName" class="form-control" placeholder="Full Name" name="contactName" formControlName="contactName"
+                        required>
+                </div>
+                <div class="form-group col">
+                    <label for="contactRelationshipToStudent">Relationship to Student:</label>
+                    <input type="text" id="contactRelationshipToStudent" class="form-control" placeholder="Relationship to Student" name="contactRelationshipToStudent" formControlName="contactRelationshipToStudent"
+                        required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col">
+                    <label for="contactPhoneNumber">Primary Phone Number:</label>
+                    <input type="text" id="contactPhoneNumber" class="form-control" placeholder="Primary Phone Number" name="contactPhoneNumber" formControlName="contactPhoneNumber"
+                        required>
+                </div>
+                <div class="form-group col">
+                    <label for="contactAltPhoneNumber">Alt Phone Number:</label>
+                    <input type="text" id="contactAltPhoneNumber" class="form-control" placeholder="Alt Phone Number" name="contactAltPhoneNumber" formControlName="contactAltPhoneNumber"
+                        required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col">
+                    <label for="contactEmail">Primary Email:</label>
+                    <input type="text" id="contactEmail" class="form-control" placeholder="Primary Email" name="contactEmail" formControlName="contactEmail"
+                        required>
+                </div>
+                <div class="form-group col">
+                    <label for="contactAltEmail">Alt Email:</label>
+                    <input type="text" id="contactAltEmail" class="form-control" placeholder="Alt Email" name="contactAltEmail" formControlName="contactAltEmail"
+                        required>
+                </div>
             </div>
             <button style="margin-top:5px; margin-bottom:5px;" type="button" class="btn btn-primary btn-sm"
                 (click)="addNewCity()">

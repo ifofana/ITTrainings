@@ -34,7 +34,12 @@ export class ContactComponent implements OnInit {
   constructor(private fb: FormBuilder, private contactService: ContactDataService, private route: ActivatedRoute, private router: Router) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     this.myForm = this.fb.group({
-      name: [''],
+      contactName: [''],
+      contactRelationshipToStudent: [''],
+      contactPhoneNumber: [''],
+      contactAltPhoneNumber: [''],
+      contactEmail: [''],
+      contactAltEmail: [''],
       cities: this.fb.array([])
     })
 

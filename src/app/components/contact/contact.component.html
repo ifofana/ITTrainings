@@ -50,28 +50,28 @@
                 </div>
             </div>
             <button style="margin-top:5px; margin-bottom:5px;" type="button" class="btn btn-primary btn-sm"
-                (click)="addNewCity()">
-                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add New City
+                (click)="addNewStudent()">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add New Student
             </button>
-            <div formArrayName="cities">
+            <div formArrayName="students">
                 <div style="margin-top:5px; margin-bottom:5px;"
-                    *ngFor="let city of myForm.get('cities').controls; let i=index">
+                    *ngFor="let student of myForm.get('students').controls; let i=index">
                     <fieldset>
                         <legend>
-                            <h4>City {{i+1}}:<button style="margin-left:35px;" type="button" class="btn btn-danger"
-                                    (click)="deleteCity(i)">
-                                    <span class="glyphicon glyphicon-minus" aria-hidden="true"></span> Remove City
+                            <h4>Student {{i+1}}:<button style="margin-left:35px;" type="button" class="btn btn-danger"
+                                    (click)="deleteStudent(i)">
+                                    <span class="glyphicon glyphicon-minus" aria-hidden="true"></span> Remove Student
                                 </button>
                             </h4>
                         </legend>
                         <div [formGroupName]="i">
                             <div class="form-inline">
                                 <div class="form-group">
-                                    <label style="margin-right:80px;" class="col-form-label" for="city">City</label>
-                                    <input type="text" class="form-control" id="city" placeholder="City" name="type"
-                                        formControlName="city" style="margin-right:5px;" required>
+                                    <label style="margin-right:80px;" class="col-form-label" for="student">Student</label>
+                                    <input type="text" class="form-control" id="student" placeholder="Student" name="type"
+                                        formControlName="student" style="margin-right:5px;" required>
                                     <button style="margin-right:5px;" type="button" class="btn btn-success btn-sm"
-                                        (click)="addNewAddressLine(city.controls.addressLines)">
+                                        (click)="addNewAddressLine(student.controls.addressLines)">
                                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add New
                                         Address Line
                                     </button>
@@ -83,7 +83,7 @@
                                 <div class="form-group">
                                     <div formArrayName="addressLines">
                                         <div style="margin-top:5px; margin-bottom:5px;"
-                                            *ngFor="let lines of city.get('addressLines').controls; let j=index">
+                                            *ngFor="let lines of student.get('addressLines').controls; let j=index">
                                             <div [formGroupName]="j">
                                                 <div class="form-group">
                                                     <label style="margin-right:5px;" class="col-form-label"
@@ -93,7 +93,7 @@
                                                         placeholder="Address lines" id="address" name="address" />
                                                     <button style="margin-right:5px;" type="button"
                                                         class="btn btn-danger btn-sm"
-                                                        (click)="deleteAddressLine(city.controls.addressLines, j)">
+                                                        (click)="deleteAddressLine(student.controls.addressLines, j)">
                                                         <span class="glyphicon glyphicon-minus"
                                                             aria-hidden="true">Remove Address Line</span>
                                                     </button>

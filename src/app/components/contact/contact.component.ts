@@ -17,9 +17,9 @@ export class ContactComponent implements OnInit {
   currentUser: User;
 
   data = {
-    cities: [
+    students: [
       {
-        city: "",
+        student: "",
         addressLines: [
           {
             addressLine: "",
@@ -40,10 +40,10 @@ export class ContactComponent implements OnInit {
       contactAltPhoneNumber: [''],
       contactEmail: [''],
       contactAltEmail: [''],
-      cities: this.fb.array([])
+      students: this.fb.array([])
     })
 
-    this.setCities();
+    this.setStudents();
   }// end of parameterized constructor
 
   ngOnInit( ) {
@@ -63,18 +63,18 @@ export class ContactComponent implements OnInit {
     alert(this.myForm.value);
   }
 
-  addNewCity() {
-    let control = <FormArray>this.myForm.controls.cities;
+  addNewStudent() {
+    let control = <FormArray>this.myForm.controls.students;
     control.push(
       this.fb.group({
-        city: [''],
+        student: [''],
         addressLines: this.fb.array([])
       })
     )
   }
 
-  deleteCity(index) {
-    let control = <FormArray>this.myForm.controls.cities;
+  deleteStudent(index) {
+    let control = <FormArray>this.myForm.controls.students;
     control.removeAt(index)
   }
 
@@ -89,11 +89,11 @@ export class ContactComponent implements OnInit {
     control.removeAt(index)
   }
 
-  setCities() {
-    let control = <FormArray>this.myForm.controls.cities;
-    this.data.cities.forEach(x => {
+  setStudents() {
+    let control = <FormArray>this.myForm.controls.students;
+    this.data.students.forEach(x => {
       control.push(this.fb.group({ 
-        city: x.city, 
+        student: x.student, 
         addressLines: this.setAddressLines(x) }))
     })
   }

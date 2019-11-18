@@ -12,98 +12,79 @@
 
     <div class="card-body">
 
-        <div class="alert alert-warning" *ngIf="contactForm.dirty && contactForm.invalid">Enter valid values</div>
-        <div class="alert alert-warning" *ngIf="contactName.dirty && contactName.invalid">Enter at least 3 characters in Contact Name</div>
-        <div class="alert alert-warning" *ngIf="contactRelationshipToStudent.dirty && contactRelationshipToStudent.invalid">Enter at least 3 characters in contact relationship to student</div>
-        <div class="alert alert-warning" *ngIf="contactPhoneNumber.dirty && contactPhoneNumber.invalid">Enter valid phone number</div>
-        <div class="alert alert-warning" *ngIf="contactAltPhoneNumber.dirty && contactAltPhoneNumber.invalid">Enter valid alt phone number</div>
-
-        <form #contactForm="ngForm" (ngSubmit)="saveContact()">
-
-            <div class="form-row">
-
-                <!--Input for contact Name-->
-                <div class="form-group col">
-                    <label>Full Name:</label>
-                    <input type="text" 
-                        #contactName="ngModel"
-                        [(ngModel)]="contact.contactName" 
-                        [ngModelOptions]="{standalone: true}"
-                        class="form-control"
-                        name="contactName" 
-                        required 
-                        pattern="[A-Za-z]"
-                        minlength="3" />                    
-                </div>
-
-                <div class="form-group col">
-                    <label>Relationship to Student:</label>
-                    <input type="text" 
-                    #contactRelationshipToStudent="ngModel"
-                    [(ngModel)]="contact.contactRelationshipToStudent" 
-                    [ngModelOptions]="{standalone: true}"
-                    class="form-control"
-                    name="contactRelationshipToStudent" 
-                    required 
-                    pattern="[A-Za-z]"
-                    minlength="3"/>
-                </div>
-            </div><!--End of form-row for name and relationship-->
-            
-            <div class="form-row">   
-                <!--Input for phonenumber -->
-                <div class="form-group col">
-                    <label> Primary Phone Number:</label>
-                    <input type="text" 
-                    #contactPhoneNumber="ngModel"
-                    [(ngModel)]="contact.contactPhoneNumber" 
-                    [ngModelOptions]="{standalone: true}"
-                    class="form-control"
-                    name="contactPhoneNumber" 
-                    required 
-                    pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" />
-                </div>
-                <!--Input for alternative  phonenumber -->
-                <div class="form-group col">
-                    <label> Alt Phone Number:</label>
-                    <input type="text" 
-                    #contactAltPhoneNumber="ngModel"
-                    [(ngModel)]="contact.contactAltPhoneNumber" 
-                    [ngModelOptions]="{standalone: true}"
-                    class="form-control"
-                    name="contactAltPhoneNumber" 
-                    pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" />
-                </div>
-            </div><!--end of form-row and contact's telephones-->
-
-            <div class="form-row">
-                <div class="form-group col">
-                    <label> Primary Email :</label>
-                    <input type="text" 
-                    #contactEmail="ngModel"
-                    [(ngModel)]="contact.contactEmail" 
-                    [ngModelOptions]="{standalone: true}"
-                    class="form-control"
-                    name="contactEmail" 
-                    required />
-                </div>
-
-                <div class="form-group col">
-                    <label> Alt Email :</label>
-                    <input type="text"
-                    #contactAltEmail="ngModel"
-                    [(ngModel)]="contact.contactAltEmail" 
-                    [ngModelOptions]="{standalone: true}"
-                    class="form-control"
-                    name="contactAltEmail" />
-                </div>
-            </div><!--end of form-row and contact's emails-->
-            <div class="card-footer text-center">
-                <button type="submit" class="btn btn-primary mr-2">Save Form</button>
-        
-                <button type="reset" class="btn btn-secondary">Clear Form</button>
+        <form [formGroup]="myForm" (ngSubmit)="onSubmit(f)" #f="ngForm">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" class="form-control" placeholder="Name" name="name" formControlName="name"
+                    required>
             </div>
+            <button style="margin-top:5px; margin-bottom:5px;" type="button" class="btn btn-primary btn-sm"
+                (click)="addNewCity()">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add New City
+            </button>
+            <div formArrayName="cities">
+                <div style="margin-top:5px; margin-bottom:5px;"
+                    *ngFor="let city of myForm.get('cities').controls; let i=index">
+                    <fieldset>
+                        <legend>
+                            <h4>City {{i+1}}:<button style="margin-left:35px;" type="button" class="btn btn-danger"
+                                    (click)="deleteCity(i)">
+                                    <span class="glyphicon glyphicon-minus" aria-hidden="true"></span> Remove City
+                                </button>
+                            </h4>
+                        </legend>
+                        <div [formGroupName]="i">
+                            <div class="form-inline">
+                                <div class="form-group">
+                                    <label style="margin-right:80px;" class="col-form-label" for="city">City</label>
+                                    <input type="text" class="form-control" id="city" placeholder="City" name="type"
+                                        formControlName="city" style="margin-right:5px;" required>
+                                    <button style="margin-right:5px;" type="button" class="btn btn-success btn-sm"
+                                        (click)="addNewAddressLine(city.controls.addressLines)">
+                                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add New
+                                        Address Line
+                                    </button>
+
+
+                                </div>
+                            </div>
+                            <div class="form-inline">
+                                <div class="form-group">
+                                    <div formArrayName="addressLines">
+                                        <div style="margin-top:5px; margin-bottom:5px;"
+                                            *ngFor="let lines of city.get('addressLines').controls; let j=index">
+                                            <div [formGroupName]="j">
+                                                <div class="form-group">
+                                                    <label style="margin-right:5px;" class="col-form-label"
+                                                        for="emailId">Address Line {{j + 1}}</label>
+                                                    <input formControlName="addressLine" class="form-control"
+                                                        style="margin-right:5px;" type="email"
+                                                        placeholder="Address lines" id="address" name="address" />
+                                                    <button style="margin-right:5px;" type="button"
+                                                        class="btn btn-danger btn-sm"
+                                                        (click)="deleteAddressLine(city.controls.addressLines, j)">
+                                                        <span class="glyphicon glyphicon-minus"
+                                                            aria-hidden="true">Remove Address Line</span>
+                                                    </button>
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+
+
+            <button type="submit" class="btn btn-success">Submit</button>
+            <button type="button" class="btn btn-basic">Cancel</button>
         </form>
+
+        <pre>{{myForm.value | json}}</pre>
     </div>
     <!--End of the Card Body-->
     <!--End of card footer-->

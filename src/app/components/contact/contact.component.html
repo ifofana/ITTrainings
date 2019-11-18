@@ -65,7 +65,7 @@
                             </h4>
                         </legend>
                         <div [formGroupName]="i">
-                            <div class="form-inline">
+                            <div class="form-group">
                                 <div class="form-group col">
                                     <label for="firstName">First Name:</label>
                                     <input type="text" id="firstName" class="form-control" placeholder="First Name" name="firstName" formControlName="firstName"
@@ -119,9 +119,6 @@
                                     </select>  
                                 </div>
                                 <div class="form-group col">
-                                    <!-- <label for="firstName">First Name:</label>
-                                    <input type="text" id="firstName" class="form-control" placeholder="First Name" name="firstName" formControlName="firstName"
-                                        required> -->
                                     <button style="margin-right:5px;" type="button" class="btn btn-success btn-sm"
                                         (click)="addNewAddressLine(student.controls.addressLines)">
                                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add New

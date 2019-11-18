@@ -35,6 +35,16 @@ export class ContactComponent implements OnInit {
         parentGuardians: [
           {
             pgName: "",
+            pgAddressOne: "",
+            pgAddressTwo: "",
+            pgCity: "",
+            pgState: "",
+            pgZipCode: "",
+            pgPhoneNumber: "",
+            pgAltPhoneNumber: "",
+            pgEmail: "",
+            pgAltEmail: "",
+            pgRelationshipToStudent: ""
           }
         ]
       }
@@ -102,7 +112,17 @@ export class ContactComponent implements OnInit {
   addNewParentGuardian(control) {
     control.push(
       this.fb.group({
-        pgName: ['']
+        pgName: [''],
+        pgAddressOne: [''],
+        pgAddressTwo: [''],
+        pgCity: [''],
+        pgState: [''],
+        pgZipCode: [''],
+        pgPhoneNumber: [''],
+        pgAltPhoneNumber: [''],
+        pgEmail: [''],
+        pgAltEmail: [''],
+        pgRelationshipToStudent: []
       }))
   }
 
@@ -132,7 +152,17 @@ export class ContactComponent implements OnInit {
     let arr = new FormArray([])
     x.parentGuardians.forEach(y => {
       arr.push(this.fb.group({ 
-        pgName: y.pgName 
+        pgName: y.pgName,
+        pgAddressOne: y.pgAddressOne,
+        pgAddressTwo: y.pgAddressTwo,
+        pgCity: y.pgCity,
+        pgState: y.pgState,
+        pgZipCode: y.pgZipCode,
+        pgPhoneNumber: y.pgPhoneNumber,
+        pgAltPhoneNumber: y.pgAltPhoneNumber,
+        pgEmail: y.pgEmail,
+        pgAltEmail: y.pgAltEmail,
+        pgRelationshipToStudent: y.pgRelationshipToStudent 
       }))
     })
     return arr;

@@ -58,7 +58,7 @@
                     *ngFor="let student of myForm.get('students').controls; let i=index">
                     <fieldset>
                         <legend>
-                            <h4>Student {{i+1}}:<button style="margin-left:35px;" type="button" class="btn btn-danger"
+                            <h4>Student {{i+1}} Information Form:<button style="margin-left:35px;" type="button" class="btn btn-danger"
                                     (click)="deleteStudent(i)">
                                     <span class="glyphicon glyphicon-minus" aria-hidden="true"></span> Remove Student
                                 </button>
@@ -66,17 +66,67 @@
                         </legend>
                         <div [formGroupName]="i">
                             <div class="form-inline">
-                                <div class="form-group">
-                                    <label style="margin-right:80px;" class="col-form-label" for="student">Student</label>
-                                    <input type="text" class="form-control" id="student" placeholder="Student" name="type"
-                                        formControlName="student" style="margin-right:5px;" required>
+                                <div class="form-group col">
+                                    <label for="firstName">First Name:</label>
+                                    <input type="text" id="firstName" class="form-control" placeholder="First Name" name="firstName" formControlName="firstName"
+                                        required>
+                                    <label for="middlename">Middle Name:</label>
+                                    <input type="text" id="middlename" class="form-control" placeholder="Middle Name" name="middlename" formControlName="middlename">
+                                    <label for="lastName">Last Name:</label>
+                                    <input type="text" id="lastName" class="form-control" placeholder="Last Name" name="lastName" formControlName="lastName"
+                                        required>
+                                </div>
+                                <div class="form-group col">
+                                    <label for="gender">Gender:</label>
+                                    <select id="gender" class="form-control" name="gender" formControlName="gender" (change)="gender=$event.target.value"
+                                        required>
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+                                    </select>
+                                    <label for="dob">Date of Birth:</label>
+                                    <input type="date" id="dob" class="form-control" placeholder="Date of Birth" name="dob" formControlName="dob" (change)="student.dob = $event" 
+                                        required>
+                                    <label for="age">Age:</label>
+                                    <input type="number" id="age" class="form-control" placeholder="Age" name="age" formControlName="age"
+                                        required>
+                                </div>
+                                <div class="form-group col">
+                                    <input type="checkbox" (click)="toggleShow( )" class="form-check-input" />
+                                    <label class="form-check-label">Allergies/Medical Conditions</label>
+                                </div>
+                                <!--If the user checks the checkbox then textArea will appear-->
+                                <div *ngIf="isShown" id="divshow" class="form-group col" >
+                                    <textarea rows="2" id="allerges" class="form-control" placeholder="Allergies/Medical Conditions" name="allerges" formControlName="allerges">
+                                    </textarea>
+                                </div>
+                                <div class="form-group col">
+                                    <label for="classDay">Select of Day:</label>     
+                                    <select id="classDay" class="form-control" formControlName="classDay" (change)="classDay=$event.target.value"
+                                        required>
+                                        <option value="Saturday">Saturday</option>
+                                        <option value="Sunday">Sunday</option>
+                                    </select>
+                                    <label>Select the class according to age group:</label>
+                                    <select id="classSelection" class="form-control" formControlName="classSelection" (change)="classSelection=$event.target.value"
+                                        required>
+                                        <option value="foundtion">Foundition - 5 & 6 years old</option>
+                                        <option value="beginner">Beginner - 7 & 8 years old</option>
+                                        <option value="intermediate">Intermediate - 9 & 10 years old</option>
+                                        <option value="proficient">Proficient - 11 & 12 years old</option>
+                                        <option value="advanced">Advanced - 13 & 14 years old</option>
+                                        <option value="youth">Youth - 15 & 16 years old</option>
+                                        <option value="adult">Adult - 17 & 18 years old</option>
+                                    </select>  
+                                </div>
+                                <div class="form-group col">
+                                    <!-- <label for="firstName">First Name:</label>
+                                    <input type="text" id="firstName" class="form-control" placeholder="First Name" name="firstName" formControlName="firstName"
+                                        required> -->
                                     <button style="margin-right:5px;" type="button" class="btn btn-success btn-sm"
                                         (click)="addNewAddressLine(student.controls.addressLines)">
                                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add New
                                         Address Line
                                     </button>
-
-
                                 </div>
                             </div>
                             <div class="form-inline">
@@ -97,8 +147,6 @@
                                                         <span class="glyphicon glyphicon-minus"
                                                             aria-hidden="true">Remove Address Line</span>
                                                     </button>
-
-
                                                 </div>
                                             </div>
                                         </div>
@@ -109,16 +157,12 @@
                     </fieldset>
                 </div>
             </div>
-
-
             <button type="submit" class="btn btn-success">Submit</button>
-            <button type="button" class="btn btn-basic">Cancel</button>
+            <button type="button" class="btn btn-secondary">Cancel</button>
         </form>
-
         <pre>{{myForm.value | json}}</pre>
     </div>
     <!--End of the Card Body-->
     <!--End of card footer-->
-
 </div>
 <!--End of card-->

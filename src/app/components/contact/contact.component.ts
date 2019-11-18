@@ -16,10 +16,22 @@ export class ContactComponent implements OnInit {
   contact: Contact;
   currentUser: User;
 
+  // Flag for the text area, default is hidden
+  isShown = false;
+
   data = {
     students: [
       {
-        student: "",
+        firstName: "",
+        middlename: "",
+        lastName: "",
+        dob: "",
+        age: "",
+        gender: "",
+        allerges: "",
+        classSelection: "",
+        classDay: "",
+        isShown: false,
         addressLines: [
           {
             addressLine: "",
@@ -67,7 +79,16 @@ export class ContactComponent implements OnInit {
     let control = <FormArray>this.myForm.controls.students;
     control.push(
       this.fb.group({
-        student: [''],
+        firstName: [''],
+        middlename: [''],
+        lastName: [''],
+        gender: [''],
+        dob: [''],
+        age: [''],
+        allerges: [''],
+        classDay: [''],
+        classSelection: [''],
+        isShown: false,
         addressLines: this.fb.array([])
       })
     )
@@ -93,7 +114,16 @@ export class ContactComponent implements OnInit {
     let control = <FormArray>this.myForm.controls.students;
     this.data.students.forEach(x => {
       control.push(this.fb.group({ 
-        student: x.student, 
+        firstName: x.firstName, 
+        middlename: x.middlename,
+        lastName: x.lastName,
+        gender: x.gender,
+        dob: x.dob,
+        age: x.age,
+        allerges: x.allerges,
+        classDay: x.classDay,
+        classSelection: x.classSelection,
+        isShown: x.isShown,
         addressLines: this.setAddressLines(x) }))
     })
   }
@@ -126,5 +156,10 @@ export class ContactComponent implements OnInit {
       );
     }// end of else statement
   }// end of saveContact method
+
+  // When isShown flag is true then the toggleShow be tell the text area to be seen
+  toggleShow() {
+    this.isShown = ! this.isShown;
+  }
 
 }// end of ContactComponent class

@@ -83,6 +83,13 @@ export class ContactComponent implements OnInit {
 
   onSubmit() {
     alert(this.myForm.value);
+    this.contact.contactName = this.myForm.get('contactName').value;
+    this.contact.contactRelationshipToStudent = this.myForm.get('contactRelationshipToStudent').value;
+    this.contact.contactPhoneNumber = this.myForm.get('contactPhoneNumber').value;
+    this.contact.contactAltPhoneNumber = this.myForm.get('contactAltPhoneNumber').value;
+    this.contact.contactEmail = this.myForm.get('contactEmail').value;
+    this.contact.contactAltEmail = this.myForm.get('contactAltEmail').value;
+    this.saveContact();
   }
 
   addNewStudent() {

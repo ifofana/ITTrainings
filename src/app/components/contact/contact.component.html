@@ -53,7 +53,7 @@
             <div formArrayName="students">
                 <div *ngFor="let student of myForm.get('students').controls; let i=index" class="panel panel-default">
                     <div class="panel-heading">
-                        <span>Student {{i+1}} Information Form:</span>
+                        <h4>Student {{i+1}} Information Form:</h4>
                         <a *ngIf="myForm.controls.students.controls.length > 1" (click)="deleteStudent(i)" style="cursor: default; float: right;">
                             X
                         </a>

@@ -8,7 +8,7 @@
 -->
 
 <div class="card m-3">
-    <h4 class="card-header">Contact Information Form</h4>
+    <h3 class="card-header">Contact Information Form</h3>
 
     <div class="card-body">
 
@@ -53,7 +53,7 @@
             <div formArrayName="students">
                 <div *ngFor="let student of myForm.get('students').controls; let i=index" class="panel panel-default">
                     <div class="panel-heading">
-                        <h4>Student {{i+1}} Information Form:</h4>
+                        <h5>Student {{i+1}} Information Form:</h5>
                         <a *ngIf="myForm.controls.students.controls.length > 1" (click)="deleteStudent(i)" style="cursor: default; float: right;">
                             X
                         </a>

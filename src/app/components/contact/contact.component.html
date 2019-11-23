@@ -49,10 +49,6 @@
                         required>
                 </div>
             </div>
-            <button style="margin-top:5px; margin-bottom:5px;" type="button" class="btn btn-primary btn-sm"
-                (click)="addNewStudent()">
-                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add New Student
-            </button>
             <!-- students -->
             <div formArrayName="students">
                 <div *ngFor="let student of myForm.get('students').controls; let i=index" class="panel panel-default">
@@ -236,8 +232,17 @@
                    
                 </div>
             </div>
-            <button type="submit" class="btn btn-success">Submit</button>
-            <button type="button" class="btn btn-secondary">Cancel</button>
+            <div class="margin-20">
+                <a (click)="addNewStudent()" style="cursor: default; float: right">
+                    New student +
+                </a>
+            </div>
+          
+            <div class="margin-20">
+                <button type="submit" class="btn btn-primary pull-right" >Submit</button>
+                <button type="button" class="btn btn-secondary">Cancel</button>
+            </div>
+            <div class="clearfix"></div>            
         </form>
         <pre>{{myForm.value | json}}</pre>
     </div>

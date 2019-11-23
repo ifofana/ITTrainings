@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="margin-20">
-                <h4>Add contact</h4>
+                <h4>Contact Information Form</h4>
             </div>
             <form [formGroup]="myForm" novalidate (ngSubmit)="save(myForm)">
                 <div class="form-row">
@@ -39,11 +39,11 @@
                     </div>
                 </div>
                 <!--students-->
-                <div formArrayName="students">
+                <div class="card-header" formArrayName="students">
                     <div *ngFor="let student of myForm.controls.students.controls; let i=index"
                         class="panel panel-default">
                         <div class="panel-heading ">
-                            <span>Student {{i + 1}}</span>
+                            <span><h5>Student {{i + 1}} Information Form</h5></span>
                             <a *ngIf="myForm.controls.students.controls.length > 1" (click)="removeStudent(i)"
                                 style="cursor: default; float: right">
                                 X
@@ -120,13 +120,6 @@
                                     *ngFor="let parentGuardian of myForm.controls.students.controls[i].controls.parentGuardians.controls; let j=index"
                                     class="col-md-6">
                                     <div [formGroupName]="j">
-                                        <!-- <div class="form-group" style="padding-right:0px">
-                                            <label>Parent/Guardian {{j + 1}} Full Name</label>
-                                            <a *ngIf="student.controls.parentGuardians.controls.length > 1"
-                                                (click)="removeParentGuardian(student, j)"
-                                                style="cursor: default; float: right">X</a>
-                                            <input type="text" class="form-control" formControlName="pgName">
-                                        </div> -->
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col">
@@ -199,7 +192,7 @@
                                         </div>
                                     </div>
                                     <a class="pull-right" *ngIf="j == student.controls.parentGuardians.controls.length-1"
-                                        (click)="addParentGuardian(student)" style="float: right">Parent/Guardian +</a>
+                                        (click)="addParentGuardian(student)" style="float: right">Add New Parent/Guardian +</a>
                                 </div>
                             </div>
                         </div>
@@ -208,7 +201,7 @@
 
                 <div class="margin-20">
                     <a (click)="addStudent()" style="cursor: default; float: right">
-                        New student +
+                        Add New student +
                     </a>
                 </div>
 

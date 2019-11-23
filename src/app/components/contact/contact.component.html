@@ -53,189 +53,187 @@
                 (click)="addNewStudent()">
                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add New Student
             </button>
+            <!-- students -->
             <div formArrayName="students">
-                <div style="margin-top:5px; margin-bottom:5px;"
-                    *ngFor="let student of myForm.get('students').controls; let i=index">
-                    <fieldset>
-                        <legend>
-                            <h4>Student {{i+1}} Information Form:<button style="margin-left:35px;" type="button" class="btn btn-danger"
-                                    (click)="deleteStudent(i)">
-                                    <span class="glyphicon glyphicon-minus" aria-hidden="true"></span> Remove Student
-                                </button>
-                            </h4>
-                        </legend>
-                        <div [formGroupName]="i">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col col-example">
-                                        <label for="firstName">First Name:</label>
-                                        <input type="text" id="firstName" class="form-control" placeholder="First Name" name="firstName" formControlName="firstName"
-                                            required>
-                                    </div>
-                                    <div class="col col-example">
-                                        <label for="middlename">Middle Name:</label>
-                                        <input type="text" id="middlename" class="form-control" placeholder="Middle Name" name="middlename" formControlName="middlename">
-                                    </div>
-                                    <div class="col col-example">
-                                        <label for="lastName">Last Name:</label>
-                                        <input type="text" id="lastName" class="form-control" placeholder="Last Name" name="lastName" formControlName="lastName"
-                                        required>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col col-example">
-                                        <label for="gender">Gender:</label>
-                                        <select id="gender" class="form-control" name="gender" formControlName="gender" (change)="gender=$event.target.value"
-                                            required>
-                                            <option value="male">Male</option>
-                                            <option value="female">Female</option>
-                                        </select>
-                                    </div>
-                                    <div class="col col-example">
-                                        <label for="dob">Date of Birth:</label>
-                                        <input type="date" id="dob" class="form-control" placeholder="Date of Birth" name="dob" formControlName="dob" (change)="student.dob = $event" 
-                                            required>
-                                    </div>
-                                    <div class="col col-example">
-                                        <label for="age">Age:</label>
-                                        <input type="number" id="age" class="form-control" placeholder="Age" name="age" formControlName="age"
-                                            required>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col col-example">
-                                        <input type="checkbox" (click)="toggleShow( )" class="form-check-input" />
-                                        <label class="form-check-label">Allergies/Medical Conditions</label>
-                                    </div>
-                                </div>
-                                <!--If the user checks the checkbox then textArea will appear-->
-                                <div class="row" *ngIf="isShown" id="divshow">                      
-                                    <div class="col col-example">
-                                        <textarea rows="2" id="allerges" class="form-control" placeholder="Allergies/Medical Conditions" name="allerges" formControlName="allerges">
-                                        </textarea>
-                                    </div>                                    
-                                </div>
-                                <div class="row">
-                                    <div class="col col-example">
-                                        <label for="classDay">Select of Day:</label>     
-                                        <select id="classDay" class="form-control" formControlName="classDay" (change)="classDay=$event.target.value"
-                                            required>
-                                            <option value="Saturday">Saturday</option>
-                                            <option value="Sunday">Sunday</option>
-                                        </select>
-                                    </div>
-                                    <div class="col col-example">
-                                        <label>Select the class according to age group:</label>
-                                        <select id="classSelection" class="form-control" formControlName="classSelection" (change)="classSelection=$event.target.value"
-                                            required>
-                                            <option value="foundtion">Foundition - 5 & 6 years old</option>
-                                            <option value="beginner">Beginner - 7 & 8 years old</option>
-                                            <option value="intermediate">Intermediate - 9 & 10 years old</option>
-                                            <option value="proficient">Proficient - 11 & 12 years old</option>
-                                            <option value="advanced">Advanced - 13 & 14 years old</option>
-                                            <option value="youth">Youth - 15 & 16 years old</option>
-                                            <option value="adult">Adult - 17 & 18 years old</option>
-                                        </select>  
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col col-example">
-                                        <button style="margin-right:5px;" type="button" class="btn btn-success btn-sm"
-                                            (click)="addNewParentGuardian(student.controls.parentGuardians)">
-                                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add New
-                                            Parent/Guardian
-                                        </button>
-                                    </div>
-                                </div>
+                <div *ngFor="let student of myForm.get('students').controls; let i=index" class="panel panel-default">
+                    <div class="panel-heading">
+                        <span>Student {{i+1}} Information Form:</span>
+                        <a *ngIf="myForm.controls.students.controls.length > 1" (click)="deleteStudent(i)" style="cursor: default; float: right;">
+                            X
+                        </a>
+                    </div>                       
+                    <div class="panel-body" [formGroupName]="i" class="col-md-12 border">
+                        <!-- <div class="container"> -->
+                        <div class="row">
+                            <div class="col col-example">
+                                <label for="firstName">First Name:</label>
+                                <input type="text" id="firstName" class="form-control" placeholder="First Name" name="firstName" formControlName="firstName"
+                                    required>
                             </div>
-                            <div class="form-inline">
-                                <div class="form-group">
-                                    <div formArrayName="parentGuardians">
-                                        <div style="margin-top:5px; margin-bottom:5px;"
-                                            *ngFor="let lines of student.get('parentGuardians').controls; let j=index">
-                                            <div [formGroupName]="j">
-                                                <div class="form-group">
-                                                    <div class="form-row">
-                                                        <div class="form-group col">
-                                                            <label style="margin-right:5px;" class="col-form-label"
-                                                                for="pgName">Parent/Guardian {{j + 1}} Full Name:</label>
-                                                            <input formControlName="pgName" class="form-control"
-                                                                style="margin-right:5px;" type="text"
-                                                                placeholder="Parent/Guardian Name" id="pgName" name="pgName" />
-                                                            <label style="margin-right:5px;" class="col-form-label"
-                                                                for="pgAddressOne">Address One:</label>
-                                                            <input formControlName="pgAddressOne" class="form-control"
-                                                                style="margin-right:5px;" type="text"
-                                                                placeholder="Address One" id="pgAddressOne" name="pgAddressOne" />
-                                                        </div>
-                                                        <div class="form-group col">
-                                                            <label style="margin-right:5px;" class="col-form-label"
-                                                                for="pgAddressTwo">Address Two:</label>
-                                                            <input formControlName="pgAddressTwo" class="form-control"
-                                                                style="margin-right:5px;" type="text"
-                                                                placeholder="Address Two" id="pgAddressTwo" name="pgAddressTwo" />
-                                                            <label style="margin-right:5px;" class="col-form-label"
-                                                                for="pgCity">City:</label>
-                                                            <input formControlName="pgCity" class="form-control"
-                                                                style="margin-right:5px;" type="tel"
-                                                                placeholder="City" id="pgCity" name="pgCity" />
-                                                        </div>
-                                                        <div class="form-group col">
-                                                            <label style="margin-right:5px;" class="col-form-label"
-                                                                for="pgState">State:</label>
-                                                            <input formControlName="pgState" class="form-control"
-                                                                style="margin-right:5px;" type="text"
-                                                                placeholder="State" id="pgState" name="pgState" />
-                                                            <label style="margin-right:5px;" class="col-form-label"
-                                                                for="pgZipCode">Zip Code:</label>
-                                                            <input formControlName="pgZipCode" class="form-control"
-                                                                style="margin-right:5px;" type="tel"
-                                                                placeholder="Zip Code" id="pgZipCode" name="pgZipCode" />
-                                                        </div>
-                                                        <div class="form-group col">
-                                                            <label style="margin-right:5px;" class="col-form-label"
-                                                                for="pgEmail">Email:</label>
-                                                            <input formControlName="pgEmail" class="form-control"
-                                                                style="margin-right:5px;" type="email"
-                                                                placeholder="Email" id="pgEmail" name="pgEmail" />
-                                                            <label style="margin-right:5px;" class="col-form-label"
-                                                                for="pgAltEmail">Alt Email:</label>
-                                                            <input formControlName="pgAltEmail" class="form-control"
-                                                                style="margin-right:5px;" type="email"
-                                                                placeholder="Alt Email" id="pgAltEmail" name="pgAltEmail" />
-                                                        </div>
-                                                        <div class="form-group col">
-                                                            <label style="margin-right:5px;" class="col-form-label"
-                                                                for="pgPhoneNumber">Phone:</label>
-                                                            <input formControlName="pgPhoneNumber" class="form-control"
-                                                                style="margin-right:5px;" type="tel"
-                                                                placeholder="Phone" id="pgPhoneNumber" name="pgPhoneNumber" />
-                                                            <label style="margin-right:5px;" class="col-form-label"
-                                                                for="pgAltPhoneNumber">Alt Phone:</label>
-                                                            <input formControlName="pgAltPhoneNumber" class="form-control"
-                                                                style="margin-right:5px;" type="tel"
-                                                                placeholder="Alt Phone" id="pgAltPhoneNumber" name="pgAltPhoneNumber" />
-                                                        </div>
-                                                        <div class="form-group col">
-                                                            <label style="margin-right: 5px;" class="col-form-label" for="pgRelationshipToStudent">Relationship To Student:</label>
-                                                            <input formControlName="pgRelationshipToStudent" class="form-control" style="margin-right: 5px;" type="text" 
-                                                                placeholder="Relationship To Student" id="pgRelationshipToStudent" name="pgRelationshipToStudent"/>
-                                                        </div>
-                                                        <button style="margin-right:5px;" type="button"
-                                                            class="btn btn-danger btn-sm"
-                                                            (click)="deleteParentGuardian(student.controls.parentGuardians, j)">
-                                                            <span class="glyphicon glyphicon-minus"
-                                                                aria-hidden="true">Remove Parent/Guardian</span>
-                                                        </button>
-                                                    </div>                                                    
-                                                </div>
+                            <div class="col col-example">
+                                <label for="middlename">Middle Name:</label>
+                                <input type="text" id="middlename" class="form-control" placeholder="Middle Name" name="middlename" formControlName="middlename">
+                            </div>
+                            <div class="col col-example">
+                                <label for="lastName">Last Name:</label>
+                                <input type="text" id="lastName" class="form-control" placeholder="Last Name" name="lastName" formControlName="lastName"
+                                required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col col-example">
+                                <label for="gender">Gender:</label>
+                                <select id="gender" class="form-control" name="gender" formControlName="gender" (change)="gender=$event.target.value"
+                                    required>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                </select>
+                            </div>
+                            <div class="col col-example">
+                                <label for="dob">Date of Birth:</label>
+                                <input type="date" id="dob" class="form-control" placeholder="Date of Birth" name="dob" formControlName="dob" (change)="student.dob = $event" 
+                                    required>
+                            </div>
+                            <div class="col col-example">
+                                <label for="age">Age:</label>
+                                <input type="number" id="age" class="form-control" placeholder="Age" name="age" formControlName="age"
+                                    required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col col-example">
+                                <input type="checkbox" (click)="toggleShow( )" class="form-check-input" />
+                                <label class="form-check-label">Allergies/Medical Conditions</label>
+                            </div>
+                        </div>
+                        <!--If the user checks the checkbox then textArea will appear-->
+                        <div class="row" *ngIf="isShown" id="divshow">                      
+                            <div class="col col-example">
+                                <textarea rows="2" id="allerges" class="form-control" placeholder="Allergies/Medical Conditions" name="allerges" formControlName="allerges">
+                                </textarea>
+                            </div>                                    
+                        </div>
+                        <div class="row">
+                            <div class="col col-example">
+                                <label for="classDay">Select of Day:</label>     
+                                <select id="classDay" class="form-control" formControlName="classDay" (change)="classDay=$event.target.value"
+                                    required>
+                                    <option value="Saturday">Saturday</option>
+                                    <option value="Sunday">Sunday</option>
+                                </select>
+                            </div>
+                            <div class="col col-example">
+                                <label>Select the class according to age group:</label>
+                                <select id="classSelection" class="form-control" formControlName="classSelection" (change)="classSelection=$event.target.value"
+                                    required>
+                                    <option value="foundtion">Foundition - 5 & 6 years old</option>
+                                    <option value="beginner">Beginner - 7 & 8 years old</option>
+                                    <option value="intermediate">Intermediate - 9 & 10 years old</option>
+                                    <option value="proficient">Proficient - 11 & 12 years old</option>
+                                    <option value="advanced">Advanced - 13 & 14 years old</option>
+                                    <option value="youth">Youth - 15 & 16 years old</option>
+                                    <option value="adult">Adult - 17 & 18 years old</option>
+                                </select>  
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col col-example">
+                                <button style="margin-right:5px;" type="button" class="btn btn-success btn-sm"
+                                    (click)="addNewParentGuardian(student.controls.parentGuardians)">
+                                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add New
+                                    Parent/Guardian
+                                </button>
+                            </div>
+                        </div>
+                        <!--</div>--><!-- end student form class=container -->
+                        <div class="form-inline">
+                            <div class="form-group">
+                                <div formArrayName="parentGuardians">
+                                    <div style="margin-top:5px; margin-bottom:5px;"
+                                        *ngFor="let lines of student.get('parentGuardians').controls; let j=index">
+                                        <div [formGroupName]="j">
+                                            <div class="form-group">
+                                                <div class="form-row">
+                                                    <div class="form-group col">
+                                                        <label style="margin-right:5px;" class="col-form-label"
+                                                            for="pgName">Parent/Guardian {{j + 1}} Full Name:</label>
+                                                        <input formControlName="pgName" class="form-control"
+                                                            style="margin-right:5px;" type="text"
+                                                            placeholder="Parent/Guardian Name" id="pgName" name="pgName" />
+                                                        <label style="margin-right:5px;" class="col-form-label"
+                                                            for="pgAddressOne">Address One:</label>
+                                                        <input formControlName="pgAddressOne" class="form-control"
+                                                            style="margin-right:5px;" type="text"
+                                                            placeholder="Address One" id="pgAddressOne" name="pgAddressOne" />
+                                                    </div>
+                                                    <div class="form-group col">
+                                                        <label style="margin-right:5px;" class="col-form-label"
+                                                            for="pgAddressTwo">Address Two:</label>
+                                                        <input formControlName="pgAddressTwo" class="form-control"
+                                                            style="margin-right:5px;" type="text"
+                                                            placeholder="Address Two" id="pgAddressTwo" name="pgAddressTwo" />
+                                                        <label style="margin-right:5px;" class="col-form-label"
+                                                            for="pgCity">City:</label>
+                                                        <input formControlName="pgCity" class="form-control"
+                                                            style="margin-right:5px;" type="tel"
+                                                            placeholder="City" id="pgCity" name="pgCity" />
+                                                    </div>
+                                                    <div class="form-group col">
+                                                        <label style="margin-right:5px;" class="col-form-label"
+                                                            for="pgState">State:</label>
+                                                        <input formControlName="pgState" class="form-control"
+                                                            style="margin-right:5px;" type="text"
+                                                            placeholder="State" id="pgState" name="pgState" />
+                                                        <label style="margin-right:5px;" class="col-form-label"
+                                                            for="pgZipCode">Zip Code:</label>
+                                                        <input formControlName="pgZipCode" class="form-control"
+                                                            style="margin-right:5px;" type="tel"
+                                                            placeholder="Zip Code" id="pgZipCode" name="pgZipCode" />
+                                                    </div>
+                                                    <div class="form-group col">
+                                                        <label style="margin-right:5px;" class="col-form-label"
+                                                            for="pgEmail">Email:</label>
+                                                        <input formControlName="pgEmail" class="form-control"
+                                                            style="margin-right:5px;" type="email"
+                                                            placeholder="Email" id="pgEmail" name="pgEmail" />
+                                                        <label style="margin-right:5px;" class="col-form-label"
+                                                            for="pgAltEmail">Alt Email:</label>
+                                                        <input formControlName="pgAltEmail" class="form-control"
+                                                            style="margin-right:5px;" type="email"
+                                                            placeholder="Alt Email" id="pgAltEmail" name="pgAltEmail" />
+                                                    </div>
+                                                    <div class="form-group col">
+                                                        <label style="margin-right:5px;" class="col-form-label"
+                                                            for="pgPhoneNumber">Phone:</label>
+                                                        <input formControlName="pgPhoneNumber" class="form-control"
+                                                            style="margin-right:5px;" type="tel"
+                                                            placeholder="Phone" id="pgPhoneNumber" name="pgPhoneNumber" />
+                                                        <label style="margin-right:5px;" class="col-form-label"
+                                                            for="pgAltPhoneNumber">Alt Phone:</label>
+                                                        <input formControlName="pgAltPhoneNumber" class="form-control"
+                                                            style="margin-right:5px;" type="tel"
+                                                            placeholder="Alt Phone" id="pgAltPhoneNumber" name="pgAltPhoneNumber" />
+                                                    </div>
+                                                    <div class="form-group col">
+                                                        <label style="margin-right: 5px;" class="col-form-label" for="pgRelationshipToStudent">Relationship To Student:</label>
+                                                        <input formControlName="pgRelationshipToStudent" class="form-control" style="margin-right: 5px;" type="text" 
+                                                            placeholder="Relationship To Student" id="pgRelationshipToStudent" name="pgRelationshipToStudent"/>
+                                                    </div>
+                                                    <button style="margin-right:5px;" type="button"
+                                                        class="btn btn-danger btn-sm"
+                                                        (click)="deleteParentGuardian(student.controls.parentGuardians, j)">
+                                                        <span class="glyphicon glyphicon-minus"
+                                                            aria-hidden="true">Remove Parent/Guardian</span>
+                                                    </button>
+                                                </div>                                                    
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </fieldset>
+                    </div>
+                   
                 </div>
             </div>
             <button type="submit" class="btn btn-success">Submit</button>

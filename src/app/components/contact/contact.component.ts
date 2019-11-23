@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
+import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 import { ContactDataService } from '../../services/contact-data.service';
 import { Contact } from '../../models/contact';
 import { User } from 'src/app/models/user';
@@ -19,70 +19,91 @@ export class ContactComponent implements OnInit {
   // Flag for the text area, default is hidden
   isShown = false;
 
-  data = {
-    students: [
-      {
-        firstName: "",
-        middlename: "",
-        lastName: "",
-        dob: "",
-        age: "",
-        gender: "",
-        allerges: "",
-        classSelection: "",
-        classDay: "",
-        isShown: false,
-        parentGuardians: [
-          {
-            pgName: "",
-            pgAddressOne: "",
-            pgAddressTwo: "",
-            pgCity: "",
-            pgState: "",
-            pgZipCode: "",
-            pgPhoneNumber: "",
-            pgAltPhoneNumber: "",
-            pgEmail: "",
-            pgAltEmail: "",
-            pgRelationshipToStudent: ""
-          }
-        ]
-      }
-    ]
-  }
+  public myForm: FormGroup;
 
-  myForm: FormGroup;
-
-  constructor(private fb: FormBuilder, private contactService: ContactDataService, private route: ActivatedRoute, private router: Router) {
+  constructor(private _fb: FormBuilder, private contactService: ContactDataService, private route: ActivatedRoute, private router: Router) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    this.myForm = this.fb.group({
-      contactName: [''],
+  }// end of parameterized constructor
+
+  ngOnInit() {
+    this.id = this.route.snapshot.params.id;
+    console.log('id is ' + this.id);
+    // Declare and create new object of Contact class
+    this.contact = new Contact();
+    if (this.id !== -1) {
+      this.contactService.retrieveContact(this.id).subscribe(
+        data => this.contact = data
+      );
+    }// end of if statement
+    this.myForm = this._fb.group({
+      contactName: ['', [Validators.required, Validators.minLength(5)]],
       contactRelationshipToStudent: [''],
       contactPhoneNumber: [''],
       contactAltPhoneNumber: [''],
       contactEmail: [''],
       contactAltEmail: [''],
-      students: this.fb.array([])
-    })
-
-    this.setStudents();
-  }// end of parameterized constructor
-
-  ngOnInit( ) {
-    this.id = this.route.snapshot.params.id;
-    console.log('id is ' + this.id);
-    // Declare and create new object of Contact class
-    this.contact = new Contact( );
-
-    if (this.id !== -1) {
-      this.contactService.retrieveContact(this.id).subscribe(
-          data => this.contact = data
-        );
-    }// end of if statement
+      students: this._fb.array([
+        this.initStudent(),
+      ])
+    });
   }// end of ngOnInit method
 
-  onSubmit() {
-    alert(this.myForm.value);
+  initStudent() {
+    return this._fb.group({
+      firstName: ['', Validators.required],
+      middlename: [''],
+      lastName: ['', Validators.required],
+      gender: [''],
+      dob: [''],
+      age: [''],
+      allerges: [''],
+      classDay: [''],
+      classSelection: [''],
+      isShown: false,
+      parentGuardians: this._fb.array([
+        this.initParentGuardian()
+      ])
+    });
+  }
+
+  initParentGuardian() {
+    return this._fb.group({
+      pgName: ['', Validators.required],
+      pgAddressOne: ['', Validators.required],
+      pgAddressTwo: [''],
+      pgCity: ['', Validators.required],
+      pgState: ['', Validators.required],
+      pgZipCode: ['', Validators.required],
+      pgPhoneNumber: ['', Validators.required],
+      pgAltPhoneNumber: [''],
+      pgEmail: ['', Validators.required],
+      pgAltEmail: [''],
+      pgRelationshipToStudent: ['', Validators.required]
+    })
+  }
+
+  addStudent() {
+    const control = <FormArray>this.myForm.controls['students'];
+    control.push(this.initStudent());
+  }
+
+  removeStudent(i: number) {
+    const control = <FormArray>this.myForm.controls['students'];
+    control.removeAt(i);
+  }
+
+  addParentGuardian(student): void {
+    const control = <FormArray>student.controls['parentGuardians'];
+    control.push(this.initParentGuardian());
+  }
+
+  removeParentGuardian(student, j: number) {
+    const control = <FormArray>student.controls['parentGuardians'];
+    control.removeAt(j);
+  }
+
+  save(formData) {
+    console.log(formData.value);
     this.contact.contactName = this.myForm.get('contactName').value;
     this.contact.contactRelationshipToStudent = this.myForm.get('contactRelationshipToStudent').value;
     this.contact.contactPhoneNumber = this.myForm.get('contactPhoneNumber').value;
@@ -90,89 +111,6 @@ export class ContactComponent implements OnInit {
     this.contact.contactEmail = this.myForm.get('contactEmail').value;
     this.contact.contactAltEmail = this.myForm.get('contactAltEmail').value;
     this.saveContact();
-  }
-
-  addNewStudent() {
-    let control = <FormArray>this.myForm.controls.students;
-    control.push(
-      this.fb.group({
-        firstName: [''],
-        middlename: [''],
-        lastName: [''],
-        gender: [''],
-        dob: [''],
-        age: [''],
-        allerges: [''],
-        classDay: [''],
-        classSelection: [''],
-        isShown: false,
-        parentGuardians: this.fb.array([])
-      })
-    )
-  }
-
-  deleteStudent(index) {
-    let control = <FormArray>this.myForm.controls.students;
-    control.removeAt(index)
-  }
-
-  addNewParentGuardian(control) {
-    control.push(
-      this.fb.group({
-        pgName: [''],
-        pgAddressOne: [''],
-        pgAddressTwo: [''],
-        pgCity: [''],
-        pgState: [''],
-        pgZipCode: [''],
-        pgPhoneNumber: [''],
-        pgAltPhoneNumber: [''],
-        pgEmail: [''],
-        pgAltEmail: [''],
-        pgRelationshipToStudent: []
-      }))
-  }
-
-  deleteParentGuardian(control, index) {
-    control.removeAt(index)
-  }
-
-  setStudents() {
-    let control = <FormArray>this.myForm.controls.students;
-    this.data.students.forEach(x => {
-      control.push(this.fb.group({ 
-        firstName: x.firstName, 
-        middlename: x.middlename,
-        lastName: x.lastName,
-        gender: x.gender,
-        dob: x.dob,
-        age: x.age,
-        allerges: x.allerges,
-        classDay: x.classDay,
-        classSelection: x.classSelection,
-        isShown: x.isShown,
-        parentGuardians: this.setParentGuardians(x) }))
-    })
-  }
-
-  setParentGuardians(x) {
-    let arr = new FormArray([])
-    x.parentGuardians.forEach(y => {
-      arr.push(this.fb.group({ 
-        pgName: y.pgName,
-        pgAddressOne: y.pgAddressOne,
-        pgAddressTwo: y.pgAddressTwo,
-        pgCity: y.pgCity,
-        pgState: y.pgState,
-        pgZipCode: y.pgZipCode,
-        pgPhoneNumber: y.pgPhoneNumber,
-        pgAltPhoneNumber: y.pgAltPhoneNumber,
-        pgEmail: y.pgEmail,
-        pgAltEmail: y.pgAltEmail,
-        pgRelationshipToStudent: y.pgRelationshipToStudent 
-      }))
-    })
-    return arr;
   }
 
   saveContact() {
@@ -196,7 +134,7 @@ export class ContactComponent implements OnInit {
 
   // When isShown flag is true then the toggleShow be tell the text area to be seen
   toggleShow() {
-    this.isShown = ! this.isShown;
+    this.isShown = !this.isShown;
   }
 
 }// end of ContactComponent class

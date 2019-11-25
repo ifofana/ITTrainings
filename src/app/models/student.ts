@@ -1,3 +1,4 @@
+import { ParentGuard } from './parent.guard';
 
 export class Student {
   id: number;
@@ -10,6 +11,7 @@ export class Student {
   allerges: string;
   classSelection: string;
   classDay: string;
+  parentGuardians: ParentGuard[];
 
   displayName(): any {
     return this.firstName + ' ' + this.middlename + ' ' + this.lastName + ' '

@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 import { ContactDataService } from '../../services/contact-data.service';
 import { Contact } from '../../models/contact';
 import { User } from 'src/app/models/user';
+import { Student } from 'src/app/models/student';
 
 @Component({
   selector: 'app-contact',
@@ -12,7 +13,7 @@ import { User } from 'src/app/models/user';
 })
 export class ContactComponent implements OnInit {
 
-  id: number;
+  //id: number;
   contact: Contact;
   currentUser: User;
 
@@ -26,15 +27,15 @@ export class ContactComponent implements OnInit {
   }// end of parameterized constructor
 
   ngOnInit() {
-    this.id = this.route.snapshot.params.id;
-    console.log('id is ' + this.id);
+    //this.id = this.route.snapshot.params.id;
+    //console.log('id is ' + this.id);
     // Declare and create new object of Contact class
     this.contact = new Contact();
-    if (this.id !== -1) {
-      this.contactService.retrieveContact(this.id).subscribe(
-        data => this.contact = data
-      );
-    }// end of if statement
+    // if (this.id !== -1) {
+    //   this.contactService.retrieveContact(this.id).subscribe(
+    //     data => this.contact = data
+    //   );
+    // }// end of if statement
     this.myForm = this._fb.group({
       contactName: ['', [Validators.required, Validators.minLength(5)]],
       contactRelationshipToStudent: [''],
@@ -110,11 +111,17 @@ export class ContactComponent implements OnInit {
     this.contact.contactAltPhoneNumber = this.myForm.get('contactAltPhoneNumber').value;
     this.contact.contactEmail = this.myForm.get('contactEmail').value;
     this.contact.contactAltEmail = this.myForm.get('contactAltEmail').value;
-    this.saveContact();
+    console.log('formData.value='+formData.value); 
+    this.contactService.createContact(formData.value).subscribe(
+      data => {
+        console.log(data);
+        this.router.navigate(['contacts']);
+      }
+    );
   }
 
   saveContact() {
-    if (this.id === -1) {
+    //if (this.id === -1) {
       console.log(' ************* create Contact! ');
       this.contactService.createContact(this.contact).subscribe(
         data => {
@@ -122,19 +129,23 @@ export class ContactComponent implements OnInit {
           this.router.navigate(['contacts']);
         }
       );
-    } else {
-      this.contactService.updateContact(this.id, this.contact).subscribe(
-        data => {
-          console.log(data);
-          this.router.navigate(['contacts']);
-        }
-      );
-    }// end of else statement
+    // } else {
+    //   this.contactService.updateContact(this.id, this.contact).subscribe(
+    //     data => {
+    //       console.log(data);
+    //       this.router.navigate(['contacts']);
+    //     }
+    //   );
+    // }// end of else statement
   }// end of saveContact method
 
   // When isShown flag is true then the toggleShow be tell the text area to be seen
   toggleShow() {
     this.isShown = !this.isShown;
+  }
+
+  get studentsArray(): FormArray {
+    return this.myForm.controls.students as FormArray;
   }
 
 }// end of ContactComponent class

@@ -16,9 +16,10 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
 
-import { Contact } from 'src/app/models/contact';
+//import { Contact } from 'src/app/models/contact';
 import { User } from '../models/user';
 import { API_URL } from 'src/app/app.constants';
+import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 
 @Injectable({
     providedIn: 'root'
@@ -39,7 +40,7 @@ import { API_URL } from 'src/app/app.constants';
 
     // This method get all the Contacts
     retrieveAllContacts( ): Observable<any> {
-      return this.http.get<Contact[ ]>(`${API_URL}/api/contacts`, {headers: this.headers});
+      return this.http.get<FormGroup[ ]>(`${API_URL}/api/contacts`, {headers: this.headers});
     } // end of retrieveAllContacts method
 
     // This method delete a Contact
@@ -51,11 +52,14 @@ import { API_URL } from 'src/app/app.constants';
      * This method get one of the Contact by its id number
      */
     retrieveContact(id: any) {
-      return this.http.get<Contact>(`${API_URL}/api/contacts/${id}`, {headers: this.headers} );
+      return this.http.get<FormGroup>(`${API_URL}/api/contacts/${id}`, {headers: this.headers} );
     }// end of retrieveContact method
 
     // Update contact information form
     updateContact(id, contact) {
+      console.log('>>> Inside createContact service ');
+      console.log(contact);
+      console.log('>>> DATA printing end.');
       console.log('=====================> updateContact');
       console.log('=====================> ' + id);
       return this.http.put(`${API_URL}/api/contacts/${id}`, contact, {headers: this.headers});
@@ -63,6 +67,9 @@ import { API_URL } from 'src/app/app.constants';
 
     // Create a contact information
     createContact(contact) {
+      console.log('>>> Inside createContact service ');
+      console.log('contact = ' + contact);
+      console.log('>>> DATA printing end.');
       return this.http.post(`${API_URL}/api/contacts/`, contact, {headers: this.headers});
     }
   }

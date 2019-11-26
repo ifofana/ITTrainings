@@ -111,7 +111,18 @@ export class ContactComponent implements OnInit {
     this.contact.contactAltPhoneNumber = this.myForm.get('contactAltPhoneNumber').value;
     this.contact.contactEmail = this.myForm.get('contactEmail').value;
     this.contact.contactAltEmail = this.myForm.get('contactAltEmail').value;
-    console.log('formData.value='+formData.value); 
+    console.log('*** this.myForm.value='+this.myForm.value); 
+
+    console.log('NAME OF CONTACT=' + this.contactName.value);
+    console.log('STUDENTS LIST=' + this.studentsArray.value);
+    
+    // for (var i = 0, len = this.studentsArray.length; i < len; i++) {
+    //   console.log('this.studentsArray[' + i + ']=' + this.studentsArray[i]);
+    //   for (var j = 0, jlen = this.myForm.controls.students[i].parentGuardians.length; j < jlen; j++) {
+    //     console.log('this.studentsArray[' + i + '].parentGuardians[' + j + ']=' + this.studentsArray[i].parentGuardians[j]);
+    //   }
+    // }
+
     this.contactService.createContact(formData.value).subscribe(
       data => {
         console.log(data);
@@ -143,6 +154,8 @@ export class ContactComponent implements OnInit {
   toggleShow() {
     this.isShown = !this.isShown;
   }
+
+  get contactName(): any { return this.myForm.get('contactName');}
 
   get studentsArray(): FormArray {
     return this.myForm.controls.students as FormArray;

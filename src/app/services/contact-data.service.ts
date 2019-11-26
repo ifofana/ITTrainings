@@ -68,7 +68,7 @@ import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
     // Create a contact information
     createContact(contact) {
       console.log('>>> Inside createContact service ');
-      console.log('contact = ' + contact);
+      console.dir('contact = ' + JSON.stringify(contact));
       console.log('>>> DATA printing end.');
       return this.http.post(`${API_URL}/api/contacts/`, contact, {headers: this.headers});
     }

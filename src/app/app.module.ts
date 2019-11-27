@@ -41,6 +41,7 @@ import {
   MatListModule, 
   MatGridListModule,
   MatAutocompleteModule,
+  MatTreeModule,
   MatIconModule
 } from '@angular/material';
 
@@ -86,6 +87,7 @@ import { StudentDetailsComponent } from './components/student-details/student-de
     BrowserAnimationsModule,
     MatListModule,
     MatGridListModule,
+    MatTreeModule,
     MatIconModule,
     MatDatepickerModule,
     HttpClientModule

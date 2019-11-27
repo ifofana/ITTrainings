@@ -13,3 +13,28 @@
         <div><span class="font-weight-bold">Age Group: </span>{{currentStudent.classSelection}}</div>
     </div>
 </div>
+
+<div class="container">
+    <h3>Parent(s)/Guardian(s)</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Full Name</th>
+                <th>Address</th>
+                <th>Phone</th>
+                <th>E-Mail</th>
+                <th>Relationship To Student</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let pg of currentStudent.parentGuardians">
+                <td>{{pg.pgName}}</td>
+                <td>{{pg.pgAddressOne + pg.pgCity + pg.pgState + pg.pgZipCode}}</td>
+                <td>{{pg.pgPhoneNumber}}</td>
+                <td>{{pg.pgEmail}}</td>
+                <td>{{pg.pgRelationshipToStudent}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

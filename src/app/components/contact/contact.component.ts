@@ -126,7 +126,7 @@ export class ContactComponent implements OnInit {
     this.contactService.createContact(formData.value).subscribe(
       data => {
         console.log(data);
-        this.router.navigate(['contacts']);
+        this.router.navigate(['students']);
       }
     );
   }

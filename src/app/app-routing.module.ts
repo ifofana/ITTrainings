@@ -24,6 +24,7 @@ import { ListGuardiansComponent } from './components/list-guardians/list-guardia
 import { GuardianComponent } from './components/guardian/guardian.component';
 import { StepperComponent } from './components/stepper/stepper.component';
 import { StudentDetailsComponent } from './components/student-details/student-details.component';
+import { ContactDetailsComponent } from './components/contact-details/contact-details.component';
 
 const routes: Routes = [
 
@@ -55,11 +56,13 @@ const routes: Routes = [
 
 { path: 'contacts/:id', component: ContactComponent, canActivate: [AuthGuard], data: {roles: [Role.ADMIN, Role.USER]} },
 
-{ path : 'guardians', component:  ListGuardiansComponent, canActivate: [AuthGuard], data: {roles: [Role.ADMIN, Role.USER]} },
+{ path: 'guardians', component:  ListGuardiansComponent, canActivate: [AuthGuard], data: {roles: [Role.ADMIN, Role.USER]} },
 
-{ path : 'studentdetails/:id', component:  StudentDetailsComponent, canActivate: [AuthGuard], data: {roles: [Role.ADMIN, Role.USER]} },
+{ path: 'studentdetails/:id', component:  StudentDetailsComponent, canActivate: [AuthGuard], data: {roles: [Role.ADMIN, Role.USER]} },
 
-{ path  : 'guardian/:id', component: GuardianComponent, canActivate: [AuthGuard], data: {roles: [Role.ADMIN, Role.USER]} },
+{ path: 'contactdetails/:id', component: ContactDetailsComponent, canActivate: [AuthGuard], data: {roles: [Role.ADMIN, Role.USER]} },
+
+{ path: 'guardian/:id', component: GuardianComponent, canActivate: [AuthGuard], data: {roles: [Role.ADMIN, Role.USER]} },
 
 { path: 'logout', component: LogoutComponent, canActivate: [AuthGuard], data: {roles: [Role.ADMIN, Role.USER]} },
 

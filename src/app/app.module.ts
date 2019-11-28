@@ -47,6 +47,7 @@ import {
 
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { StudentDetailsComponent } from './components/student-details/student-details.component';
+import { ContactDetailsComponent } from './components/contact-details/contact-details.component';
 
 @NgModule({
   declarations: [
@@ -71,7 +72,8 @@ import { StudentDetailsComponent } from './components/student-details/student-de
     GuardianComponent,
     ListGuardiansComponent,
     StepperComponent,
-    StudentDetailsComponent
+    StudentDetailsComponent,
+    ContactDetailsComponent
   ],
 
   imports: [

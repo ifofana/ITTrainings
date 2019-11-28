@@ -16,7 +16,7 @@
             <tr *ngFor="let c of contacts">
                 <td>{{c.contactName}}</td>
                 <td>{{c.contactEmail}}</td>
-                <td><button (click)="updateContact(c.id)" class="btn btn-btn btn-info">View|Edit</button></td>
+                <td><button (click)="viewContactDetails(c)" class="btn btn-btn btn-info">Detail</button></td>
                 <td><button (click)="deleteContact(c.id)" class="btn btn-danger">Delete</button></td>    
             </tr>
         </tbody>

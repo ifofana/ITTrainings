@@ -55,5 +55,11 @@ export class ListContactsComponent implements OnInit {
     this.router.navigate(['contacts', -1]);
   }// end of addContact method
 
+  viewContactDetails(c: Contact) {
+    console.log('Go to ContactDetailsComponent');
+    localStorage.setItem("detailContact", JSON.stringify(c));
+    this.router.navigate(['/contactdetails', c.id]);
+  }
+
 
 }// end of ListContactsComponent class

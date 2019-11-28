@@ -31,6 +31,5 @@ export class StudentDetailsComponent implements OnInit {
         this.studentId = params.get('id');
       }
     })
-
   }
 }

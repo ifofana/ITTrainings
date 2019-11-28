@@ -89,6 +89,7 @@ export class ContactComponent implements OnInit {
   }
 
   removeStudent(i: number) {
+    console.log('removeStudent('+i+')');
     const control = <FormArray>this.myForm.controls['students'];
     control.removeAt(i);
   }
@@ -99,6 +100,7 @@ export class ContactComponent implements OnInit {
   }
 
   removeParentGuardian(student, j: number) {
+    console.log('removeStudent('+j+')');
     const control = <FormArray>student.controls['parentGuardians'];
     control.removeAt(j);
   }

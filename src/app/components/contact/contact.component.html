@@ -39,17 +39,16 @@
                     </div>
                 </div>
                 <!--students-->
-                <div class="card-header" formArrayName="students">
-                    <div *ngFor="let student of myForm.controls.students.controls; let i=index"
-                        class="panel panel-default">
-                        <div class="panel-heading ">
+                <div formArrayName="students">
+                    <div *ngFor="let student of myForm.controls.students.controls; let i=index">
+                        <div>
                             <span><h5>Student {{i + 1}} Information Form</h5></span>
                             <a *ngIf="myForm.controls.students.controls.length > 1" (click)="removeStudent(i)"
                                 style="cursor: default; float: right">
                                 X
                             </a>
                         </div>
-                        <div class="panel-body" [formGroupName]="i" class="col-md-12 border">
+                        <div [formGroupName]="i" class="col-md-12 border">
                             <div class="row">
                                 <div class="col col-example">
                                     <label>First Name</label>
@@ -123,7 +122,7 @@
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col">
-                                                    <label>Parent/Guardian {{j + 1}} Full Name</label>
+                                                    <label><h5>Parent/Guardian {{j + 1}} Full Name</h5></label>
                                                     <a *ngIf="student.controls.parentGuardians.controls.length > 1"
                                                         (click)="removeParentGuardian(student, j)"
                                                         style="cursor: default; float: right">X</a>

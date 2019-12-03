@@ -1,4 +1,5 @@
 import { ParentGuard } from './parent.guard';
+import { Contact } from './contact';
 
 export class Student {
   id: number;
@@ -12,6 +13,7 @@ export class Student {
   classSelection: string;
   classDay: string;
   parentGuardians: ParentGuard[];
+  contact: Contact;
 
   displayName(): any {
     return this.firstName + ' ' + this.middlename + ' ' + this.lastName + ' '

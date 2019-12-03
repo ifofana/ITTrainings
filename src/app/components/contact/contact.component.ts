@@ -100,7 +100,7 @@ export class ContactComponent implements OnInit {
   }
 
   removeParentGuardian(student, j: number) {
-    console.log('removeStudent('+j+')');
+    console.log('removeParentGuardian('+j+')');
     const control = <FormArray>student.controls['parentGuardians'];
     control.removeAt(j);
   }

@@ -25,11 +25,14 @@ import { GuardianComponent } from './components/guardian/guardian.component';
 import { StepperComponent } from './components/stepper/stepper.component';
 import { StudentDetailsComponent } from './components/student-details/student-details.component';
 import { ContactDetailsComponent } from './components/contact-details/contact-details.component';
+import { MainComponent } from './components/main/main.component';
 
 const routes: Routes = [
 
 // public pages
-{ path: '', redirectTo: 'login', pathMatch: 'full'},
+{ path: '', redirectTo: 'main', pathMatch: 'full'},
+
+{ path: 'main', component: MainComponent},
 
 { path: 'login', component: LoginComponent},
 

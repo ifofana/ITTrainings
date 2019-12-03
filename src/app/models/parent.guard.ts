@@ -13,7 +13,7 @@ export class ParentGuard {
     pgEmail: string;
     pgAltEmail: string;
     pgRelationshipToStudent: string;
-    students: Student[];
+    student: Student;
 
     displayName(): any {
         return this.pgName + ' ' + this.pgAddressOne + ' ' + this.pgAddressTwo + ' '

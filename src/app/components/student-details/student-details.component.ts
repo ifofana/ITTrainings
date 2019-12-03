@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/models/user';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Student } from 'src/app/models/student';
+import { GuardianDataService } from 'src/app/services/guardian-data.services';
 
 @Component({
   selector: 'app-student-details',
@@ -11,6 +12,7 @@ import { Student } from 'src/app/models/student';
 export class StudentDetailsComponent implements OnInit {
   studentId: string;
   currentStudent: Student;
+  message: string;
 
   /***
    * select st.student_first_name, st.student_last_name,
@@ -21,7 +23,7 @@ export class StudentDetailsComponent implements OnInit {
       where st.student_id = 1;
   ***/
 
-  constructor(private router: Router, private route: ActivatedRoute) {
+  constructor(private router: Router, private route: ActivatedRoute, private guardianService: GuardianDataService) {
     this.currentStudent = JSON.parse(localStorage.getItem('detailStudent'));
   }
 
@@ -31,5 +33,35 @@ export class StudentDetailsComponent implements OnInit {
         this.studentId = params.get('id');
       }
     })
+  }
+
+  refreshGuardians() {
+    this.guardianService.retrieveAllGuardians().subscribe(
+      response => {
+        console.log(response);
+        this.currentStudent.parentGuardians = response;
+      }
+    );
+  }
+
+  addGuardian() {
+    console.log('Go to Guardian Form');
+    this.router.navigate(['guardian', -1]);
+  }
+
+  updateGuardian(id: any) {
+    console.log(`update ${id}`);
+    this.router.navigate(['guardian', id]);
+  }
+
+  deleteGuardian(id: any) {
+    console.log(`delete guardian ${id}`);
+    this.guardianService.deleteGuardian(id).subscribe(
+      response => {
+        console.log(response);
+        this.message = `Delete of guardian ${id} Successfull!`;
+        this.refreshGuardians();
+      }
+    );
   }
 }

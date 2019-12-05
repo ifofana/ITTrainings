@@ -80,15 +80,10 @@
                                     <input type="number" class="form-control" formControlName="age">
                                 </div>
                             </div>
-                            <div class="row">
+                             
+                            <div class="row">                
                                 <div class="col col-example">
-                                    <input type="checkbox" (click)="toggleShow( )" class="form-check-input" />
                                     <label class="form-check-label">Allergies/Medical Conditions</label>
-                                </div>
-                            </div>
-                            <!--If the user checks the checkbox then textArea will appear-->
-                            <div class="row" *ngIf="isShown" id="divshow">                      
-                                <div class="col col-example">
                                     <textarea rows="2" class="form-control" formControlName="allerges">
                                     </textarea>
                                 </div>                                    

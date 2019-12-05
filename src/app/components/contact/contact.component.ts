@@ -18,7 +18,7 @@ export class ContactComponent implements OnInit {
   currentUser: User;
 
   // Flag for the text area, default is hidden
-  isShown = false;
+  //isShown = false;
 
   public myForm: FormGroup;
 
@@ -60,7 +60,7 @@ export class ContactComponent implements OnInit {
       allerges: [''],
       classDay: [''],
       classSelection: [''],
-      isShown: false,
+      //isShown: false,
       parentGuardians: this._fb.array([
         this.initParentGuardian()
       ])
@@ -153,9 +153,9 @@ export class ContactComponent implements OnInit {
   }// end of saveContact method
 
   // When isShown flag is true then the toggleShow be tell the text area to be seen
-  toggleShow() {
-    this.isShown = !this.isShown;
-  }
+  // toggleShow() {
+  //   this.isShown = !this.isShown;
+  // }
 
   get contactName(): any { return this.myForm.get('contactName');}
 

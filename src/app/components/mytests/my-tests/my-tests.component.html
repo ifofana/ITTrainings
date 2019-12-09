@@ -1,0 +1,65 @@
+<div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="margin-20">
+          <h4>Add customer</h4>
+        </div>
+        <form [formGroup]="myForm" novalidate (ngSubmit)="save(myForm)">
+          <div class="form-group">
+            <label>Name</label>
+            <input type="text" class="form-control" formControlName="name">
+            <small *ngIf="!myForm.controls.name.valid" class="text-danger">
+                Name is required (minimum 5 characters).
+              </small>
+          </div>
+          <!--addresses-->
+          <div formArrayName="addresses">
+            <div *ngFor="let address of myForm.controls.addresses.controls; let i=index" class="panel panel-default">
+              <div class="panel-heading ">
+                <span>Address {{i + 1}}</span>
+                <a  *ngIf="myForm.controls.addresses.controls.length > 1" (click)="removeAddress(i)" style="cursor: default; float: right">
+                  X 
+                </a>
+              </div>
+              <div class="panel-body" [formGroupName]="i" class="col-md-12 border">
+                <div class="row">
+                <div class="form-group col-md-6">
+                  <label>street</label>
+                  <input type="text" class="form-control" formControlName="street">
+                </div>
+              </div>
+              <div class="row">
+                <div formArrayName="phonenumber" *ngFor="let number of myForm.controls.addresses.controls[i].controls.phonenumber.controls; let j=index" class="col-md-6">
+                  <div [formGroupName]="j" >
+                    <div  class="form-group" style="padding-right:0px">
+                      <label>Number</label>
+                      <a  *ngIf="address.controls.phonenumber.controls.length > 1" (click)="removeNumber(address, j)" style="cursor: default; float: right">X</a>
+                      <input type="text" class="form-control"  placeholder="Enter Number" formControlName="number">
+                    </div>
+                  
+                </div>
+                      <a class="pull-right" *ngIf="j == address.controls.phonenumber.controls.length-1" (click)="addNumber(address)" style="float: right">Alternate Number +</a>
+                </div>
+              </div>
+              </div>
+            </div>
+          </div>
+  
+          <div class="margin-20">
+            <a (click)="addAddress()" style="cursor: default; float: right">
+              New address +
+            </a>
+          </div>
+  
+          <div class="margin-20">
+            <button type="submit" class="btn btn-primary pull-right" >Submit</button>
+          </div>
+          <div class="clearfix"></div>
+  
+          <div class="margin-20">
+            <pre>form value: <br>{{myForm.value | json}}</pre>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>

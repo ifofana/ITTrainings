@@ -11,7 +11,6 @@ import { UnauthorizedComponent } from './components/unauthorized/unauthorized.co
 import { AuthGuard } from './guards/auth.guard';
 
 import { Role } from './models/role';
-
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import { ErrorComponent } from './components/error/error.component';
 import { LogoutComponent } from './components/logout/logout.component';
@@ -25,7 +24,9 @@ import { GuardianComponent } from './components/guardian/guardian.component';
 import { StepperComponent } from './components/stepper/stepper.component';
 import { StudentDetailsComponent } from './components/student-details/student-details.component';
 import { ContactDetailsComponent } from './components/contact-details/contact-details.component';
+
 import { MainComponent } from './components/main/main.component';
+import { MyTestsComponent } from './components/mytests/my-tests/my-tests.component';
 
 const routes: Routes = [
 
@@ -64,6 +65,8 @@ const routes: Routes = [
 { path: 'studentdetails/:id', component:  StudentDetailsComponent, canActivate: [AuthGuard], data: {roles: [Role.ADMIN, Role.USER]} },
 
 { path: 'contactdetails/:id', component: ContactDetailsComponent, canActivate: [AuthGuard], data: {roles: [Role.ADMIN, Role.USER]} },
+
+{ path: 'tests', component: MyTestsComponent, canActivate: [AuthGuard], data: {roles: [Role.ADMIN]} },
 
 { path: 'guardian/:id', component: GuardianComponent, canActivate: [AuthGuard], data: {roles: [Role.ADMIN, Role.USER]} },
 

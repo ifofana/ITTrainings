@@ -49,6 +49,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { StudentDetailsComponent } from './components/student-details/student-details.component';
 import { ContactDetailsComponent } from './components/contact-details/contact-details.component';
 import { MainComponent } from './components/main/main.component';
+import { MyTestsComponent } from './components/mytests/my-tests/my-tests.component';
 
 @NgModule({
   declarations: [
@@ -75,7 +76,8 @@ import { MainComponent } from './components/main/main.component';
     StepperComponent,
     StudentDetailsComponent,
     ContactDetailsComponent,
-    MainComponent
+    MainComponent,
+    MyTestsComponent
   ],
 
   imports: [

@@ -20,6 +20,7 @@ import { Observable } from 'rxjs';
 import { User } from '../models/user';
 import { API_URL } from 'src/app/app.constants';
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
+import { Contact } from '../models/contact';
 
 @Injectable({
     providedIn: 'root'
@@ -52,7 +53,7 @@ import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
      * This method get one of the Contact by its id number
      */
     retrieveContact(id: any) {
-      return this.http.get<FormGroup>(`${API_URL}/api/contacts/${id}`, {headers: this.headers} );
+      return this.http.get<Contact>(`${API_URL}/api/contacts/${id}`, {headers: this.headers} );
     }// end of retrieveContact method
 
     // Update contact information form

@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/models/user';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Student } from 'src/app/models/student';
+import { ContactDataService } from 'src/app/services/contact-data.service';
 import { GuardianDataService } from 'src/app/services/guardian-data.services';
+import { Contact } from 'src/app/models/contact';
 
 @Component({
   selector: 'app-student-details',
@@ -23,8 +25,13 @@ export class StudentDetailsComponent implements OnInit {
       where st.student_id = 1;
   ***/
 
-  constructor(private router: Router, private route: ActivatedRoute, private guardianService: GuardianDataService) {
+  constructor(private router: Router, private route: ActivatedRoute, 
+              private contactService: ContactDataService, private guardianService: GuardianDataService) {
     this.currentStudent = JSON.parse(localStorage.getItem('detailStudent'));
+    console.log('this.currentStudent.contact=' + this.currentStudent.contact);
+    contactService.retrieveContact(1).subscribe(
+      data => this.currentStudent.contact = data
+    );
   }
 
   ngOnInit() {

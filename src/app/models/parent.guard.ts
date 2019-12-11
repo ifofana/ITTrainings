@@ -1,7 +1,7 @@
 import { Student } from './student';
 
 export class ParentGuard {
-    id: number;
+    parentId: number;
     pgName: string;
     pgAddressOne: string;
     pgAddressTwo: string;

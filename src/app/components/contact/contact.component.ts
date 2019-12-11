@@ -38,10 +38,10 @@ export class ContactComponent implements OnInit {
     // }// end of if statement
     this.myForm = this._fb.group({
       contactName: ['', [Validators.required, Validators.minLength(5)]],
-      contactRelationshipToStudent: [''],
-      contactPhoneNumber: [''],
+      contactRelationshipToStudent: ['', [Validators.required, Validators.minLength(3)]],
+      contactPhoneNumber: ['', Validators.required],
       contactAltPhoneNumber: [''],
-      contactEmail: [''],
+      contactEmail: ['', [Validators.required, Validators.pattern(/[^@]+@[^\.]+\..+/)]],
       contactAltEmail: [''],
       students: this._fb.array([
         this.initStudent(),

@@ -28,8 +28,8 @@ export class StudentDetailsComponent implements OnInit {
   constructor(private router: Router, private route: ActivatedRoute, 
               private contactService: ContactDataService, private guardianService: GuardianDataService) {
     this.currentStudent = JSON.parse(localStorage.getItem('detailStudent'));
-    console.log('this.currentStudent.contact=' + this.currentStudent.contact);
-    contactService.retrieveContact(1).subscribe(
+    console.log('this.currentStudent.contactId=' + this.currentStudent.contactId);
+    contactService.retrieveContact(this.currentStudent.contactId).subscribe(
       data => this.currentStudent.contact = data
     );
   }

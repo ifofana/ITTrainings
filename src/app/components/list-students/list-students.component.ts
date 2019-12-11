@@ -55,7 +55,7 @@ export class ListStudentsComponent implements OnInit {
   viewStudentDetails(student: Student) {
     console.log('Go to StudentDetailsComponent');
     localStorage.setItem("detailStudent", JSON.stringify(student));
-    this.router.navigate(['/studentdetails', student.id]);
+    this.router.navigate(['/studentdetails', student.studentId]);
 
   }
 }

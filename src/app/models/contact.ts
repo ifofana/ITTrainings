@@ -1,7 +1,7 @@
 import { Student } from './student';
 
 export class Contact {
-  id: number;
+  contactId: number;
   contactName: string;
   contactPhoneNumber: string;
   contactAltPhoneNumber: string;

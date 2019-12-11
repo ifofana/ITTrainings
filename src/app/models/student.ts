@@ -2,7 +2,7 @@ import { ParentGuard } from './parent.guard';
 import { Contact } from './contact';
 
 export class Student {
-  id: number;
+  studentId: number;
   firstName: string;
   middlename: string;
   lastName: string;
@@ -13,6 +13,7 @@ export class Student {
   classSelection: string;
   classDay: string;
   parentGuardians: ParentGuard[];
+  contactId: number;
   contact: Contact;
 
   displayName(): any {

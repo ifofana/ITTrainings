@@ -2,9 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 import { ContactDataService } from '../../services/contact-data.service';
-import { Contact } from '../../models/contact';
 import { User } from 'src/app/models/user';
-import { Student } from 'src/app/models/student';
 
 @Component({
   selector: 'app-contact',
@@ -46,16 +44,15 @@ export class ContactComponent implements OnInit {
 
   initStudent() {
     return this._fb.group({
-      firstName: ['', Validators.required],
+      firstName: ['', [Validators.required, Validators.minLength(2)]],
       middlename: [''],
-      lastName: ['', Validators.required],
+      lastName: ['', [Validators.required, Validators.minLength(2)]],
       gender: [''],
-      dob: [''],
-      age: [''],
+      dob: ['', Validators.required],
+      age: ['', Validators.required],
       allerges: [''],
       classDay: [''],
       classSelection: [''],
-      //isShown: false,
       parentGuardians: this._fb.array([
         this.initParentGuardian()
       ])

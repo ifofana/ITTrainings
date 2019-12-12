@@ -14,11 +14,7 @@ import { Student } from 'src/app/models/student';
 export class ContactComponent implements OnInit {
 
   //id: number;
-  contact: Contact;
   currentUser: User;
-
-  // Flag for the text area, default is hidden
-  //isShown = false;
 
   public myForm: FormGroup;
 
@@ -30,7 +26,6 @@ export class ContactComponent implements OnInit {
     //this.id = this.route.snapshot.params.id;
     //console.log('id is ' + this.id);
     // Declare and create new object of Contact class
-    this.contact = new Contact();
     // if (this.id !== -1) {
     //   this.contactService.retrieveContact(this.id).subscribe(
     //     data => this.contact = data
@@ -107,23 +102,9 @@ export class ContactComponent implements OnInit {
 
   save(formData) {
     console.log(formData.value);
-    this.contact.contactName = this.myForm.get('contactName').value;
-    this.contact.contactRelationshipToStudent = this.myForm.get('contactRelationshipToStudent').value;
-    this.contact.contactPhoneNumber = this.myForm.get('contactPhoneNumber').value;
-    this.contact.contactAltPhoneNumber = this.myForm.get('contactAltPhoneNumber').value;
-    this.contact.contactEmail = this.myForm.get('contactEmail').value;
-    this.contact.contactAltEmail = this.myForm.get('contactAltEmail').value;
     console.log('*** this.myForm.value='+this.myForm.value); 
-
     console.log('NAME OF CONTACT=' + this.contactName.value);
     console.log('STUDENTS LIST=' + this.studentsArray.value);
-    
-    // for (var i = 0, len = this.studentsArray.length; i < len; i++) {
-    //   console.log('this.studentsArray[' + i + ']=' + this.studentsArray[i]);
-    //   for (var j = 0, jlen = this.myForm.controls.students[i].parentGuardians.length; j < jlen; j++) {
-    //     console.log('this.studentsArray[' + i + '].parentGuardians[' + j + ']=' + this.studentsArray[i].parentGuardians[j]);
-    //   }
-    // }
 
     this.contactService.createContact(formData.value).subscribe(
       data => {
@@ -132,30 +113,6 @@ export class ContactComponent implements OnInit {
       }
     );
   }
-
-  saveContact() {
-    //if (this.id === -1) {
-      console.log(' ************* create Contact! ');
-      this.contactService.createContact(this.contact).subscribe(
-        data => {
-          console.log(data);
-          this.router.navigate(['contacts']);
-        }
-      );
-    // } else {
-    //   this.contactService.updateContact(this.id, this.contact).subscribe(
-    //     data => {
-    //       console.log(data);
-    //       this.router.navigate(['contacts']);
-    //     }
-    //   );
-    // }// end of else statement
-  }// end of saveContact method
-
-  // When isShown flag is true then the toggleShow be tell the text area to be seen
-  // toggleShow() {
-  //   this.isShown = !this.isShown;
-  // }
 
   get contactName(): any { return this.myForm.get('contactName');}
 

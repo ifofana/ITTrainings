@@ -106,6 +106,11 @@ export class ContactComponent implements OnInit {
     console.log('NAME OF CONTACT=' + this.contactName.value);
     console.log('STUDENTS LIST=' + this.studentsArray.value);
 
+    // stop here if form is invalid
+    if (formData.invalid) {
+      return;
+    }
+
     this.contactService.createContact(formData.value).subscribe(
       data => {
         console.log(data);

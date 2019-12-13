@@ -3,6 +3,9 @@ import { Router } from '@angular/router';
 
 import { Student } from '../../models/student';
 import { StudentDataService } from '../../services/student-data.service';
+import { User } from 'src/app/models/user';
+import { UserService } from 'src/app/services/user.service';
+import { Role } from 'src/app/models/role';
 
 @Component({
   selector: 'app-list-students',
@@ -10,11 +13,19 @@ import { StudentDataService } from '../../services/student-data.service';
 })
 export class ListStudentsComponent implements OnInit {
 
+  currentUser: User;
+
   students: Student[];
 
   message: string;
 
-  constructor(private studentService: StudentDataService, private router: Router) { }
+  constructor(private userService: UserService, 
+    private studentService: StudentDataService, 
+    private router: Router) {
+      this.userService.currentUser.subscribe(data => {
+        this.currentUser = data;
+      });
+   }
 
   ngOnInit() {
     this.refreshStudents();
@@ -58,4 +69,9 @@ export class ListStudentsComponent implements OnInit {
     this.router.navigate(['/studentdetails', student.studentId]);
 
   }
+
+  get isAdmin( ) {
+    return this.currentUser && this.currentUser.role === Role.ADMIN;
+  }
+  
 }

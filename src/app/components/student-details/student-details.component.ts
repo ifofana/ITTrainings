@@ -29,6 +29,7 @@ export class StudentDetailsComponent implements OnInit {
               private contactService: ContactDataService, private guardianService: GuardianDataService) {
     this.currentStudent = JSON.parse(localStorage.getItem('detailStudent'));
     console.log('this.currentStudent.contactId=' + this.currentStudent.contactId);
+    this.currentStudent.contact = new Contact();
     contactService.retrieveContact(this.currentStudent.contactId).subscribe(
       data => this.currentStudent.contact = data
     );

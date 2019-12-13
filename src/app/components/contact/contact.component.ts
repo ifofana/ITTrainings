@@ -47,12 +47,12 @@ export class ContactComponent implements OnInit {
       firstName: ['', [Validators.required, Validators.minLength(2)]],
       middlename: [''],
       lastName: ['', [Validators.required, Validators.minLength(2)]],
-      gender: [''],
+      gender: ['', Validators.required],
       dob: ['', Validators.required],
       age: ['', Validators.required],
       allerges: [''],
-      classDay: [''],
-      classSelection: [''],
+      classDay: ['', Validators.required],
+      classSelection: ['', Validators.required],
       parentGuardians: this._fb.array([
         this.initParentGuardian()
       ])

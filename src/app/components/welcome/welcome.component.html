@@ -8,7 +8,11 @@
 </div>
 
 <div class="container">
-	View the list of all students, <a routerLink="/students">click here</a>.
+	To View the list of all students, <a routerLink="/students">click here</a>.
+</div>
+
+<div class="container" *ngIf="isAdmin">
+	To View the list of all contacts, <a routerLink="/contacts">click here</a>.
 </div>
  
  

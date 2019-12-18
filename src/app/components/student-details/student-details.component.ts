@@ -5,6 +5,8 @@ import { Student } from 'src/app/models/student';
 import { ContactDataService } from 'src/app/services/contact-data.service';
 import { GuardianDataService } from 'src/app/services/guardian-data.services';
 import { Contact } from 'src/app/models/contact';
+import { UserService } from 'src/app/services/user.service';
+import { Role } from 'src/app/models/role';
 
 @Component({
   selector: 'app-student-details',
@@ -12,12 +14,16 @@ import { Contact } from 'src/app/models/contact';
   styleUrls: ['./student-details.component.css']
 })
 export class StudentDetailsComponent implements OnInit {
+  currentUser: User;
   studentId: string;
   currentStudent: Student;
   message: string;
 
-  constructor(private router: Router, private route: ActivatedRoute, 
+  constructor(private userService: UserService, private router: Router, private route: ActivatedRoute, 
               private contactService: ContactDataService, private guardianService: GuardianDataService) {
+    this.userService.currentUser.subscribe(data => {
+      this.currentUser = data;
+    });
     this.currentStudent = JSON.parse(localStorage.getItem('detailStudent'));
     console.log('this.currentStudent.contactId=' + this.currentStudent.contactId);
     this.currentStudent.contact = new Contact();
@@ -62,5 +68,9 @@ export class StudentDetailsComponent implements OnInit {
         this.refreshGuardians();
       }
     );
+  }
+
+  get isAdmin( ) {
+    return this.currentUser && this.currentUser.role === Role.ADMIN;
   }
 }

@@ -45,8 +45,8 @@
                 <td>{{pg.pgPhoneNumber}}</td>
                 <td>{{pg.pgEmail}}</td>
                 <td>{{pg.pgRelationshipToStudent}}</td>
-                <!-- <td><button (click)="updateGuardian(pg.parentId)" class="btn btn-success">Edit</button></td> -->
-                <!-- <td><button (click)="deleteGuardian(pg.parentId)" class="btn btn-danger">Remove</button></td> -->
+                <td *ngIf="isAdmin"><button (click)="updateGuardian(pg.parentId)" class="btn btn-success">Edit</button></td>
+                <td *ngIf="isAdmin"><button (click)="deleteGuardian(pg.parentId)" class="btn btn-danger">Remove</button></td>
             </tr>
         </tbody>
     </table>

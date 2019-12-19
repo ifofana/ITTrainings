@@ -35,7 +35,11 @@
 			
 			<li class="nav-item">
 				<a  routerLink="/students" class="nav-link">Students</a>
-			<li>		    
+			<li>		
+				
+			<li class="nav-item" *ngIf="isAdmin">
+				<a routerLink="/guardians" class="nav-link">Parents/Guardians</a>
+			</li>
 		</ul>
 		
 		<!-- <ul class="navbar-nav ml-auto" *ngIf="!currentUser">

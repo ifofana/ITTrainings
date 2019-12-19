@@ -9,7 +9,8 @@ import { Role } from 'src/app/models/role';
 
 @Component({
   selector: 'app-list-students',
-  templateUrl: './list-students.component.html'
+  templateUrl: './list-students.component.html',
+  styleUrls: ['./list-students.component.css']
 })
 export class ListStudentsComponent implements OnInit {
 
@@ -18,6 +19,11 @@ export class ListStudentsComponent implements OnInit {
   students: Student[];
 
   message: string;
+
+  selectedStudent: Student;
+
+  // Flag for the text area, default is hidden
+  isShown = false;
 
   constructor(private userService: UserService, 
     private studentService: StudentDataService, 
@@ -52,9 +58,19 @@ export class ListStudentsComponent implements OnInit {
   }
 
   updateStudent(id: any) {
-    console.log(`update ${id}`);
-    this.router.navigate(['contacts', id]);
-  }
+    console.log("updateStudent");
+    console.debug('*** this.selectedStudent='+JSON.stringify(this.selectedStudent)); 
+    this.selectedStudent.parentGuardians = null;
+    console.debug('### this.selectedStudent='+JSON.stringify(this.selectedStudent)); 
+
+    this.studentService.updateStudent(id, this.selectedStudent).subscribe(
+      data => {
+        console.debug(data);
+        this.message = `Update of contact ${this.selectedStudent.firstName} Successfull!`;
+      }
+    );
+
+  }// end of updateStudent method
 
   addStudent() {
     console.log('Go to Student Form');
@@ -68,6 +84,20 @@ export class ListStudentsComponent implements OnInit {
     localStorage.setItem("detailStudent", JSON.stringify(student));
     this.router.navigate(['/studentdetails', student.studentId]);
 
+  }
+
+  onSelect(s: Student): void {
+    this.selectedStudent = s;
+    if (this.selectedStudent != null) {
+      if (this.selectedStudent.allerges != null) {
+        this.isShown = true;
+      }
+    }
+  }
+
+  // When isShown flag is true then the toggleShow be tell the text area to be seen
+  toggleShow( ) {
+    this.isShown = ! this.isShown;
   }
 
   get isAdmin( ) {

@@ -1,32 +1,122 @@
-<div class="container">
+<div class="card m-3">
 
-    <h3>List of Students</h3>
+    <h4 class="card-header">List of Students</h4>
+    <div class="card-body">
 
-    <div class="alert alert-success" *ngIf="message">{{message}}</div>
+        <div class="alert alert-success" *ngIf="message">{{message}}</div>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>First Name</th>
-                <th>Middle Name</th>
-                <th>Last Name</th>
-                <th></th>
-                <th></th>
-            </tr>
-        </thead>
+        <ul class="heroes">
+            <li *ngFor="let s of students"
+                [class.selected]="s === selectedStudent"
+                (click)="onSelect(s)">
+                <span class="badge">{{s.studentId}}</span> {{s.firstName}}
+            </li>
+        </ul>
 
-        <tbody>
-            <tr *ngFor="let s of students">
-                <td>{{s.firstName}}</td>
-                <td>{{s.middlename}}</td>
-                <td>{{s.lastName}}</td>
-                <td><button (click)="viewStudentDetails(s)"class="btn btn-btn btn-info">Detail</button></td>
-                <td><button (click)="deleteStudent(s.studentId)" class="btn btn-danger" *ngIf="isAdmin">Delete</button></td>   
-            </tr>
-        </tbody>
-    </table>
+        <div *ngIf="selectedStudent">
+        
+            <h2>{{selectedStudent.firstName | uppercase}} Details</h2>
+            
+            <form #studentForm="ngForm" (ngSubmit)="updateStudent(selectedStudent.studentId)">
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label>First Name</label>
+                        <input type="text" #firstName="ngModel" [(ngModel)]="selectedStudent.firstName" [ngModelOptions]="{standalone: true}" class="form-control" name="firstName" required minlength="3" />
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label>Middle Name</label>
+                        <input type="text" #middlename="ngModel" [(ngModel)]="selectedStudent.middlename" [ngModelOptions]="{standalone: true}" class="form-control" name="middlename" required minlength="3" />                        
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label>Last Name</label>
+                        <input type="text" #lastName="ngModel" [(ngModel)]="selectedStudent.lastName" [ngModelOptions]="{standalone: true}" class="form-control" name="lastName" required minlength="3" />
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col">
+                        <label>Gender</label>
+                        <select class="form-control" 
+                                [value]="selectedStudent.gender" (change)="selectedStudent.gender=$event.target.value">
+                          <option value="male">Male</option>
+                          <option value="female">Female</option>
+                        </select>
+                    </div>
+                    <div class="form-group col">
+                        <label>Date of Birth</label>            
+                        <input type="date" #dob="ngModel" [ngModel]="selectedStudent.dob | date: 'yyyy-MM-dd' " [ngModelOptions]="{standalone: true}" (ngModelChange)="selectedStudent.dob = $event" class="form-control" name="dob" required />
+                    </div> 
+                    <div class="form-group col">
+                        <label>Age</label>
+                        <input type="number" #age="ngModel" [(ngModel)]="selectedStudent.age" [ngModelOptions]="{standalone: true}" class="form-control" name="age" required />
+                    </div>               
+                </div>
 
-    <div class="row">
-        <button (click)="addStudent()" class="btn btn-success">Add Student</button>
+                <div class="form-group form-check-inline">
+                    <input type="checkbox" value="isShown" (click)="toggleShow( )" class="form-check-input" />
+                    <label class="form-check-label">Allergies/Medical Conditions</label>
+                </div>
+
+                <!--If the user checks the checkbox then textArea will appear-->
+                <div *ngIf="isShown || selectedStudent.allerges != null" id="divshow" class="form-group" >
+                    <textarea  rows="2" #textArea="ngModel" [(ngModel)]="selectedStudent.allerges" [ngModelOptions]="{standalone: true}" name="textArea" class="form-control">
+                    </textarea>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col">
+                        <label>Select of Day</label>     
+                        <select class="form-control" [value]="selectedStudent.classDay" (change)="selectedStudent.classDay=$event.target.value">
+                          <option value="Saturday">Saturday</option>
+                          <option value="Sunday">Sunday</option>
+                        </select>
+                    </div>
+                    <div class="form-group col">
+                        <label>Select the class according to age group</label>
+                        <select class="form-control" [value]="selectedStudent.classSelection" (change)="selectedStudent.classSelection=$event.target.value">
+                            <option value="Foundition - 5 & 6 years old">Foundition - 5 & 6 years old</option>
+                            <option value="Beginner - 7 & 8 years old">Beginner - 7 & 8 years old</option>
+                            <option value="Intermediate - 9 & 10 years old">Intermediate - 9 & 10 years old</option>
+                            <option value="Proficient - 11 & 12 years old">Proficient - 11 & 12 years old</option>
+                            <option value="Advanced - 13 & 14 years old">Advanced - 13 & 14 years old</option>
+                            <option value="Youth - 15 & 16 years old">Youth - 15 & 16 years old</option>
+                            <option value="Adult - 17 & 18 years old">Adult - 17 & 18 years old</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="card-footer text-center">
+                    <button type="submit" class="btn btn-primary mr-2">Update</button>        
+                    <button type="reset" class="btn btn-secondary">Cancel</button>                    
+                </div>
+            </form>
+        </div>
+
+        <!-- <table class="table">
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Middle Name</th>
+                    <th>Last Name</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let s of students">
+                    <td>{{s.firstName}}</td>
+                    <td>{{s.middlename}}</td>
+                    <td>{{s.lastName}}</td>
+                    <td><button (click)="viewStudentDetails(s)" class="btn btn-btn btn-info">Detail</button></td>
+                    <td><button (click)="deleteStudent(s.studentId)" class="btn btn-danger" *ngIf="isAdmin">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table> -->
+
+        <div class="row">
+            <button (click)="addStudent()" class="btn btn-success">Add Student</button>
+        </div>
+
     </div>
-    </div>
+
+</div>

@@ -85,35 +85,51 @@
                         </select>
                     </div>
                 </div>
-                <div class="card-footer text-center">
+                <div class="form-row">                    
+                    <div class="form-group col">
+                        <h3>Parent(s)/Guardian(s)</h3>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Full Name</th>
+                                    <th>Address</th>
+                                    <th>Phone</th>
+                                    <th>E-Mail</th>
+                                    <th>Relationship To Student</th>
+                                </tr>
+                            </thead>
+                    
+                            <tbody>
+                                <tr *ngFor="let pg of selectedStudent.parentGuardians">
+                                    <td>{{pg.pgName}}</td>
+                                    <td>{{pg.pgAddressOne + pg.pgCity + pg.pgState + pg.pgZipCode}}</td>
+                                    <td>{{pg.pgPhoneNumber}}</td>
+                                    <td>{{pg.pgEmail}}</td>
+                                    <td>{{pg.pgRelationshipToStudent}}</td>
+                                    <!-- <td *ngIf="isAdmin"><button (click)="updateGuardian(pg.parentId)" class="btn btn-success">Edit</button></td>
+                                    <td *ngIf="isAdmin"><button (click)="deleteGuardian(pg.parentId)" class="btn btn-danger">Remove</button></td> -->
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="form-group col">
+                        <label><h3>Contact Information</h3></label>
+                        <div><span class="font-weight-bold">Full Name: </span>{{selectedStudent.contact.contactName}}</div>
+                        <div><span class="font-weight-bold">Phone Number: </span>{{selectedStudent.contact.contactPhoneNumber}}</div>
+                        <div><span class="font-weight-bold">Email: </span>{{selectedStudent.contact.contactEmail}}</div>
+                        <div><span class="font-weight-bold">Alt Phone Number: </span>{{selectedStudent.contact.contactAltPhoneNumber}}</div>
+                        <div><span class="font-weight-bold">Alt Email: </span>{{selectedStudent.contact.contactAltEmail}}</div>
+                        <div><span class="font-weight-bold">Contact Relationship To Student: </span>{{selectedStudent.contact.contactRelationshipToStudent}}</div>
+                    </div>
+                </div>                
+                <div *ngIf="isAdmin" class="card-footer text-center">
                     <button type="submit" class="btn btn-primary mr-2">Update</button>        
                     <button type="reset" class="btn btn-secondary">Cancel</button>                    
                 </div>
             </form>
         </div>
 
-        <!-- <table class="table">
-            <thead>
-                <tr>
-                    <th>First Name</th>
-                    <th>Middle Name</th>
-                    <th>Last Name</th>
-                    <th></th>
-                    <th></th>
-                </tr>
-            </thead>
-
-            <tbody>
-                <tr *ngFor="let s of students">
-                    <td>{{s.firstName}}</td>
-                    <td>{{s.middlename}}</td>
-                    <td>{{s.lastName}}</td>
-                    <td><button (click)="viewStudentDetails(s)" class="btn btn-btn btn-info">Detail</button></td>
-                    <td><button (click)="deleteStudent(s.studentId)" class="btn btn-danger" *ngIf="isAdmin">Delete</button>
-                    </td>
-                </tr>
-            </tbody>
-        </table> -->
+        <!--  -->
 
     </div>
 

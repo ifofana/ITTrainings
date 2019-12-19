@@ -6,6 +6,8 @@ import { StudentDataService } from '../../services/student-data.service';
 import { User } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
 import { Role } from 'src/app/models/role';
+import { ContactDataService } from 'src/app/services/contact-data.service';
+import { Contact } from 'src/app/models/contact';
 
 @Component({
   selector: 'app-list-students',
@@ -25,9 +27,8 @@ export class ListStudentsComponent implements OnInit {
   // Flag for the text area, default is hidden
   isShown = false;
 
-  constructor(private userService: UserService, 
-    private studentService: StudentDataService, 
-    private router: Router) {
+  constructor(private userService: UserService, private contactService: ContactDataService,
+    private studentService: StudentDataService, private router: Router) {
       this.userService.currentUser.subscribe(data => {
         this.currentUser = data;
       });
@@ -62,11 +63,11 @@ export class ListStudentsComponent implements OnInit {
     console.debug('*** this.selectedStudent='+JSON.stringify(this.selectedStudent)); 
     this.selectedStudent.parentGuardians = null;
     console.debug('### this.selectedStudent='+JSON.stringify(this.selectedStudent)); 
-
+    this.selectedStudent.contact = null;
     this.studentService.updateStudent(id, this.selectedStudent).subscribe(
       data => {
         console.debug(data);
-        this.message = `Update of contact ${this.selectedStudent.firstName} Successfull!`;
+        this.message = `Update of student ${this.selectedStudent.firstName} Successfull!`;
       }
     );
 
@@ -92,6 +93,10 @@ export class ListStudentsComponent implements OnInit {
       if (this.selectedStudent.allerges != null) {
         this.isShown = true;
       }
+      this.selectedStudent.contact = new Contact();
+      this.contactService.retrieveContact(this.selectedStudent.studentId).subscribe(
+        data => this.selectedStudent.contact = data
+      );
     }
   }
 

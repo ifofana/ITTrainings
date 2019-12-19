@@ -1,21 +1,30 @@
-<div class="container">
-	<img src="assets/images/isg-image.png" alt="image">
-</div>
+<div class="card m-3">
 
-<div class="container">
-	<h1>Welcome to the ISG Weekend School Registratrion application.</h1>
-</div>
+    <h4 class="card-header">ISG Weekend School Enrollment Wep Application</h4>
+  
+    <div class="card-body">
 
-<div class="container" *ngIf="isAdmin">
-	To View the list of all contacts, <a routerLink="/contacts">click here</a>.
-</div>
+		<div class="container">
+			<img src="assets/images/isg-image.png" alt="image">
+		</div>
 
-<div class="container">
-	To View the list of all students, <a routerLink="/students">click here</a>.
-</div>
+		<div class="container">
+			<h1>Welcome to the ISG Weekend School Registratrion application.</h1>
+		</div>
 
-<div class="container">	
-	Please <a routerLink="/contacts/-1">click here</a> to register for Weekend school.
+		<div class="container" *ngIf="isAdmin">
+			To View the list of all contacts, <a routerLink="/contacts">click here</a>.
+		</div>
+
+		<div class="container">
+			To View the list of all students, <a routerLink="/students">click here</a>.
+		</div>
+
+		<div class="container">	
+			Please <a routerLink="/contacts/-1">click here</a> to register for Weekend school.
+		</div>
+
+	</div>
 </div>
  
  

@@ -57,7 +57,7 @@ export class ListContactsComponent implements OnInit {
     this.contactService.updateContact(id, this.selectedContact).subscribe(
       data => {
         console.debug(data);
-        this.router.navigate(['contacts']);
+        this.message = `Update of contact ${this.selectedContact.contactName} Successfull!`;
       }
     );
 

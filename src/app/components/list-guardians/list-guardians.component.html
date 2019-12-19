@@ -16,8 +16,8 @@
             <tr *ngFor="let pg of guardians">
                 <td>{{pg.pgName}}</td>
                 <td>{{pg.pgEmail}}</td>
-                <td><button (click)="updateGuardian(pg.id)" class="btn btn-btn btn-info">View|Edit</button></td>
-                <td><button (click)="deleteGuardian(pg.id)" class="btn btn-danger">Delete</button></td>    
+                <td><button (click)="updateGuardian(pg.parentId)" class="btn btn-btn btn-info">View|Edit</button></td>
+                <td><button (click)="deleteGuardian(pg.parentId)" class="btn btn-danger">Delete</button></td>    
             </tr>
         </tbody>
     </table>

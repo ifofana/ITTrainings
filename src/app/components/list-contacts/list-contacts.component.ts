@@ -13,12 +13,15 @@ import { ContactDataService } from '../../services/contact-data.service';
 @Component({
   selector: 'app-list-contacts',
   templateUrl: './list-contacts.component.html',
+  styleUrls: ['./list-contacts.component.css']
 })
 
 export class ListContactsComponent implements OnInit {
 
   contacts: Contact[ ];
   message: string;
+
+  selectedContact: Contact;
 
   constructor(private contactService: ContactDataService, private router: Router ) { }
 
@@ -46,8 +49,18 @@ export class ListContactsComponent implements OnInit {
   }// end of deleteContact
 
   updateContact(id: any) {
-    console.log(`update ${id}`);
-    this.router.navigate(['contacts', id]);
+    console.log("updateContact");
+    console.debug('*** this.selectedContact='+JSON.stringify(this.selectedContact)); 
+    this.selectedContact.students = null;
+    console.debug('### this.selectedContact='+JSON.stringify(this.selectedContact)); 
+
+    this.contactService.updateContact(id, this.selectedContact).subscribe(
+      data => {
+        console.debug(data);
+        this.router.navigate(['contacts']);
+      }
+    );
+
   }// end of updateContact method
 
   addContact() {
@@ -61,5 +74,8 @@ export class ListContactsComponent implements OnInit {
     this.router.navigate(['/contactdetails', c.contactId]);
   }
 
+  onSelect(contact: Contact): void {
+    this.selectedContact = contact;
+  }
 
 }// end of ListContactsComponent class

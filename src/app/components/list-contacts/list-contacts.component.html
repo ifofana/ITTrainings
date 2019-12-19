@@ -1,29 +1,60 @@
-<div class="container">
+<div class="card m-3">
+    <h4 class="card-header">List of Contacts</h4>
 
-    <h3>List of Contacts</h3>
+    <div class="card-body">
 
-    <div class="alert alert-success" *ngIf="message">{{message}}</div>
+        <div class="alert alert-success" *ngIf="message">{{message}}</div>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Contact Full Name</th>
-                <th>Contact E-Mail Address</th>
-            </tr>
-        </thead>
-
-        <tbody>
-            <tr *ngFor="let c of contacts">
-                <td>{{c.contactName}}</td>
-                <td>{{c.contactEmail}}</td>
-                <td><button (click)="viewContactDetails(c)" class="btn btn-btn btn-info">Detail</button></td>
-                <td><button (click)="deleteContact(c.id)" class="btn btn-danger">Delete</button></td>    
-            </tr>
-        </tbody>
-    </table>
-
-    <!-- <div class="row">
-        <button (click)="addContact()" class="btn btn-success">Add Contact</button>
-    </div> -->
+        <ul class="listcontacts">
+            <li *ngFor="let contact of contacts" [class.selected]="contact === selectedContact" (click)="onSelect(contact)">
+                <span class="badge">{{contact.contactId}}</span> <span class="text">{{contact.contactName}}</span><span class="text">{{contact.contactEmail}}</span>
+            </li>
+        </ul>
     
+        <div *ngIf="selectedContact">
+        
+            <h2>{{selectedContact.contactName | uppercase}} Details</h2>
+            
+            <form #contactForm="ngForm" (ngSubmit)="updateContact(selectedContact.contactId)">
+                <div class="form-row">
+                    <div class="form-group col">
+                        <label>Full Name</label>
+                        <input type="text" #contactForm="ngModel" [(ngModel)]="selectedContact.contactName" [ngModelOptions]="{standalone: true}" class="form-control" name="contactName" required minlength="5">                                              
+                    </div>
+                    <div class="form-group col">
+                        <label>Relationship to Student</label>
+                        <input type="text" #contactForm="ngModel" [(ngModel)]="selectedContact.contactRelationshipToStudent" [ngModelOptions]="{standalone: true}" class="form-control" name="contactRelationshipToStudent" required>                        
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col">
+                        <label>Primary Phone Number</label>                          
+                        <input type="tel" #contactForm="ngModel" [(ngModel)]="selectedContact.contactPhoneNumber" [ngModelOptions]="{standalone: true}" class="form-control" name="contactPhoneNumber" required>                  
+                    </div>
+                    <div class="form-group col">
+                        <label>Primary Email</label>                        
+                        <input type="email" #contactForm="ngModel" [(ngModel)]="selectedContact.contactEmail" [ngModelOptions]="{standalone: true}" class="form-control" name="contactEmail" required>                    
+                    </div>                    
+                </div>
+                <div class="form-row">
+                    <div class="form-group col">
+                        <label>Alt Phone Number</label>
+                        <input type="tel" #contactForm="ngModel" [(ngModel)]="selectedContact.contactAltPhoneNumber" [ngModelOptions]="{standalone: true}" class="form-control" name="contactAltPhoneNumber" required>
+                    </div>
+                    <div class="form-group col">
+                        <label>Alt Email</label>
+                        <input type="email" #contactForm="ngModel" [(ngModel)]="selectedContact.contactAltEmail" [ngModelOptions]="{standalone: true}" class="form-control" name="contactAltEmail" required>
+                    </div>
+                </div>
+                <div class="card-footer text-center">
+                    <button type="submit" class="btn btn-primary mr-2">Update</button>        
+                    <button type="reset" class="btn btn-secondary">Cancel</button>
+                </div>
+            </form>
+        </div>
+
+        <!--  -->
+    
+    </div>
+
 </div>

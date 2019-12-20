@@ -1,4 +1,88 @@
-<div class="container">
+<div class="card m-3">
+    <h4 class="card-header">List of Parents/Guardians </h4>
+
+    <div class="card-body">
+        <div class="alert alert-success" *ngIf="message">{{message}}</div>
+
+        <ul class="heroes">
+            <li *ngFor="let pg of guardians" [class.selected]="pg === selectedPg" 
+                (click)="onSelect(pg)">
+                <span class="badge">{{pg.parentId}}</span> {{pg.pgName}}
+            </li>
+        </ul>
+
+        <div *ngIf="selectedPg">
+        
+            <h2>{{selectedPg.pgName | uppercase}} Details</h2>
+            
+            <form #parentGuardianForm="ngForm" (ngSubmit)="updateGuardian(selectedPg.parentId)">
+                <div class="form-row">
+                    <div class="form-group col">
+                        <label>Full Name</label>
+                        <input type="text" #pgName="ngModel" [(ngModel)]="selectedPg.pgName" [ngModelOptions]="{standalone: true}" class="form-control" name="pgName" required minlength="3" />                                              
+                    </div>                    
+                    <div class="form-group col">
+                        <label>Relationship to Student</label>
+                        <input type="text" #pgRelationshipToStudent="ngModel" [(ngModel)]="selectedPg.pgRelationshipToStudent" [ngModelOptions]="{standalone: true}" class="form-control" name="pgRelationshipToStudent" required />                        
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col">
+                        <label>Address One</label>                          
+                        <input type="text" #pgAddressOne="ngModel" [(ngModel)]="selectedPg.pgAddressOne" [ngModelOptions]="{standalone: true}" class="form-control" name="pgAddressOne" required minlength="3" />                  
+                    </div>
+                </div>
+                <div class="form-row">                    
+                    <div class="form-group col">
+                        <label>Address Two</label>                        
+                        <input type="text" #pgAddressTwo="ngModel" [(ngModel)]="selectedPg.pgAddressTwo" [ngModelOptions]="{standalone: true}" class="form-control" name="pgAddressTwo" />                    
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col">
+                        <label>City</label>
+                        <input type="text" #pgCity="ngModel" [(ngModel)]="selectedPg.pgCity" [ngModelOptions]="{standalone: true}" class="form-control" name="pgCity" required minlength="3" />
+                    </div>                
+                    <div class="form-group col">
+                        <label>State</label>
+                        <input type="text" #pgState="ngModel" [(ngModel)]="selectedPg.pgState" [ngModelOptions]="{standalone: true}" class="form-control" name="pgState" required minlength="3" />
+                    </div>
+                    <div class="form-group col">
+                        <label>Zip Code</label>
+                        <input type="text" #pgZipCode="ngModel" [(ngModel)]="selectedPg.pgZipCode" [ngModelOptions]="{standalone: true}" class="form-control" name="pgZipCode" required minlength="3" />
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col">
+                        <label>Email</label>
+                        <input type="email" #pgEmail="ngModel" [(ngModel)]="selectedPg.pgEmail" [ngModelOptions]="{standalone: true}" class="form-control" name="pgEmail" required minlength="3" />
+                    </div>
+                    <div class="form-group col">
+                        <label>Phone</label>
+                        <input type="tel" #pgPhoneNumber="ngModel"
+                            [(ngModel)]="selectedPg.pgPhoneNumber" [ngModelOptions]="{standalone: true}" class="form-control" name="pgPhoneNumber" required minlength="3" />
+                    </div>                                        
+                </div>
+                <div class="form-row">                    
+                    <div class="form-group col">
+                        <label>Alt Email</label>
+                        <input type="email" #pgAltEmail="ngModel" [(ngModel)]="selectedPg.pgAltEmail" [ngModelOptions]="{standalone: true}" class="form-control" name="pgAltEmail" required minlength="3" />
+                    </div>
+                    <div class="form-group col">
+                        <label>Alt Phone</label>
+                        <input type="tel" #pgAltPhoneNumber="ngModel" [(ngModel)]="selectedPg.pgAltPhoneNumber" [ngModelOptions]="{standalone: true}" class="form-control" name="pgAltPhoneNumber" required minlength="3" />
+                    </div>
+                </div>
+                <div class="card-footer text-center">
+                    <button type="submit" class="btn btn-primary mr-2">Update</button>        
+                    <button type="reset" class="btn btn-secondary">Cancel</button>                    
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+<!-- <div class="container">
 
     <h3>List of Guardians</h3>
 
@@ -25,4 +109,4 @@
     <div class="row">
         <button (click)="addGuardian()" class="btn btn-success">Add Guardian</button>
     </div>
-</div>
+</div> -->

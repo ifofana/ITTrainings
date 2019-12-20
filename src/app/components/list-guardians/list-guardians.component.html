@@ -74,8 +74,9 @@
                     </div>
                 </div>
                 <div class="card-footer text-center">
-                    <button type="submit" class="btn btn-primary mr-2">Update</button>        
-                    <button type="reset" class="btn btn-secondary">Cancel</button>                    
+                    <button type="submit" class="btn btn-primary mr-2">Update</button>   
+                    <a (click)="deleteGuardian(selectedPg.parentId)" class="btn btn-danger mr-2">Delete</a>     
+                    <button type="reset" class="btn btn-secondary">Cancel</button>                                      
                 </div>
             </form>
         </div>

@@ -1,17 +1,13 @@
-<div class="container">
-    <header class="jumbotron">
-      <h1 class="display-3">
-        <strong>{{currentUser.name}}</strong>, User Profile.
-      </h1>
-    </header>
+<div class="card m-3">
+  <h4 class="card-header"><strong>User Profile</strong></h4>
 
-    <body class="jumbotron">
-        <h2>Fullname: {{currentUser.name}}</h2>
-        <BR>
-        <h2>User Role: {{currentUser.role}}</h2>
-        <br>
-        <h2>Username: {{currentUser.username}}</h2>
-    </body>
-    
-    <!-- <a class="btn btn-link log-out" (click)="logOut()">LogOut</a> -->
+  <div class="card-body">
+
+    <h2>Fullname: {{currentUser.name}}</h2>
+    <BR>
+    <h2>User Role: {{currentUser.role}}</h2>
+    <br>
+    <h2>Username: {{currentUser.username}}</h2>
+
+  </div>
 </div>

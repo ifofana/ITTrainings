@@ -12,6 +12,10 @@
 			<h1>Welcome to the ISG Weekend School Enrollment Web Application.</h1>
 		</div>
 
+		<div class="container">	
+			To do a <b>New Enrollment</b> for Weekend school, <a routerLink="/contacts/-1">click here</a>.
+		</div>
+
 		<div class="container" *ngIf="isAdmin">
 			To view the list of all contacts, <a routerLink="/contacts">click here</a>.
 		</div>
@@ -20,13 +24,9 @@
 			To view the list of all students, <a routerLink="/students">click here</a>.
 		</div>
 
-        <div class="container">
+        <div class="container" *ngIf="isAdmin">
 			To view the list of all parents/guardians, <a routerLink="/guardians">click here</a>.
-		</div>
-
-		<div class="container">	
-			To do a <b>New Enrollment</b> for Weekend school, <a routerLink="/contacts/-1">click here</a>.
-		</div>
+		</div>		
 
 	</div>
 </div>

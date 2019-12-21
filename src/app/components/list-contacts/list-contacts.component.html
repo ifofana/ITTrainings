@@ -5,10 +5,10 @@
 
         <div class="alert alert-success" *ngIf="message">{{message}}</div>
 
-        <ul class="listcontacts">
+        <ul class="heroes">
             <li *ngFor="let contact of contacts" [class.selected]="contact === selectedContact" (click)="onSelect(contact)">
                 <span class="badge">{{contact.contactId}}</span> <span class="text">{{contact.contactName}}</span><span class="text">{{contact.contactEmail}}</span>
-                <!-- <span class="text"><button (click)="deleteContact(contact.contactId)" class="btn btn-danger">Delete</button></span> -->
+                <span class="text">{{contact.contactPhoneNumber}}</span>
             </li>
         </ul>
     

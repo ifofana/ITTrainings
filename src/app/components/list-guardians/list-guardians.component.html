@@ -7,7 +7,7 @@
         <ul class="heroes">
             <li *ngFor="let pg of guardians" [class.selected]="pg === selectedPg" 
                 (click)="onSelect(pg)">
-                <span class="badge">{{pg.parentId}}</span> {{pg.pgName}}
+                <span class="badge">{{pg.parentId}}</span> {{pg.pgName}} {{pg.pgEmail}} {{pg.pgPhoneNumber}}
             </li>
         </ul>
 

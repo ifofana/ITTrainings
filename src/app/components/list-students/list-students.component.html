@@ -11,7 +11,8 @@
             <li *ngFor="let s of students"
                 [class.selected]="s === selectedStudent"
                 (click)="onSelect(s)">
-                <span class="badge">{{s.studentId}}</span> {{s.firstName}}
+                <span class="badge">{{s.studentId}}</span> {{s.firstName}} {{s.middlename}} {{s.lastName}} 
+                ({{s.age}} years old) {{s.classSelection}}
             </li>
         </ul>
 

@@ -64,9 +64,9 @@
                             <div class="col col-example">
                                 <label>First Name</label>
                                 <input type="text" class="form-control" formControlName="firstName"> 
-                                <!-- <div *ngIf="!myForm.controls.contactEmail.valid" class="text-danger">
+                                <div *ngIf="ngForm.submitted && !student.controls.firstName.valid" class="alert alert-danger">
                                     First Name is required  (minimum 2 characters).
-                                </div>                                    -->
+                                </div>                                   
                             </div>
                             <div class="col col-example">
                                 <label>Middle Name</label>
@@ -75,9 +75,9 @@
                             <div class="col col-example">
                                 <label>Last Name</label>
                                 <input type="text" class="form-control" formControlName="lastName">
-                                <!-- <div *ngIf="!myForm.controls.contactEmail.valid" class="text-danger">
+                                <div *ngIf="ngForm.submitted && !student.controls.lastName.valid" class="alert alert-danger">
                                     Last Name is required  (minimum 2 characters).
-                                </div> -->
+                                </div>
                             </div>
                         </div>
                         <div class="row">
@@ -87,23 +87,23 @@
                                     <option value="male">Male</option>
                                     <option value="female">Female</option>
                                 </select>
-                                <!-- <div *ngIf="!myForm.controls.contactEmail.valid" class="text-danger">
+                                <div *ngIf="ngForm.submitted && !student.controls.gender.valid" class="alert alert-danger">
                                     Gender is required.
-                                </div> -->
+                                </div>
                             </div>
                             <div class="col col-example">
                                 <label>Date of Birth</label>
                                 <input type="date" class="form-control" formControlName="dob" (change)="student.dob = $event">
-                                <!-- <div *ngIf="!myForm.controls.contactEmail.valid" class="text-danger">
+                                <div *ngIf="ngForm.submitted && !student.controls.dob.valid" class="alert alert-danger">
                                     Date of Birth is required.
-                                </div> -->
+                                </div>
                             </div>
                             <div class="col col-example">
                                 <label>Age</label>
                                 <input type="number" class="form-control" formControlName="age">
-                                <!-- <div *ngIf="!myForm.controls.contactEmail.valid" class="text-danger">
+                                <div *ngIf="ngForm.submitted && !student.controls.age.valid" class="alert alert-danger">
                                     Age is required.
-                                </div> -->
+                                </div>
                             </div>
                         </div>
                         
@@ -121,9 +121,9 @@
                                     <option value="Saturday">Saturday</option>
                                     <option value="Sunday">Sunday</option>
                                 </select>
-                                <!-- <div *ngIf="!myForm.controls.contactEmail.valid" class="text-danger">
+                                <div *ngIf="ngForm.submitted && !student.controls.classDay.valid" class="alert alert-danger">
                                     Class Day is required.
-                                </div> -->
+                                </div>
                             </div>
                             <div class="col col-example">
                                 <label>Select the class according to age group</label>
@@ -136,9 +136,9 @@
                                     <option value="Youth - 15 & 16 years old">Youth - 15 & 16 years old</option>
                                     <option value="Adult - 17 & 18 years old">Adult - 17 & 18 years old</option>
                                 </select>  
-                                <!-- <div *ngIf="!myForm.controls.contactEmail.valid" class="text-danger">
+                                <div *ngIf="ngForm.submitted && !student.controls.classSelection.valid" class="alert alert-danger">
                                     Age Group Selection is required.
-                                </div> -->
+                                </div>
                             </div>
                         </div>
                         <div class="row">
@@ -154,9 +154,9 @@
                                                     (click)="removeParentGuardian(student, j)"
                                                     style="cursor: default; float: right">X</a>
                                                 <input type="text" class="form-control" formControlName="pgName" />
-                                                <!-- <div *ngIf="!myForm.controls.contactEmail.valid" class="text-danger">
+                                                <div *ngIf="ngForm.submitted && !parentGuardian.controls.pgName.valid" class="alert alert-danger">
                                                     Parent/Guardian Full Name is required.
-                                                </div> -->
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -164,9 +164,9 @@
                                                 <label style="margin-right:5px;" class="col-form-label">Address one</label>
                                                 <input formControlName="pgAddressOne" class="form-control"
                                                     style="margin-right:5px;" type="text" />
-                                                <!-- <div *ngIf="!myForm.controls.contactEmail.valid" class="text-danger">
+                                                <div *ngIf="ngForm.submitted && !parentGuardian.controls.pgAddressOne.valid" class="alert alert-danger">
                                                     Address one is required.
-                                                </div> -->
+                                                </div>
                                             </div>
                                             <div class="col">
                                                 <label style="margin-right:5px;" class="col-form-label">Address two</label>
@@ -179,25 +179,25 @@
                                                 <label style="margin-right:5px;" class="col-form-label">City</label>
                                                 <input formControlName="pgCity" class="form-control"
                                                     style="margin-right:5px;" type="text" />
-                                                <!-- <div *ngIf="!myForm.controls.contactEmail.valid" class="text-danger">
+                                                <div *ngIf="ngForm.submitted && !parentGuardian.controls.pgCity.valid" class="alert alert-danger">
                                                     City is required.
-                                                </div> -->
+                                                </div>
                                             </div>
                                             <div class="col">
                                                 <label style="margin-right:5px;" class="col-form-label">State</label>
                                                 <input formControlName="pgState" class="form-control"
                                                     style="margin-right:5px;" type="text" />
-                                                <!-- <div *ngIf="!myForm.controls.contactEmail.valid" class="text-danger">
+                                                <div *ngIf="ngForm.submitted && !parentGuardian.controls.pgState.valid" class="alert alert-danger">
                                                     State is required.
-                                                </div> -->
+                                                </div>
                                             </div>
                                             <div class="col">
                                                 <label style="margin-right:5px;" class="col-form-label">Zip Code</label>
                                                 <input formControlName="pgZipCode" class="form-control"
                                                     style="margin-right:5px;" type="text" />
-                                                <!-- <div *ngIf="!myForm.controls.contactEmail.valid" class="text-danger">
+                                                <div *ngIf="ngForm.submitted && !parentGuardian.controls.pgZipCode.valid" class="alert alert-danger">
                                                     Zip Code is required.
-                                                </div> -->
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -205,17 +205,17 @@
                                                 <label style="margin-right:5px;" class="col-form-label">Email</label>
                                                 <input formControlName="pgEmail" class="form-control"
                                                     style="margin-right:5px;" type="email" />
-                                                <!-- <div *ngIf="!myForm.controls.contactEmail.valid" class="text-danger">
+                                                <div *ngIf="ngForm.submitted && !parentGuardian.controls.pgEmail.valid" class="alert alert-danger">
                                                     Email is required.
-                                                </div> -->
+                                                </div>
                                             </div>
                                             <div class="col">
                                                 <label style="margin-right:5px;" class="col-form-label">Phone</label>
                                                 <input formControlName="pgPhoneNumber" class="form-control"
                                                     style="margin-right:5px;" type="tel" />
-                                                <!-- <div *ngIf="!myForm.controls.contactEmail.valid" class="text-danger">
+                                                <div *ngIf="ngForm.submitted && !parentGuardian.controls.pgPhoneNumber.valid" class="alert alert-danger">
                                                     Phone is required.
-                                                </div> -->
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -234,9 +234,9 @@
                                             <div class="col">
                                                 <label style="margin-right: 5px;" class="col-form-label">Relationship To Student</label>
                                                 <input formControlName="pgRelationshipToStudent" class="form-control" style="margin-right: 5px;" type="text" />
-                                                <!-- <div *ngIf="!myForm.controls.contactEmail.valid" class="text-danger">
+                                                <div *ngIf="ngForm.submitted && !parentGuardian.controls.pgRelationshipToStudent.valid" class="alert alert-danger">
                                                     Relationship To Student is required.
-                                                </div> -->
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

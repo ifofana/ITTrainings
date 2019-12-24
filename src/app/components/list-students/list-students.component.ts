@@ -53,6 +53,7 @@ export class ListStudentsComponent implements OnInit {
       response => {
         console.log(response);
         this.message = `Delete of student ${id} Successfull!`;
+        this.selectedStudent = null;
         this.refreshStudents();
       }
     );

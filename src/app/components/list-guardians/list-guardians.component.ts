@@ -35,6 +35,7 @@ export class ListGuardiansComponent implements OnInit {
       response => {
         console.log(response);
         this.message = `Delete of guardian ${id} Successfull!`;
+        this.selectedPg = null;
         this.refreshGuardians();
       }
     );

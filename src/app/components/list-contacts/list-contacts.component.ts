@@ -43,6 +43,7 @@ export class ListContactsComponent implements OnInit {
       response => {
         console.log(response);
         this.message = `Delete of contact ${id} Successfull!`;
+        this.selectedContact = null;
         this.refreshContacts();
       }
     );

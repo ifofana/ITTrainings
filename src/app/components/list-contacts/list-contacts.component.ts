@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 
 import { Contact } from '../../models/contact';
 import { ContactDataService } from '../../services/contact-data.service';
+import { ConfirmationDialogService } from 'src/app/services/confirmation-dialog.service';
 
 @Component({
   selector: 'app-list-contacts',
@@ -23,7 +24,8 @@ export class ListContactsComponent implements OnInit {
 
   selectedContact: Contact;
 
-  constructor(private contactService: ContactDataService, private router: Router ) { }
+  constructor(private contactService: ContactDataService, private router: Router, 
+    private confirmationDialogService: ConfirmationDialogService) { }
 
   // ngOnInit method to handle any additional initialization tasks.
   ngOnInit( ) { this.refreshContacts( ); }
@@ -77,6 +79,19 @@ export class ListContactsComponent implements OnInit {
 
   onSelect(contact: Contact): void {
     this.selectedContact = contact;
+  }
+
+  public openConfirmationDialog() {
+    this.confirmationDialogService.confirm('Please confirm..', `Are you sure you want to delete ${this.selectedContact.contactName} profile? All information associated to this user profile will be permanently deleted. This operation can not be undone.`)
+    .then((confirmed) => {
+      if (confirmed) {
+        console.log('User confirmed:', confirmed);
+        this.deleteContact(this.selectedContact.contactId);
+      } else {
+        console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)');
+      }
+    });//)
+    //.catch(() => console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'));
   }
 
 }// end of ListContactsComponent class

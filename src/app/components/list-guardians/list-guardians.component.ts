@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ParentGuard } from 'src/app/models/parent.guard';
 import { Router } from '@angular/router';
 import { GuardianDataService } from 'src/app/services/guardian-data.services';
+import { ConfirmationDialogService } from 'src/app/services/confirmation-dialog.service';
 
 @Component({
   selector: 'app-list-guardians',
@@ -14,7 +15,8 @@ export class ListGuardiansComponent implements OnInit {
   selectedPg: ParentGuard;
   message: string;
 
-  constructor(private guardianService: GuardianDataService, private router: Router) { }
+  constructor(private guardianService: GuardianDataService, private router: Router,
+    private confirmationDialogService: ConfirmationDialogService) { }
 
   ngOnInit() { 
     this.refreshGuardians(); 
@@ -60,6 +62,19 @@ export class ListGuardiansComponent implements OnInit {
 
   onSelect(pg: ParentGuard): void {
     this.selectedPg = pg;
+  }
+
+  public openConfirmationDialog() {
+    this.confirmationDialogService.confirm('Please confirm..', `Are you sure you want to delete ${this.selectedPg.pgName} profile? All information associated to this user profile will be permanently deleted. This operation can not be undone.`)
+    .then((confirmed) => {
+      if (confirmed) {
+        console.log('User confirmed:', confirmed);
+        this.deleteGuardian(this.selectedPg.parentId);
+      } else {
+        console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)');
+      }
+    });//)
+    //.catch(() => console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'));
   }
 
 }// end of ListGuardiansComponent class

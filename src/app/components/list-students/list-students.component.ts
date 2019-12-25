@@ -95,9 +95,10 @@ export class ListStudentsComponent implements OnInit {
         this.isShown = true;
       }
       this.selectedStudent.contact = new Contact();
-      this.contactService.retrieveContact(this.selectedStudent.studentId).subscribe(
+      this.contactService.retrieveContact(this.selectedStudent.contactId).subscribe(
         data => this.selectedStudent.contact = data
       );
+      console.log('TEST......... Contact Name=' + this.selectedStudent.contact.contactName);
     }
   }
 

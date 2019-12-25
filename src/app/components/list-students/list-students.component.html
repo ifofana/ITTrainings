@@ -18,7 +18,7 @@
 
         <div *ngIf="selectedStudent">
         
-            <h2>{{selectedStudent.firstName | uppercase}} Details</h2>
+            <h2>{{selectedStudent.firstName | uppercase}} {{selectedStudent.middlename | uppercase}} {{selectedStudent.lastName | uppercase}} Details</h2>
             
             <form #studentForm="ngForm" (ngSubmit)="updateStudent(selectedStudent.studentId)">
                 <div class="form-row">

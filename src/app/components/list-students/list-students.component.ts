@@ -8,6 +8,7 @@ import { UserService } from 'src/app/services/user.service';
 import { Role } from 'src/app/models/role';
 import { ContactDataService } from 'src/app/services/contact-data.service';
 import { Contact } from 'src/app/models/contact';
+import { ConfirmationDialogService } from 'src/app/services/confirmation-dialog.service';
 
 @Component({
   selector: 'app-list-students',
@@ -28,7 +29,8 @@ export class ListStudentsComponent implements OnInit {
   isShown = false;
 
   constructor(private userService: UserService, private contactService: ContactDataService,
-    private studentService: StudentDataService, private router: Router) {
+    private studentService: StudentDataService, private router: Router,
+    private confirmationDialogService: ConfirmationDialogService) {
       this.userService.currentUser.subscribe(data => {
         this.currentUser = data;
       });
@@ -100,6 +102,19 @@ export class ListStudentsComponent implements OnInit {
       );
       console.log('TEST......... Contact Name=' + this.selectedStudent.contact.contactName);
     }
+  }
+
+  public openConfirmationDialog() {
+    this.confirmationDialogService.confirm('Please confirm..', `Are you sure you want to delete ${this.selectedStudent.firstName} ${this.selectedStudent.middlename} ${this.selectedStudent.lastName} profile? All information associated to this user profile will be permanently deleted. This operation can not be undone.`)
+    .then((confirmed) => {
+      if (confirmed) {
+        console.log('User confirmed:', confirmed);
+        this.deleteStudent(this.selectedStudent.studentId);
+      } else {
+        console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)');
+      }
+    });//)
+    //.catch(() => console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'));
   }
 
   // When isShown flag is true then the toggleShow be tell the text area to be seen

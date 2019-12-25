@@ -124,8 +124,8 @@
                     </div>
                 </div>                
                 <div *ngIf="isAdmin" class="card-footer text-center">
-                    <button type="submit" class="btn btn-primary mr-2">Update</button>
-                    <button (click)="deleteStudent(selectedStudent.studentId)" type="button" class="btn btn-danger mr-2">Delete</button>     
+                    <button type="submit" class="btn btn-primary mr-2">Update</button> 
+                    <button (click)="openConfirmationDialog()" type="button" class="btn btn-danger mr-2">Delete</button>   
                     <button type="reset" class="btn btn-secondary">Cancel</button>                    
                 </div>
             </form>

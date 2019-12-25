@@ -4,7 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 
 /* Import different componet classes from user component packages */
@@ -50,10 +50,13 @@ import { StudentDetailsComponent } from './components/student-details/student-de
 import { ContactDetailsComponent } from './components/contact-details/contact-details.component';
 import { MainComponent } from './components/main/main.component';
 import { MyTestsComponent } from './components/mytests/my-tests/my-tests.component';
+import { ConfirmationDialogComponent } from './components/shared/confirmation-dialog/confirmation-dialog.component';
+import { ConfirmationDialogService } from './services/confirmation-dialog.service';
 
 @NgModule({
   declarations: [
     AppComponent,
+    ConfirmationDialogComponent,
     WelcomeComponent,
     MenuComponent,
     LoginComponent,
@@ -96,10 +99,12 @@ import { MyTestsComponent } from './components/mytests/my-tests/my-tests.compone
     MatTreeModule,
     MatIconModule,
     MatDatepickerModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
   ],
 
-  providers: [],
+  providers: [ ConfirmationDialogService ],
+  entryComponents: [ ConfirmationDialogComponent ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

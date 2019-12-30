@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Student-Information-Form": {
+    "ITTrainings": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/Student-Information-Form",
+            "outputPath": "dist/ITTrainings",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -64,18 +64,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "Student-Information-Form:build"
+            "browserTarget": "ITTrainings:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "Student-Information-Form:build:production"
+              "browserTarget": "ITTrainings:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "Student-Information-Form:build"
+            "browserTarget": "ITTrainings:build"
           }
         },
         "test": {
@@ -112,15 +112,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "Student-Information-Form:serve"
+            "devServerTarget": "ITTrainings:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "Student-Information-Form:serve:production"
+              "devServerTarget": "ITTrainings:serve:production"
             }
           }
         }
       }
     }},
-  "defaultProject": "Student-Information-Form"
+  "defaultProject": "ITTrainings"
 }

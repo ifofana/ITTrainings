@@ -8,3 +8,5 @@ RUN npm run build --prod
 # stage 2
 FROM nginx:alpine
 COPY --from=front-end /ITTrainings/dist/ITTrainings /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]

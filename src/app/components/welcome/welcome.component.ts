@@ -1,58 +1,50 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { WelcomeDataService } from '../../service/data/welcome-data.service';
+import { User } from 'src/app/models/user';
+import { Role } from 'src/app/models/role';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
-  selector: 'app-welcome',
-  templateUrl: './welcome.component.html',
-  styleUrls: ['./welcome.component.css']
+	selector: 'app-welcome',
+	templateUrl: './welcome.component.html',
+	styleUrls: ['./welcome.component.css']
 })
 export class WelcomeComponent implements OnInit {
 
-	message = 'Some Welcome Message'
-	welcomeMessageFromService = ''
-	name = ''
+	currentUser: User;
+	
+	message = 'Some Welcome Message';
+	welcomeMessageFromService = ' ';
+	name = ' ';
 
-  constructor(private route : ActivatedRoute, private service: WelcomeDataService) { }
+	constructor(private userService: UserService, private route: ActivatedRoute) {
+		this.userService.currentUser.subscribe(data => {
+			this.currentUser = data;
+		});
+	 }
 
-  ngOnInit() {
-	  this.name = this.route.snapshot.params['name'];
-  }
+	ngOnInit() { this.name = this.route.snapshot.params.name; }
 
-  getWelcomeMessage() {
-	//console.log(this.service.executeHelloWorldBeanService());
+	getWelcomeMessage() {
 
-	 this.service.executeHelloWorldBeanService().subscribe(
-		 response => this.handleSuccessfulResponse(response),
-		 error => this.handleErrorResponse(error)
-	 );
+	}
 
-	 console.log('last line of getwelcome message');
-  }
+	handleSuccessfulResponse(response) {
+		// this.welcomeMessageFromService = response.message;
+		console.log(response);
+		console.log(response.message);
+		this.welcomeMessageFromService = response.message;
+	}
 
-  getWelcomeMessageWithParmeter() {
-	//console.log(this.service.executeHelloWorldBeanService());
+	handleErrorResponse(error) {
+		console.log(error);
+		console.log(error.error);
+		console.log(error.error.message);
+		this.welcomeMessageFromService = error.error.message;
+	}
 
-	 this.service.executeHelloWorldBeanServicePathVariable(this.name).subscribe(
-		 response => this.handleSuccessfulResponse(response),
-		 error => this.handleErrorResponse(error)
-	 );
-
-	 console.log('last line of getwelcome message');
-  }
-
-  handleSuccessfulResponse(response){
-	//this.welcomeMessageFromService = response.message;
-	console.log(response);
-	console.log(response.message);
-	this.welcomeMessageFromService = response.message;
-  }
-
-  handleErrorResponse(error){
-	console.log(error);
-	console.log(error.error);
-	console.log(error.error.message);
-	this.welcomeMessageFromService = error.error.message;
-  }
+	get isAdmin( ) {
+		return this.currentUser && this.currentUser.role === Role.ADMIN;
+	}
 
 }

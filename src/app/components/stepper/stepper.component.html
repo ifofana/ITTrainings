@@ -1,0 +1,250 @@
+<mat-horizontal-stepper #stepper>
+    <mat-step [stepControl]="firstFormGroup">
+        <form [formGroup]="firstFormGroup">
+            <ng-template matStepLabel><h3 class="head text-center">Fill out Student Info Form</h3></ng-template>
+            <div class="form-row">
+                <!--Input for Student First Name-->
+                <div class="form-group col-md-4">
+                    <mat-form-field matLine>
+                        <label>First Name:</label>
+                        <input matInput formControlName="firstCtrl" required>
+                    </mat-form-field>
+                </div>
+                <!--Input for Student Middle Name-->
+                <div class="form-group col-md-4">
+                	<mat-form-field matLine>
+                		<label>Middle Name:</label>
+                   		<input matInput formControlName="middleCtrl" required>
+                	</mat-form-field>
+                </div>
+                <!--Input for Student Last Name-->
+                <div class="form-group col-md-4">
+                    <mat-form-field matLine>
+                        <label>Last Name:</label>
+                        <input matInput formControlName="lastCtrl" required>
+                    </mat-form-field>
+                </div>
+            </div>
+            <!--End of form row for Student's name-->
+            <div class="form-row">                 
+                <div class="form-group col-md-4">
+                    <mat-form-field matLine>
+                        <label>Gender:</label>
+                        <mat-select formControlName="genderCtrl">                            
+                            <mat-option [value]="choice" *ngFor="let choice of genderChoices">{{ choice }}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div> 
+                <div class="form-group col-md-4">
+                    <mat-form-field matLine>   
+                        <label>Date of Birth:</label>             
+                        <input matInput type="date" formControlName="dobCtrl">
+                    </mat-form-field>
+                </div>      
+                <div class="form-group col-md-4">                    
+                    <mat-form-field>
+                        <label>Age:</label>
+                        <input matInput type="number" formControlName="ageCtrl" required>    
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="form-row">                 
+                <div class="form-group col-md-4">                    
+                    <input type="checkbox" formControlName="alCheckCtrl" (change)="onChkChange()">Allergies/Medical Conditions
+                </div>
+            </div>
+            <!--If the user checks the checkbox then textArea will appear-->
+            <mat-form-field *ngIf="isShown">
+                <textarea matInput required="isShown"
+                    formControlName="alergiesCtrl">
+                </textarea>
+            </mat-form-field>
+            <div class="form-row">                 
+                <div class="form-group col-md-4">
+                    <mat-form-field matLine>
+                        <label>Select of Day:</label>
+                        <mat-select formControlName="classDayCtrl">                            
+                            <mat-option [value]="choice" *ngFor="let choice of dayChoices">{{ choice }}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div> 
+                <div class="form-group col-md-4">
+                    <mat-form-field matLine>
+                        <label>Select the class according to age group:</label>
+                        <mat-select formControlName="classSelectionCtrl">                            
+                            <mat-option [value]="choice" *ngFor="let choice of ageGroupChoices">{{ choice }}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="form-row">
+                <button mat-button matStepperNext class="btn btn-primary">Next</button>
+            </div>
+        </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup" errorMessage="Address is required.">
+        <form [formGroup]="secondFormGroup">
+            <ng-template matStepLabel><h3 class="head text-center">Fill out Contact Info Form</h3></ng-template>
+            <div class="form-row">                
+                <div class="form-group col-md-4">                   
+                    <mat-form-field>
+                        <label>Full Name:</label>
+                        <input matInput formControlName="contactFullNameCtrl" required>
+                    </mat-form-field>
+                </div>                
+                <div class="form-group col-md-4">
+                    <mat-form-field>
+                        <label>Relationship to Student:</label>
+                        <input matInput formControlName="contactRelationshipToStudentCtrl" required>
+                    </mat-form-field>
+                </div>               
+            </div>
+            <div class="form-row">                
+                <div class="form-group col-md-4">                   
+                    <mat-form-field>
+                        <label>Primary Phone Number:</label>
+                        <input matInput formControlName="contactPhoneNumberCtrl" required>
+                    </mat-form-field>
+                </div>                
+                <div class="form-group col-md-4">
+                    <mat-form-field>
+                        <label>Alt Phone Number:</label>
+                        <input matInput formControlName="contactAltPhoneNumberCtrl" required>
+                    </mat-form-field>
+                </div>                
+            </div>
+            <div class="form-row">                
+                <div class="form-group col-md-4">                   
+                    <mat-form-field>
+                        <label>Primary Email:</label>
+                        <input matInput formControlName="contactEmailCtrl" required>
+                    </mat-form-field>
+                </div>                
+                <div class="form-group col-md-4">
+                    <mat-form-field>
+                        <label>Alt Email:</label>
+                        <input matInput placeholder="Alt Email:" formControlName="contactAltEmailCtrl" required>
+                    </mat-form-field>
+                </div>              
+            </div>            
+            <div>
+                <button mat-button matStepperPrevious class="btn btn-primary">Back</button>
+                <button mat-button matStepperNext class="btn btn-primary">Next</button>
+            </div>
+        </form>
+    </mat-step>
+    <mat-step [stepControl]="thirdFormGroup" errorMessage="Email is required.">
+        <form [formGroup]="thirdFormGroup">
+            <ng-template matStepLabel><h3 class="head text-center">Fill out Guardian Info Form</h3></ng-template>             
+            <mat-form-field>
+                <label>Full Name:</label>
+                <input matInput formControlName="guardianFullNameCtrl" required>
+            </mat-form-field>     
+            <mat-form-field>
+                <label>Street Address One:</label>
+                <input matInput formControlName="guardianAddressOneCtrl" required>
+            </mat-form-field>   
+            <mat-form-field>
+                <label>Street Address Two:</label>
+                <input matInput formControlName="guardianAddressTwoCtrl" required>
+            </mat-form-field> 
+            <div class="form-row">                
+                <div class="form-group col-md-4">                   
+                    <mat-form-field>
+                        <label>City:</label>
+                        <input matInput formControlName="guardianCityCtrl" required>
+                    </mat-form-field>
+                </div>                
+                <div class="form-group col-md-4">
+                    <mat-form-field>
+                        <label>State:</label>
+                        <input matInput formControlName="guardianStateCtrl" required>
+                    </mat-form-field>
+                </div>         
+                <div class="form-group col-md-4">
+                    <mat-form-field>
+                        <label>Zip:</label>
+                        <input matInput formControlName="guardianZipCodeCtrl" required>
+                    </mat-form-field>
+                </div>     
+            </div>  
+            <div class="form-row">                
+                <div class="form-group col-md-4">                   
+                    <mat-form-field>
+                        <label>Primary Phone Number:</label>
+                        <input matInput formControlName="guardianPhoneNumberCtrl" required>
+                    </mat-form-field>  
+                </div>                
+                <div class="form-group col-md-4">              
+                    <mat-form-field>
+                        <label>Alt Phone Number:</label>
+                        <input matInput formControlName="guardianAltPhoneNumberCtrl" required>
+                    </mat-form-field>
+                </div>
+                <div class="form-group col-md-4">                   
+                    <mat-form-field>
+                        <label>Primary Email:</label>
+                        <input matInput formControlName="guardianEmailCtrl" required>
+                    </mat-form-field>                
+                    <mat-form-field>
+                        <label>Alt Email:</label>
+                        <input matInput placeholder="Alt Email:" formControlName="guardianAltEmailCtrl" required>
+                    </mat-form-field>
+                </div>              
+            </div>   
+            <div>
+                <button mat-button matStepperPrevious class="btn btn-primary">Back</button>
+                <button mat-button matStepperNext class="btn btn-primary">Next</button>
+            </div>
+        </form>
+    </mat-step>
+    <mat-step>
+        <ng-template matStepLabel><h3 class="head text-center">Done</h3></ng-template>
+        <p class="narrow text-center">
+            You are now done. Here is a copy of the information you have entered:
+        </p>
+        <div class="row">
+            <div class="col-xs-offset-1 col-xs-10 col-sm-offset-3 col-sm-8 col-md-offset-4 col-md-8">                    
+                <div *ngIf="formSubmitted">
+                    <h4>Details submitted successfully</h4>
+                </div>
+                <div *ngIf="!formSubmitted">
+                    <h4>Following details submitted, please confirm and hit submit</h4>
+                    <br/><br/><b>Student Info</b>
+                    <br/>Full Name: {{firstFormGroup.get('firstCtrl').value}} 
+                        {{firstFormGroup.get('middleCtrl').value}}
+                        {{firstFormGroup.get('lastCtrl').value}}
+                    <br/>Gender: {{firstFormGroup.get('genderCtrl').value}}
+                    <br/>Date of Birth: {{firstFormGroup.get('dobCtrl').value}}
+                    <br/>Age: {{firstFormGroup.get('ageCtrl').value}}
+                    <br/>Allergies/Medical Conditions: {{firstFormGroup.get('alergiesCtrl').value}}
+                    <br/>Class Day: {{firstFormGroup.get('classDayCtrl').value}}
+                    <br/>Age Group Selection: {{firstFormGroup.get('classSelectionCtrl').value}}
+                    <br/><br/><b>Contact Info</b>
+                    <br/>Full Name: {{secondFormGroup.get('contactFullNameCtrl').value}}
+                    <br/>Relationship to Student: {{secondFormGroup.get('contactRelationshipToStudentCtrl').value}}
+                    <br/>Primary Phone Number: {{secondFormGroup.get('contactPhoneNumberCtrl').value}}
+                    <br/>Alt Phone Number: {{secondFormGroup.get('contactAltPhoneNumberCtrl').value}}
+                    <br/>Primary Email: {{secondFormGroup.get('contactEmailCtrl').value}}
+                    <br/>Alt Email: {{secondFormGroup.get('contactAltEmailCtrl').value}}
+                    <br/><br/><b>Guardian Info</b>
+                    <br/>Guardian Full Name: {{thirdFormGroup.get('guardianFullNameCtrl').value}}
+                    <br/>Street Address One: {{thirdFormGroup.get('guardianAddressOneCtrl').value}}
+                    <br/>Street Address Two: {{thirdFormGroup.get('guardianAddressTwoCtrl').value}}
+                    <br/>City: {{thirdFormGroup.get('guardianCityCtrl').value}}
+                    <br/>State: {{thirdFormGroup.get('guardianStateCtrl').value}}
+                    <br/>Zip: {{thirdFormGroup.get('guardianZipCodeCtrl').value}}
+                    <br/>Primary Phone Number: {{thirdFormGroup.get('guardianPhoneNumberCtrl').value}}
+                    <br/>Alt Phone Number: {{thirdFormGroup.get('guardianAltPhoneNumberCtrl').value}}
+                    <br/>Primary Email: {{thirdFormGroup.get('guardianEmailCtrl').value}}
+                    <br/>Alt Email: {{thirdFormGroup.get('guardianAltEmailCtrl').value}}
+                </div>
+            </div>
+        </div>
+        <div>
+            <button mat-button matStepperPrevious class="btn btn-primary">Back</button>
+            <button mat-button (click)="stepper.reset()" class="btn btn-primary">Reset</button>
+            <button mat-button (click)="submit()" class="btn btn-primary">Submit</button>
+        </div>
+    </mat-step>
+</mat-horizontal-stepper>

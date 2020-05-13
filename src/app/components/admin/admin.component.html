@@ -1,6 +1,6 @@
-<div class="container">
-    <div class="user-container">
-      <div class="card">
+
+    <!-- <div class="user-container"> -->
+      <div class="card m-3">
         <div class="card-header">
           <div class="row">
             <div class="col col-xs-6">
@@ -22,7 +22,7 @@
             </thead>
             <tbody>
               <tr *ngFor="let item of userList; index as ind">
-                <th scope="row">{{ind}}</th>
+                <th scope="row">{{item.id}}</th>
                 <td>{{item.name}}</td>
                 <td>{{item.username}}</td>
                 <td>{{item.role}}</td>
@@ -34,5 +34,5 @@
           </table>
         </div>
       </div>
-    </div>
-  </div>
+    <!-- </div> -->
+  

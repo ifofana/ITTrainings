@@ -1,0 +1,14 @@
+diff a/src/app/app-routing.module.ts b/src/app/app-routing.module.ts	(rejected hunks)
+ 	{ path: 'students/:id', component: StudentComponent, 
+ 			canActivate: [AuthGuard],
+ 			data: {roles: [Role.ADMIN, Role.USER]}},
++	{ path: 'contact/: id', component: ContactComponent, 
+ 			canActivate: [AuthGuard],
+ 			data: {roles: [Role.ADMIN, Role.USER]}},
+
+{ path: 'guardien/:id', component: GuardienComponent, 
+ 			canActivate: [AuthGuard],
+ 			data: {roles: [Role.ADMIN, Role.USER]}},
+
+
+ 	{ path: 'logout', component: LogoutComponent, 

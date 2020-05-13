@@ -1,0 +1,60 @@
+<div class="container">
+    <div class="jumbotron">
+        <div class="display-4">
+            <strong>{{currentContact.contactName | uppercase}}</strong> details are displayed...
+        </div>
+    </div>
+    <div class="jumbotron">
+        <div><span class="font-weight-bold">Contact Relationship To Student(s): </span>{{currentContact.contactRelationshipToStudent}}</div>
+        <div><span class="font-weight-bold">Phone Number: </span>{{currentContact.contactPhoneNumber}}</div>
+        <div><span class="font-weight-bold">Email: </span>{{currentContact.contactEmail}}</div>
+        <div><span class="font-weight-bold">Alt Phone Number: </span>{{currentContact.contactAltPhoneNumber}}</div>
+        <div><span class="font-weight-bold">Alt Email: </span>{{currentContact.contactAltEmail}}</div>
+    </div>
+</div>
+
+<div class="container">
+    <h3>Student(s)</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Middle Name</th>
+                <th>Last Name</th>
+                <th>Age</th>
+                <th>Date of Birth</th>
+                <th>Parent(s)/Guardian(s)</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let s of currentContact.students">
+                <td>{{s.firstName}}</td>
+                <td>{{s.middlename}}</td>
+                <td>{{s.lastName}}</td>
+                <td>{{s.age}}</td>
+                <td>{{s.dob}}</td>
+                <td *ngFor="let pg of s.parentGuardians">  
+                    <ul>
+                        <li>
+                            {{pg.pgName}}
+                        </li>
+                        <li>
+                            {{pg.pgAddressOne + pg.pgCity + pg.pgState + pg.pgZipCode}}
+                        </li>
+                        <li>
+                            {{pg.pgPhoneNumber}}
+                        </li>
+                        <li>
+                            {{pg.pgEmail}}
+                        </li>
+                        <li>
+                            {{pg.pgRelationshipToStudent}}
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+

@@ -1,0 +1,62 @@
+<div class="card m-3">
+    <h4 class="card-header">List of Contacts</h4>
+
+    <div class="card-body">
+
+        <div class="alert alert-success" *ngIf="message">{{message}}</div>
+
+        <ul class="heroes">
+            <li *ngFor="let contact of contacts" [class.selected]="contact === selectedContact" (click)="onSelect(contact)">
+                <span class="badge">{{contact.contactId}}</span> <span class="text">{{contact.contactName}}</span><span class="text">{{contact.contactEmail}}</span>
+                <span class="text">{{contact.contactPhoneNumber}}</span>
+            </li>
+        </ul>
+    
+        <div *ngIf="selectedContact">
+        
+            <h2>{{selectedContact.contactName | uppercase}} Details</h2>
+            
+            <form #contactForm="ngForm" (ngSubmit)="updateContact(selectedContact.contactId)">
+                <div class="form-row">
+                    <div class="form-group col">
+                        <label>Full Name</label>
+                        <input type="text" #contactForm="ngModel" [(ngModel)]="selectedContact.contactName" [ngModelOptions]="{standalone: true}" class="form-control" name="contactName" required minlength="5">                                              
+                    </div>
+                    <div class="form-group col">
+                        <label>Relationship to Student</label>
+                        <input type="text" #contactForm="ngModel" [(ngModel)]="selectedContact.contactRelationshipToStudent" [ngModelOptions]="{standalone: true}" class="form-control" name="contactRelationshipToStudent" required>                        
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col">
+                        <label>Primary Phone Number</label>                          
+                        <input type="tel" #contactForm="ngModel" [(ngModel)]="selectedContact.contactPhoneNumber" [ngModelOptions]="{standalone: true}" class="form-control" name="contactPhoneNumber" required>                  
+                    </div>
+                    <div class="form-group col">
+                        <label>Primary Email</label>                        
+                        <input type="email" #contactForm="ngModel" [(ngModel)]="selectedContact.contactEmail" [ngModelOptions]="{standalone: true}" class="form-control" name="contactEmail" required>                    
+                    </div>                    
+                </div>
+                <div class="form-row">
+                    <div class="form-group col">
+                        <label>Alt Phone Number</label>
+                        <input type="tel" #contactForm="ngModel" [(ngModel)]="selectedContact.contactAltPhoneNumber" [ngModelOptions]="{standalone: true}" class="form-control" name="contactAltPhoneNumber" required>
+                    </div>
+                    <div class="form-group col">
+                        <label>Alt Email</label>
+                        <input type="email" #contactForm="ngModel" [(ngModel)]="selectedContact.contactAltEmail" [ngModelOptions]="{standalone: true}" class="form-control" name="contactAltEmail" required>
+                    </div>
+                </div>
+                <div class="card-footer text-center">
+                    <button type="submit" class="btn btn-primary mr-2">Update</button>
+                    <button (click)="openConfirmationDialog()" type="button" class="btn btn-danger mr-2">Delete</button>
+                    <button type="reset" class="btn btn-secondary">Cancel</button>                    
+                </div>
+            </form>
+        </div>
+
+        <!--  -->
+    
+    </div>
+
+</div>

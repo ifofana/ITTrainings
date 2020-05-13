@@ -1,0 +1,270 @@
+<div class="card m-3">
+    <h4 class="card-header">Contact Information Form</h4>
+
+    <div class="card-body">
+                
+        <form [formGroup]="myForm" #ngForm="ngForm" novalidate (ngSubmit)="save(myForm)">
+            <div class="form-row">
+                <div class="form-group col">
+                    <label>Full Name</label>
+                    <input type="text" class="form-control" formControlName="contactName">
+                    <div *ngIf="ngForm.submitted && !myForm.controls.contactName.valid" class="alert alert-danger">
+                        Full name is required (minimum 5 characters).
+                    </div>                       
+                </div>
+                <div class="form-group col">
+                    <label>Relationship to Student</label>
+                    <input type="text" class="form-control" formControlName="contactRelationshipToStudent">
+                    <div *ngIf="ngForm.submitted && !myForm.controls.contactRelationshipToStudent.valid" class="alert alert-danger">
+                        Relationship to Student is required (minimum 3 characters).
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col">
+                    <label>Primary Phone Number</label>
+                    <input type="tel" class="form-control" formControlName="contactPhoneNumber">
+                    <div *ngIf="ngForm.submitted && !myForm.controls.contactPhoneNumber.valid" class="alert alert-danger">
+                        Primary Phone Number is required.
+                    </div>
+                </div>
+                <div class="form-group col">
+                    <label>Primary Email</label>
+                    <input type="text" class="form-control" formControlName="contactEmail">
+                    <div *ngIf="ngForm.submitted && !myForm.controls.contactEmail.valid" class="alert alert-danger">
+                        Primary Email is required (must be a valid email address).
+                    </div>
+                </div>                    
+            </div>
+            <div class="form-row">
+                <div class="form-group col">
+                    <label>Alt Phone Number</label>
+                    <input type="tel" class="form-control" formControlName="contactAltPhoneNumber">
+                </div>
+                <div class="form-group col">
+                    <label>Alt Email</label>
+                    <input type="email" class="form-control" formControlName="contactAltEmail">
+                </div>
+            </div>
+            <!--students-->
+            <div formArrayName="students">
+                <div *ngFor="let student of myForm.controls.students.controls; let i=index">
+                    <div>
+                        <span><h5>Student {{i + 1}} Information Form</h5></span>
+                        <a *ngIf="myForm.controls.students.controls.length > 1" (click)="removeStudent(i)"
+                            style="float: right">
+                            X
+                        </a>
+                        <!-- <button *ngIf="myForm.controls.students.controls.length > 1" style="margin-left:35px;" type="button" class="btn btn-danger" (click)="removeStudent(i)">
+                            Remove Student
+                        </button> -->
+                    </div>
+                    <div [formGroupName]="i">
+                        <div class="row">
+                            <div class="col col-example">
+                                <label>First Name</label>
+                                <input type="text" class="form-control" formControlName="firstName"> 
+                                <div *ngIf="ngForm.submitted && !student.controls.firstName.valid" class="alert alert-danger">
+                                    First Name is required  (minimum 2 characters).
+                                </div>                                   
+                            </div>
+                            <div class="col col-example">
+                                <label>Middle Name</label>
+                                <input type="text" class="form-control" formControlName="middlename">
+                            </div>
+                            <div class="col col-example">
+                                <label>Last Name</label>
+                                <input type="text" class="form-control" formControlName="lastName">
+                                <div *ngIf="ngForm.submitted && !student.controls.lastName.valid" class="alert alert-danger">
+                                    Last Name is required  (minimum 2 characters).
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col col-example">
+                                <label>Gender</label>
+                                <select class="form-control" formControlName="gender" (change)="gender=$event.target.value">
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                </select>
+                                <div *ngIf="ngForm.submitted && !student.controls.gender.valid" class="alert alert-danger">
+                                    Gender is required.
+                                </div>
+                            </div>
+                            <div class="col col-example">
+                                <label>Date of Birth</label>
+                                <input type="date" class="form-control" formControlName="dob" (change)="student.dob = $event">
+                                <div *ngIf="ngForm.submitted && !student.controls.dob.valid" class="alert alert-danger">
+                                    Date of Birth is required.
+                                </div>
+                            </div>
+                            <div class="col col-example">
+                                <label>Age</label>
+                                <input type="number" class="form-control" formControlName="age">
+                                <div *ngIf="ngForm.submitted && !student.controls.age.valid" class="alert alert-danger">
+                                    Age is required.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">                
+                            <div class="col col-example">
+                                <label class="form-check-label">Allergies/Medical Conditions</label>
+                                <textarea rows="2" class="form-control" formControlName="allerges">
+                                </textarea>
+                            </div>                                    
+                        </div>
+                        <div class="row">
+                            <div class="col col-example">
+                                <label>Select Class Day</label>     
+                                <select class="form-control" formControlName="classDay" (change)="classDay=$event.target.value">
+                                    <option value="Saturday">Saturday</option>
+                                    <option value="Sunday">Sunday</option>
+                                </select>
+                                <div *ngIf="ngForm.submitted && !student.controls.classDay.valid" class="alert alert-danger">
+                                    Class Day is required.
+                                </div>
+                            </div>
+                            <div class="col col-example">
+                                <label>Select the class according to age group</label>
+                                <select class="form-control" formControlName="classSelection" (change)="classSelection=$event.target.value">
+                                    <option value="Foundition - 5 & 6 years old">Foundition - 5 & 6 years old</option>
+                                    <option value="Beginner - 7 & 8 years old">Beginner - 7 & 8 years old</option>
+                                    <option value="Intermediate - 9 & 10 years old">Intermediate - 9 & 10 years old</option>
+                                    <option value="Proficient - 11 & 12 years old">Proficient - 11 & 12 years old</option>
+                                    <option value="Advanced - 13 & 14 years old">Advanced - 13 & 14 years old</option>
+                                    <option value="Youth - 15 & 16 years old">Youth - 15 & 16 years old</option>
+                                    <option value="Adult - 17 & 18 years old">Adult - 17 & 18 years old</option>
+                                </select>  
+                                <div *ngIf="ngForm.submitted && !student.controls.classSelection.valid" class="alert alert-danger">
+                                    Age Group Selection is required.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div formArrayName="parentGuardians"
+                                *ngFor="let parentGuardian of myForm.controls.students.controls[i].controls.parentGuardians.controls; let j=index"
+                                class="col-md-6">
+                                <div [formGroupName]="j">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col">
+                                                <label><h5>Parent/Guardian {{j + 1}} Full Name</h5></label>
+                                                <a *ngIf="student.controls.parentGuardians.controls.length > 1"
+                                                    (click)="removeParentGuardian(student, j)"
+                                                    style="cursor: default; float: right">X</a>
+                                                <input type="text" class="form-control" formControlName="pgName" />
+                                                <div *ngIf="ngForm.submitted && !parentGuardian.controls.pgName.valid" class="alert alert-danger">
+                                                    Parent/Guardian Full Name is required.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <label style="margin-right:5px;" class="col-form-label">Address one</label>
+                                                <input formControlName="pgAddressOne" class="form-control"
+                                                    style="margin-right:5px;" type="text" />
+                                                <div *ngIf="ngForm.submitted && !parentGuardian.controls.pgAddressOne.valid" class="alert alert-danger">
+                                                    Address one is required.
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <label style="margin-right:5px;" class="col-form-label">Address two</label>
+                                                <input formControlName="pgAddressTwo" class="form-control"
+                                                    style="margin-right:5px;" type="text" />
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <label style="margin-right:5px;" class="col-form-label">City</label>
+                                                <input formControlName="pgCity" class="form-control"
+                                                    style="margin-right:5px;" type="text" />
+                                                <div *ngIf="ngForm.submitted && !parentGuardian.controls.pgCity.valid" class="alert alert-danger">
+                                                    City is required.
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <label style="margin-right:5px;" class="col-form-label">State</label>
+                                                <input formControlName="pgState" class="form-control"
+                                                    style="margin-right:5px;" type="text" />
+                                                <div *ngIf="ngForm.submitted && !parentGuardian.controls.pgState.valid" class="alert alert-danger">
+                                                    State is required.
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <label style="margin-right:5px;" class="col-form-label">Zip Code</label>
+                                                <input formControlName="pgZipCode" class="form-control"
+                                                    style="margin-right:5px;" type="text" />
+                                                <div *ngIf="ngForm.submitted && !parentGuardian.controls.pgZipCode.valid" class="alert alert-danger">
+                                                    Zip Code is required.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <label style="margin-right:5px;" class="col-form-label">Email</label>
+                                                <input formControlName="pgEmail" class="form-control"
+                                                    style="margin-right:5px;" type="email" />
+                                                <div *ngIf="ngForm.submitted && !parentGuardian.controls.pgEmail.valid" class="alert alert-danger">
+                                                    Email is required.
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <label style="margin-right:5px;" class="col-form-label">Phone</label>
+                                                <input formControlName="pgPhoneNumber" class="form-control"
+                                                    style="margin-right:5px;" type="tel" />
+                                                <div *ngIf="ngForm.submitted && !parentGuardian.controls.pgPhoneNumber.valid" class="alert alert-danger">
+                                                    Phone is required.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <label style="margin-right:5px;" class="col-form-label">Alt Email</label>
+                                                <input formControlName="pgAltEmail" class="form-control"
+                                                    style="margin-right:5px;" type="email" />
+                                            </div>
+                                            <div class="col">
+                                                <label style="margin-right:5px;" class="col-form-label">Alt Phone</label>
+                                                <input formControlName="pgAltPhoneNumber" class="form-control"
+                                                    style="margin-right:5px;" type="tel" />
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <label style="margin-right: 5px;" class="col-form-label">Relationship To Student</label>
+                                                <input formControlName="pgRelationshipToStudent" class="form-control" style="margin-right: 5px;" type="text" />
+                                                <div *ngIf="ngForm.submitted && !parentGuardian.controls.pgRelationshipToStudent.valid" class="alert alert-danger">
+                                                    Relationship To Student is required.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a class="pull-right" *ngIf="j == student.controls.parentGuardians.controls.length-1"
+                                    (click)="addParentGuardian(student)" style="float: right">Add New Parent/Guardian +</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="margin-20">
+                <a (click)="addStudent()" style="cursor: default; float: right">
+                    Add New student +
+                </a>
+            </div>
+
+            <div class="card-footer text-center">
+                <button type="submit" class="btn btn-primary mr-2">Save Form</button>        
+                <button type="reset" class="btn btn-secondary">Clear Form</button>
+            </div>
+
+            <!-- <div class="margin-20">
+                <pre>form value: <br>{{myForm.value | json}}</pre>
+            </div> -->
+        </form>
+            
+        
+    </div>
+</div>

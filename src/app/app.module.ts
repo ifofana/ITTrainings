@@ -1,8 +1,13 @@
+/* Import diffent classes from @angular library */
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
+
+/* Import different componet classes from user component packages */
 import { AppComponent } from './app.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import { MenuComponent } from './components/menu/menu.component';
@@ -10,10 +15,6 @@ import { LoginComponent } from './components/login/login.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { ErrorComponent } from './components/error/error.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { ListCoursesComponent } from './components/list-courses/list-courses.component';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { CourseComponent } from './components/course/course.component';
-import { HttpIntercepterBasicAuthService } from './service/http/http-intercepter-basic-auth.service';
 import { ListStudentsComponent } from './components/list-students/list-students.component';
 import { StudentComponent } from './components/student/student.component';
 import { SignupComponent } from './components/signup/signup.component';
@@ -23,18 +24,45 @@ import { DetailComponent } from './components/detail/detail.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { UnauthorizedComponent } from './components/unauthorized/unauthorized.component';
+import { ContactComponent } from './components/contact/contact.component';
+import { ListContactsComponent } from './components/list-contacts/list-contacts.component';
+import { ParentGuard} from './models/parent.guard';
+import { GuardianComponent } from './components/guardian/guardian.component';
+import { ListGuardiansComponent } from './components/list-guardians/list-guardians.component';
+import { StepperComponent } from './components/stepper/stepper.component';
+
+import { CdkStepperModule } from '@angular/cdk/stepper';
+
+import { 
+  MatStepperModule,
+  MatSelectModule, 
+  MatButtonModule, 
+  MatInputModule, 
+  MatListModule, 
+  MatGridListModule,
+  MatAutocompleteModule,
+  MatTreeModule,
+  MatIconModule
+} from '@angular/material';
+
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { StudentDetailsComponent } from './components/student-details/student-details.component';
+import { ContactDetailsComponent } from './components/contact-details/contact-details.component';
+import { MainComponent } from './components/main/main.component';
+import { MyTestsComponent } from './components/mytests/my-tests/my-tests.component';
+import { ConfirmationDialogComponent } from './components/shared/confirmation-dialog/confirmation-dialog.component';
+import { ConfirmationDialogService } from './services/confirmation-dialog.service';
 
 @NgModule({
   declarations: [
     AppComponent,
+    ConfirmationDialogComponent,
     WelcomeComponent,
     MenuComponent,
     LoginComponent,
     LogoutComponent,
     ErrorComponent,
     FooterComponent,
-    ListCoursesComponent,
-    CourseComponent,
     ListStudentsComponent,
     StudentComponent,
     SignupComponent,
@@ -43,18 +71,42 @@ import { UnauthorizedComponent } from './components/unauthorized/unauthorized.co
     DetailComponent,
     AdminComponent,
     NotFoundComponent,
-    UnauthorizedComponent
+    UnauthorizedComponent,
+    ContactComponent,
+    ListContactsComponent,
+    GuardianComponent,
+    ListGuardiansComponent,
+    StepperComponent,
+    StudentDetailsComponent,
+    ContactDetailsComponent,
+    MainComponent,
+    MyTestsComponent
   ],
+
   imports: [
     BrowserModule,
-	  AppRoutingModule,
+    AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-	  HttpClientModule
+    MatStepperModule,
+    MatInputModule,
+    MatButtonModule,
+    MatSelectModule,
+    MatAutocompleteModule,
+    BrowserAnimationsModule,
+    MatListModule,
+    MatGridListModule,
+    MatTreeModule,
+    MatIconModule,
+    MatDatepickerModule,
+    HttpClientModule,
+    NgbModule
   ],
-  providers: [
-     {provide: HTTP_INTERCEPTORS, useClass: HttpIntercepterBasicAuthService, multi: true}
-  ],
-  bootstrap: [AppComponent]
+
+  providers: [ ConfirmationDialogService ],
+  entryComponents: [ ConfirmationDialogComponent ],
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
+
 export class AppModule { }

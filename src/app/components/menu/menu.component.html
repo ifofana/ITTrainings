@@ -1,29 +1,68 @@
 <header>
 	<nav class="navbar navbar-expand-md navbar-dark bg-dark"> 
-		<div>
+		<div class="nav-item" *ngIf="!currentUser">
 			<a href="https://www.isgtown.org/" class="navbar-brand">ISG</a>
 		</div>
-
-		<ul class="navbar-nav">
+		<ul class="navbar-nav navbar-collapse justify-content-end" *ngIf="!currentUser">
 			<li class="nav-item">
-				<a routerLink="/admin" class="nav-link" *ngIf="isAdmin">Admin Panel</a>
+				<a routerLink="" class="nav-link">
+					<span class="glyphicon glyphicon-user"></span>Contact Us
+				</a>
 			</li>
-			<li>
-				<a  routerLink="/welcome" class="nav-link">Home</a>
-			</li>
-			<li>
-				<a  routerLink="/courses" class="nav-link">Courses</a>
-			</li>
-			<li>
-				<a routerLink="/students" class="nav-link">Students</a>
+	
+			<li class="nav-item">
+				<a routerLink="" class="nav-link">
+					<span class="glyphicon glyphicon-log-in"></span>About
+				</a>
 			</li>
 		</ul>
 
-		<ul class="navbar-nav navbar-collapse justify-content-end">
-			<li>
-				<a routerLink="/login" class="nav-link">Login</a>
+		<ul class="navbar-nav" *ngIf="currentUser">
+			<li class="nav-item" *ngIf="isAdmin">
+				<a routerLink="/admin" class="nav-link">Admin Panel</a>
 			</li>
+			<li class="nav-item">
+				<a routerLink="/welcome" class="nav-link">Home</a>
+			</li>
+
+			<li class="nav-item" *ngIf="isAdmin">
+				<a  routerLink="/contacts" class="nav-link">Contacts</a>
 			<li>
+
+			<!-- <li class="nav-item">
+				<a  routerLink="/tests" class="nav-link">Tests</a>
+			<li> -->
+			
+			<li class="nav-item">
+				<a  routerLink="/students" class="nav-link">Students</a>
+			<li>		
+				
+			<li class="nav-item" *ngIf="isAdmin">
+				<a routerLink="/guardians" class="nav-link">Parents/Guardians</a>
+			</li>
+		</ul>
+		
+		<!-- <ul class="navbar-nav ml-auto" *ngIf="!currentUser">
+			<li class="nav-item">
+				<a routerLink="/register" class="nav-link">
+					<span class="glyphicon glyphicon-user"></span> Sign Up
+				</a>
+			</li>
+	
+			<li class="nav-item">
+				<a routerLink="/login" class="nav-link">
+					<span class="glyphicon glyphicon-log-in"></span> Login
+				</a>
+			</li>
+		</ul> -->
+
+		<ul class="navbar-nav navbar-collapse justify-content-end" *ngIf="currentUser">			
+			<li class="nav-item" *ngIf="currentUser">
+				<a routerLink="/profile" class="nav-link">
+					<span class="glyphicon glyphicon-user"></span> {{currentUser.username}}
+				</a>
+			</li>
+			<li class="nav-item">
 				<a routerLink="/logout" class="nav-link">Logout</a>
 			</li>
 		</ul>

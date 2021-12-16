@@ -26,7 +26,6 @@ import { StudentDetailsComponent } from './components/student-details/student-de
 import { ContactDetailsComponent } from './components/contact-details/contact-details.component';
 
 import { MainComponent } from './components/main/main.component';
-import { MyTestsComponent } from './components/mytests/my-tests/my-tests.component';
 
 const routes: Routes = [
 
@@ -65,8 +64,6 @@ const routes: Routes = [
 { path: 'studentdetails/:id', component:  StudentDetailsComponent, canActivate: [AuthGuard], data: {roles: [Role.ADMIN, Role.USER]} },
 
 { path: 'contactdetails/:id', component: ContactDetailsComponent, canActivate: [AuthGuard], data: {roles: [Role.ADMIN, Role.USER]} },
-
-{ path: 'tests', component: MyTestsComponent, canActivate: [AuthGuard], data: {roles: [Role.ADMIN]} },
 
 { path: 'guardian/:id', component: GuardianComponent, canActivate: [AuthGuard], data: {roles: [Role.ADMIN, Role.USER]} },
 

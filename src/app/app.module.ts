@@ -49,7 +49,6 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { StudentDetailsComponent } from './components/student-details/student-details.component';
 import { ContactDetailsComponent } from './components/contact-details/contact-details.component';
 import { MainComponent } from './components/main/main.component';
-import { MyTestsComponent } from './components/mytests/my-tests/my-tests.component';
 import { ConfirmationDialogComponent } from './components/shared/confirmation-dialog/confirmation-dialog.component';
 import { ConfirmationDialogService } from './services/confirmation-dialog.service';
 
@@ -79,8 +78,7 @@ import { ConfirmationDialogService } from './services/confirmation-dialog.servic
     StepperComponent,
     StudentDetailsComponent,
     ContactDetailsComponent,
-    MainComponent,
-    MyTestsComponent
+    MainComponent
   ],
 
   imports: [

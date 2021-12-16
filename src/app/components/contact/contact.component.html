@@ -48,7 +48,7 @@
             </div>
             <!--students-->
             <div formArrayName="students">
-                <div *ngFor="let student of myForm.controls.students.controls; let i=index">
+                <div *ngFor="let student of myForm.get('students')['controls']; let i=index">
                     <div>
                         <span><h5>Student {{i + 1}} Information Form</h5></span>
                         <a *ngIf="myForm.controls.students.controls.length > 1" (click)="removeStudent(i)"
